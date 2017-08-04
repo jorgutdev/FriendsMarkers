@@ -37,7 +37,7 @@ export default class LaunchScreen extends Component {
 
   componentDidMount() {
         console.log('LaunchScreen.componentDidMount')
-
+        
     navigator.geolocation.getCurrentPosition(
       (position) => {
         console.log('componentDidMount | getCurrentPosition ', position)
@@ -81,6 +81,20 @@ _changeMap(){
   console.log('_changeMap | state -> ', state)
 }
 
+_longPress(event){
+  let {coordinate, position} = event
+  console.log('_longPress | event -> ', event)
+  console.log('_longPress | coordinates -> ', coordinate)
+  console.log('_longPress | position -> ', position)
+}
+
+_shortPress(event){
+  let {coordinate, position} = event
+  console.log('_longPress | event -> ', event)
+  console.log('_longPress | coordinates -> ', coordinate)
+  console.log('_longPress | position -> ', position)
+}
+
 render() {
 
   console.log("render | state -> ", this.state)
@@ -91,7 +105,10 @@ render() {
     style={styles.map}
     customMapStyle={this.mapStyle}
     showsUserLocation={true}
+    showsMyLocationButton={true}
     followUserLocation={true}
+    onPress={ event => this._shortPress(event.nativeEvent)}
+    onLongPress={ event => this._longPress(event.nativeEvent)}
     initialRegion={this.state.initialPosition}/>
 
 

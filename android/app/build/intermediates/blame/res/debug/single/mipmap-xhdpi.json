@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/home/jorge/repo/FriendsMarkers/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_launcher.png",
+        "source": "/home/jorge/repo/FriendsMarkers/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
         "merged": "/home/jorge/FriendsMarkers/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_launcher.png",
         "source": "/home/jorge/FriendsMarkers/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
     }
