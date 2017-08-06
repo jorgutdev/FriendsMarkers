@@ -5,7 +5,7 @@ import { ButtonLeft } from '../Components/ButtonLeft'
 import { Images } from '../Themes'
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
-import MapView from 'react-native-maps';
+import MapView   from 'react-native-maps';
 import Modal from 'react-native-modal';
 import { ModalMarker } from './ModalMarker';
 import * as firebase from "firebase";
@@ -19,7 +19,9 @@ export default class LaunchScreen extends Component {
   state = {
     hackHeight: height,
     mapName: 'Global Map',
-    isModalVisible: false
+    isModalVisible: false,
+        markers: [],
+
   }
 
   
@@ -29,8 +31,7 @@ export default class LaunchScreen extends Component {
   _hideModal = () => this.setState({ isModalVisible: false })
 
   static navigationOptions = {
-    header: null
-  }
+    header: null  }
 
 
   constructor(props) {
@@ -38,6 +39,7 @@ export default class LaunchScreen extends Component {
 
     console.log('LaunchScreen constructor | props -> ', props)
     console.log('LaunchScreen constructor | state -> ', this.state)
+    this._loadMarkers()
 
   }
 
@@ -64,8 +66,34 @@ export default class LaunchScreen extends Component {
       var lastPosition = JSON.stringify(position);
       console.log('componentDidMount | watchPosition | position ', position)
     });
+
+
   }
 
+
+    _loadMarkers(){
+      let markers = firebase.database().ref("markers");
+      markers.once('value').then(snapshot => {
+      let root = this;
+          snapshot.forEach(function(childSnapshot) {
+        console.log("_loadMarkers | childSnapshot", childSnapshot.val()) 
+        root.setState({ markers: [...root.state.markers, {
+            id:childSnapshot.key,
+            latlng:childSnapshot.val().coordinate,
+            description:childSnapshot.val().description,
+            title:childSnapshot.val().title 
+        }]})
+          });
+
+
+
+
+        console.log("_loadMarkers | snapshot.val()", snapshot.val()) 
+
+
+      })
+
+    }
 
 
   componentWillUnmount() {
@@ -119,6 +147,9 @@ export default class LaunchScreen extends Component {
 
     console.log("_saveMarker | newMarkerName -> ", this.state.newMarkerName)
     console.log("_saveMarker | newMarkerDescription -> ", this.state.newMarkerDescription)
+    console.log("_saveMarker | newMarkerCoordinate -> ", this.state.newMarkerCoordinate)
+    console.log("_saveMarker | latitude -> ", this.state.newMarkerCoordinate.latitude)
+    console.log("_saveMarker | longitude -> ", this.state.newMarkerCoordinate.longitude)
 
     // let rootRef = firebase.database().ref()
     // console.log('_longPress | rootRef -> ', rootRef)
@@ -130,6 +161,16 @@ export default class LaunchScreen extends Component {
 
 });
 
+
+  this.setState({ markers: [...this.state.markers,{
+      latlng:this.state.newMarkerCoordinate,
+      description:this.state.newMarkerDescription,
+      title:this.state.newMarkerName 
+  }]})
+
+    console.log("_saveMarker | setState -> ", this.state.newMarkerName)
+
+  this._loadMarkers()
   this._hideModal()
     
   }
@@ -150,7 +191,18 @@ export default class LaunchScreen extends Component {
           followUserLocation={true}
           onPress={event => this._shortPress(event.nativeEvent)}
           onLongPress={event => this._longPress(event.nativeEvent)}
-          initialRegion={this.state.initialPosition} />
+          initialRegion={this.state.initialPosition}>
+
+ {this.state.markers.map(marker => (
+    <MapView.Marker
+      id={marker.id}
+      coordinate={marker.latlng}
+      title={marker.title}
+      description={marker.description}
+    />
+  ))}
+
+          </MapView>
 
 
 
@@ -181,8 +233,7 @@ export default class LaunchScreen extends Component {
             animationIn={'fadeInUpBig'}
             animationOut={'zoomOut'}
             backdropOpacity={1}
-            backdropColor='white'
-            >
+            backdropColor='white'>
             
             <View style={{ flex: 1 }}>
               <Text style={styles.markerModal} >Hello!</Text>
