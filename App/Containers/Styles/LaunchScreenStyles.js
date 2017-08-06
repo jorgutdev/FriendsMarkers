@@ -21,7 +21,10 @@ export default StyleSheet.create({
     color: 'white',
   },
    map: {
-    ...StyleSheet.absoluteFillObject,
+    ...StyleSheet.absoluteFillObject
+  },
+  markerModal: {
+      color: 'red'
   },
   mapName: {
     color: 'white',

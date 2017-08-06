@@ -1004,7 +1004,7 @@
                     "endOffset": 1870
                 },
                 "from": {
-                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.2/res/values-zh-rCN/values.xml",
+                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.4/res/values-zh-rCN/values.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 0,
@@ -1023,7 +1023,7 @@
                     "endOffset": 2031
                 },
                 "from": {
-                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.2/res/values-zh-rCN/values.xml",
+                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.4/res/values-zh-rCN/values.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 0,
@@ -1042,7 +1042,7 @@
                     "endOffset": 2148
                 },
                 "from": {
-                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.2/res/values-zh-rCN/values.xml",
+                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.4/res/values-zh-rCN/values.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 0,
@@ -1061,7 +1061,7 @@
                     "endOffset": 2252
                 },
                 "from": {
-                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.2/res/values-zh-rCN/values.xml",
+                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.4/res/values-zh-rCN/values.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 0,
@@ -1080,7 +1080,7 @@
                     "endOffset": 2416
                 },
                 "from": {
-                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.2/res/values-zh-rCN/values.xml",
+                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.4/res/values-zh-rCN/values.xml",
                     "position": {
                         "startLine": 8,
                         "startColumn": 0,
@@ -1099,7 +1099,7 @@
                     "endOffset": 2534
                 },
                 "from": {
-                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.2/res/values-zh-rCN/values.xml",
+                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.4/res/values-zh-rCN/values.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 0,
@@ -1118,7 +1118,7 @@
                     "endOffset": 2655
                 },
                 "from": {
-                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.2/res/values-zh-rCN/values.xml",
+                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.4/res/values-zh-rCN/values.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 0,
@@ -1137,7 +1137,7 @@
                     "endOffset": 2813
                 },
                 "from": {
-                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/11.0.2/res/values-zh-rCN/values.xml",
+                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/11.0.4/res/values-zh-rCN/values.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 0,
@@ -1156,7 +1156,7 @@
                     "endOffset": 2980
                 },
                 "from": {
-                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.2/res/values-zh-rCN/values.xml",
+                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.4/res/values-zh-rCN/values.xml",
                     "position": {
                         "startLine": 11,
                         "startColumn": 0,
@@ -1175,7 +1175,7 @@
                     "endOffset": 3083
                 },
                 "from": {
-                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.2/res/values-zh-rCN/values.xml",
+                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.4/res/values-zh-rCN/values.xml",
                     "position": {
                         "startLine": 12,
                         "startColumn": 0,
@@ -1194,7 +1194,7 @@
                     "endOffset": 3244
                 },
                 "from": {
-                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.2/res/values-zh-rCN/values.xml",
+                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.4/res/values-zh-rCN/values.xml",
                     "position": {
                         "startLine": 13,
                         "startColumn": 0,
@@ -1213,7 +1213,7 @@
                     "endOffset": 3361
                 },
                 "from": {
-                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.2/res/values-zh-rCN/values.xml",
+                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.4/res/values-zh-rCN/values.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 0,
@@ -1232,7 +1232,7 @@
                     "endOffset": 3524
                 },
                 "from": {
-                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.2/res/values-zh-rCN/values.xml",
+                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.4/res/values-zh-rCN/values.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 0,
@@ -1251,7 +1251,7 @@
                     "endOffset": 3662
                 },
                 "from": {
-                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.2/res/values-zh-rCN/values.xml",
+                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.4/res/values-zh-rCN/values.xml",
                     "position": {
                         "startLine": 16,
                         "startColumn": 0,
@@ -1270,7 +1270,7 @@
                     "endOffset": 3748
                 },
                 "from": {
-                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.2/res/values-zh-rCN/values.xml",
+                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.4/res/values-zh-rCN/values.xml",
                     "position": {
                         "startLine": 17,
                         "startColumn": 0,
@@ -1289,7 +1289,7 @@
                     "endOffset": 3835
                 },
                 "from": {
-                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.2/res/values-zh-rCN/values.xml",
+                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.4/res/values-zh-rCN/values.xml",
                     "position": {
                         "startLine": 18,
                         "startColumn": 0,
@@ -1308,7 +1308,7 @@
                     "endOffset": 3938
                 },
                 "from": {
-                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.2/res/values-zh-rCN/values.xml",
+                    "file": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.4/res/values-zh-rCN/values.xml",
                     "position": {
                         "startLine": 19,
                         "startColumn": 0,
