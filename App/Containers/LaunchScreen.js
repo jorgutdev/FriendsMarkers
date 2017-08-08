@@ -5,7 +5,7 @@ import { ButtonLeft } from '../Components/ButtonLeft'
 import { Images } from '../Themes'
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
-import MapView   from 'react-native-maps';
+import MapView from 'react-native-maps';
 import Modal from 'react-native-modal';
 import { ModalMarker } from './ModalMarker';
 import * as firebase from "firebase";
@@ -13,6 +13,7 @@ import * as firebase from "firebase";
 // Styles
 import styles from './Styles/LaunchScreenStyles'
 const { width, height } = Dimensions.get('window');
+const DEFAULT_PADDING = { top: 40, right: 40, bottom: 40, left: 40 };
 
 
 export default class LaunchScreen extends Component {
@@ -20,25 +21,24 @@ export default class LaunchScreen extends Component {
     hackHeight: height,
     mapName: 'Global Map',
     isModalVisible: false,
-        markers: [],
+    markers: [],
 
   }
 
-  
 
   _showModal = () => this.setState({ isModalVisible: true })
-
   _hideModal = () => this.setState({ isModalVisible: false })
 
   static navigationOptions = {
-    header: null  }
+    header: null
+  }
 
 
   constructor(props) {
     super(props);
-
     console.log('LaunchScreen constructor | props -> ', props)
-    console.log('LaunchScreen constructor | state -> ', this.state)
+    console.log('LaunchScreen constructor | initial state -> ', this.state)
+    console.log('LaunchScreen constructor | markers will load -> this._loadMarkers()')
     this._loadMarkers()
 
   }
@@ -48,6 +48,8 @@ export default class LaunchScreen extends Component {
   componentWillMount() {
     setTimeout(() => this.setState({ hackHeight: height + 1 }), 500);
     setTimeout(() => this.setState({ hackHeight: height }), 1000);
+    setTimeout(() => this.setState({ hackHeight: height + 1 }), 1500);
+    setTimeout(() => this.setState({ hackHeight: height }), 2000);
   }
 
 
@@ -58,6 +60,15 @@ export default class LaunchScreen extends Component {
       (position) => {
         console.log('componentDidMount | getCurrentPosition ', position)
         var initialPosition = JSON.stringify(position);
+        let {latitude, longitude} = position.coords;
+        console.log(position)
+        let props = this.props
+        //Zoom to user location
+        this.refs.map.fitToCoordinates({latitude, longitude}, {
+          animated: true,
+          edgePadding: DEFAULT_PADDING,
+        });
+
       },
       (error) => alert(error.message),
       { enableHighAccuracy: false, timeout: 20000 }
@@ -71,29 +82,26 @@ export default class LaunchScreen extends Component {
   }
 
 
-    _loadMarkers(){
-      let markers = firebase.database().ref("markers");
-      markers.once('value').then(snapshot => {
+  _loadMarkers() {
+    let markers = firebase.database().ref("markers");
+    markers.once('value').then(snapshot => {
       let root = this;
-          snapshot.forEach(function(childSnapshot) {
-        console.log("_loadMarkers | childSnapshot", childSnapshot.val()) 
-        root.setState({ markers: [...root.state.markers, {
-            id:childSnapshot.key,
-            latlng:childSnapshot.val().coordinate,
-            description:childSnapshot.val().description,
-            title:childSnapshot.val().title 
-        }]})
-          });
+      snapshot.forEach(function (childSnapshot) {
+        console.log("_loadMarkers | childSnapshot.val()", childSnapshot.val())
+        root.setState({
+          markers: [...root.state.markers, {
+            id: childSnapshot.key,
+            latlng: childSnapshot.val().coordinate,
+            description: childSnapshot.val().description,
+            title: childSnapshot.val().title,
+            pinColor: childSnapshot.val().pinColor,
+          }]
+        })
+      });
+      console.log("_loadMarkers | snapshot.val()", snapshot.val())
+    })
 
-
-
-
-        console.log("_loadMarkers | snapshot.val()", snapshot.val()) 
-
-
-      })
-
-    }
+  }
 
 
   componentWillUnmount() {
@@ -110,6 +118,7 @@ export default class LaunchScreen extends Component {
       if (!isEqual(myPosition, myLastPosition)) {
         this.state.myPosition = myPosition;
       }
+
 
 
     }, null, this.props.geolocationOptions);
@@ -130,7 +139,7 @@ export default class LaunchScreen extends Component {
     console.log('_longPress | position -> ', position)
 
     this.setState({ isModalVisible: true })
-    this.setState({ newMarkerCoordinate: coordinate})
+    this.setState({ newMarkerCoordinate: coordinate })
 
 
 
@@ -143,7 +152,7 @@ export default class LaunchScreen extends Component {
     console.log('_longPress | position -> ', position)
   }
 
-  _saveMarker(){
+  _saveMarker() {
 
     console.log("_saveMarker | newMarkerName -> ", this.state.newMarkerName)
     console.log("_saveMarker | newMarkerDescription -> ", this.state.newMarkerDescription)
@@ -155,109 +164,108 @@ export default class LaunchScreen extends Component {
     // console.log('_longPress | rootRef -> ', rootRef)
     let markers = firebase.database().ref("markers/");
     markers.push({
-  coordinate: this.state.newMarkerCoordinate,
-  title: this.state.newMarkerName,
-  description: this.state.newMarkerDescription
+      coordinate: this.state.newMarkerCoordinate,
+      title: this.state.newMarkerName,
+      description: this.state.newMarkerDescription,
+      pinColor: 'blue'
+    });
 
-});
 
+    this.setState({
+      markers: [...this.state.markers, {
+        latlng: this.state.newMarkerCoordinate,
+        description: this.state.newMarkerDescription,
+        title: this.state.newMarkerName,
+        pinColor: this.state.pinColor,
+      }]
+    })
 
-  this.setState({ markers: [...this.state.markers,{
-      latlng:this.state.newMarkerCoordinate,
-      description:this.state.newMarkerDescription,
-      title:this.state.newMarkerName 
-  }]})
-
-    console.log("_saveMarker | setState -> ", this.state.newMarkerName)
-
-  this._loadMarkers()
-  this._hideModal()
-    
+    console.log("_saveMarker | final state -> ", this.state)
+    this._hideModal()
   }
 
   render() {
 
     return (
       <View>
-      <View style={{ flex: 1, zIndex: -1, paddingBottom: this.state.hackHeight }}>
+        <View style={{ flex: 1, zIndex: -1, paddingBottom: this.state.hackHeight }}>
+          <MapView
+            style={styles.map}
+            ref="map"
+            customMapStyle={this.mapStyle}
+            showsUserLocation={true}
+            showsMyLocationButton={true}
+            followUserLocation={true}
+            onPress={event => this._shortPress(event.nativeEvent)}
+            onLongPress={event => this._longPress(event.nativeEvent)}
+            initialRegion={this.state.initialPosition}>
 
-
-
-        <MapView
-          style={styles.map}
-          customMapStyle={this.mapStyle}
-          showsUserLocation={true}
-          showsMyLocationButton={true}
-          followUserLocation={true}
-          onPress={event => this._shortPress(event.nativeEvent)}
-          onLongPress={event => this._longPress(event.nativeEvent)}
-          initialRegion={this.state.initialPosition}>
-
- {this.state.markers.map(marker => (
-    <MapView.Marker
-      id={marker.id}
-      coordinate={marker.latlng}
-      title={marker.title}
-      description={marker.description}
-    />
-  ))}
+            {this.state.markers.map((marker, i) => (
+              <MapView.Marker
+                id={marker.id}
+                coordinate={marker.latlng}
+                title={marker.title}
+                description={marker.description}
+                pinColor={marker.pinColor}
+              />
+            ))}
 
           </MapView>
 
 
 
-        <TouchableHighlight onPress={this._changeMap}>
-          <Text style={styles.mapName}>{this.state.mapName}</Text>
-        </TouchableHighlight>
+          <TouchableHighlight onPress={this._changeMap}>
+            <Text style={styles.mapName}>{this.state.mapName}</Text>
+          </TouchableHighlight>
 
-        <ActionButton buttonColor="rgba(231,76,60,1)">
-          <ActionButton.Item buttonColor='#9b59b6' onPress={() => console.log("notes tapped!")}>
-            <Icon name="md-person" style={styles.actionButtonIcon} />
-          </ActionButton.Item>
-          <ActionButton.Item buttonColor='#3498db' onPress={() => this.props.navigation.navigate('DrawerOpen')}>
-            <Icon name="md-menu" style={styles.actionButtonIcon} />
-          </ActionButton.Item>
-          <ActionButton.Item buttonColor='#1abc9c' onPress={() => { }}>
-            <Icon name="md-done-all" style={styles.actionButtonIcon} />
-          </ActionButton.Item>
-        </ActionButton>
-
-
-      </View>
+          <ActionButton buttonColor="rgba(231,76,60,1)">
+            <ActionButton.Item buttonColor='#9b59b6' onPress={() => console.log("notes tapped!")}>
+              <Icon name="md-person" style={styles.actionButtonIcon} />
+            </ActionButton.Item>
+            <ActionButton.Item buttonColor='#3498db' onPress={() => this.props.navigation.navigate('DrawerOpen')}>
+              <Icon name="md-menu" style={styles.actionButtonIcon} />
+            </ActionButton.Item>
+            <ActionButton.Item buttonColor='#1abc9c' onPress={() => { }}>
+              <Icon name="md-done-all" style={styles.actionButtonIcon} />
+            </ActionButton.Item>
+          </ActionButton>
 
 
-        <View style={{ flex: 1 }} style={{width:50}}>
+        </View>
+
+
+        <View style={{ flex: 1 }} style={{ width: 50 }}>
           <Modal
-            isVisible={this.state.isModalVisible} 
+            isVisible={this.state.isModalVisible}
             transparent={true}
             animationIn={'fadeInUpBig'}
             animationOut={'zoomOut'}
             backdropOpacity={1}
             backdropColor='white'>
-            
+
             <View style={{ flex: 1 }}>
               <Text style={styles.markerModal} >Hello!</Text>
 
- <TextInput
-        style={{height: 40}}
-        onChangeText={newMarkerName => this.setState({newMarkerName})}
-        value={this.state.newMarkerName}
-        placeholder="Marker Name"
-      />
+              <TextInput
+                style={{ height: 40 }}
+                onChangeText={newMarkerName => this.setState({ newMarkerName })}
+                value={this.state.newMarkerName}
+                placeholder="Marker Name"
+              />
 
-       <TextInput
-        style={{height: 40 }}
-        onChangeText={(newMarkerDescription) => this.setState({newMarkerDescription})}
-        value={this.state.newMarkerDescription}
-        placeholder="Description"
-      />
+              <TextInput
+                style={{ height: 40 }}
+                onChangeText={(newMarkerDescription) => this.setState({ newMarkerDescription })}
+                value={this.state.newMarkerDescription}
+                placeholder="Description"
+              />
 
-      <Button title="Save" onPress={() => this._saveMarker()}/>
+              <Button title="Save" onPress={() => this._saveMarker()} />
 
             </View>
           </Modal>
         </View>
-        </View>
+      </View>
     );
   }
 
