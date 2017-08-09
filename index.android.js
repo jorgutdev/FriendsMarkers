@@ -1,7 +1,7 @@
 import './App/Config/ReactotronConfig'
 import { AppRegistry } from 'react-native'
 import App from './App/Containers/App'
-import * as firebase from 'firebase';
+import * as firebase from 'firebase'
 
 // Initialize Firebase
 const firebaseConfig = {

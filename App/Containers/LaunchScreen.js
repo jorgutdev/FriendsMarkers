@@ -9,7 +9,7 @@ import MapView from 'react-native-maps';
 import Modal from 'react-native-modal';
 import { ModalMarker } from './ModalMarker';
 import * as firebase from "firebase";
-import { TriangleColorPicker } from 'react-native-color-picker'
+import { fromHsv, toHsv, TriangleColorPicker } from 'react-native-color-picker'
 
 // Styles
 import styles from './Styles/LaunchScreenStyles'
@@ -22,13 +22,16 @@ export default class LaunchScreen extends Component {
     hackHeight: height,
     mapName: 'Global Map',
     isModalVisible: false,
+    colorPickerVisible: false,
     markers: [],
-
+    color: 'blue',
   }
 
 
   _showModal = () => this.setState({ isModalVisible: true })
   _hideModal = () => this.setState({ isModalVisible: false })
+  _showColorPicker = () => this.setState({ colorPickerVisible: true })
+  _hideColorPicker = () => this.setState({ colorPickerVisible: false })
 
   static navigationOptions = {
     header: null
@@ -47,10 +50,7 @@ export default class LaunchScreen extends Component {
 
 
   componentWillMount() {
-    setTimeout(() => this.setState({ hackHeight: height + 1 }), 500);
-    setTimeout(() => this.setState({ hackHeight: height }), 1000);
-    setTimeout(() => this.setState({ hackHeight: height + 1 }), 1500);
-    setTimeout(() => this.setState({ hackHeight: height }), 2000);
+
   }
 
 
@@ -66,40 +66,23 @@ export default class LaunchScreen extends Component {
         console.log(position)
         let props = this.props
         //Zoom to user location
-        this.setState({ position: position })
+        this.setState({ position })
 
 
       },
       (error) => alert(error.message),
-      { enableHighAccuracy: false, timeout: 20000 }
+      { enableHighAccuracy: true, timeout: 500 }
     );
-    this.watchID = navigator.geolocation.watchPosition((position) => {
-      console.log('componentDidMount | watchPosition | position ', position)
-      this.setState({ position: position })
-    });
+
 
 
   }
+
+
   componentWillUnmount() {
     navigator.geolocation.clearWatch(this.watchID);
   }
 
-
-  watchLocation() {
-    console.log('LaunchScreen | watchLocation init ')
-    this.watchID = navigator.geolocation.watchPosition((position) => {
-      console.log('LaunchScreen | state ', this.state)
-      console.log('LaunchScreen | position ', position)
-      const myLastPosition = this.state.myPosition;
-      const myPosition = position.coords;
-      if (!isEqual(myPosition, myLastPosition)) {
-        this.state.myPosition = myPosition;
-      }
-    }, null, this.props.geolocationOptions);
-    this.state.mapRegion.lastLat = position.coords.latitude;
-    this.state.mapRegion.lastLong = position.coords.longitude;
-    console.log('LaunchScreen | position ', position)
-  }
 
 
   _changeMap() {
@@ -114,16 +97,15 @@ export default class LaunchScreen extends Component {
     console.log('_longPress | coordinates -> ', coordinate)
     console.log('_longPress | position -> ', position)
 
-    this.setState({ isModalVisible: true })
     this.setState({ newMarkerCoordinate: coordinate })
-
+    this._showModal()
   }
 
   _shortPress(event) {
     let { coordinate, position } = event
-    console.log('_longPress | event -> ', event)
-    console.log('_longPress | coordinates -> ', coordinate)
-    console.log('_longPress | position -> ', position)
+    console.log('_shortPress | event -> ', event)
+    console.log('_shortPress | coordinates -> ', coordinate)
+    console.log('_shortPress | position -> ', position)
   }
 
 
@@ -156,31 +138,36 @@ export default class LaunchScreen extends Component {
     console.log("_saveMarker | newMarkerCoordinate -> ", this.state.newMarkerCoordinate)
     console.log("_saveMarker | latitude -> ", this.state.newMarkerCoordinate.latitude)
     console.log("_saveMarker | longitude -> ", this.state.newMarkerCoordinate.longitude)
-
-    let markers = firebase.database().ref("markers/");
-    markers.push({
-      coordinate: this.state.newMarkerCoordinate,
-      title: this.state.newMarkerName,
-      description: this.state.newMarkerDescription,
-      pinColor: 'blue'
-    });
-
-
-    this.setState({
-      markers: [...this.state.markers, {
-        latlng: this.state.newMarkerCoordinate,
-        description: this.state.newMarkerDescription,
+    console.log("_saveMarker | color -> ", this.state.color)
+    if (this.state.newMarkerName) {
+      let markers = firebase.database().ref("markers/");
+      markers.push({
+        coordinate: this.state.newMarkerCoordinate,
         title: this.state.newMarkerName,
-        pinColor: this.state.pinColor,
-      }]
-    })
+        description: this.state.newMarkerDescription,
+        pinColor: this.state.color
+      });
 
-    console.log("_saveMarker | final state -> ", this.state)
+
+      this.setState({
+        markers: [...this.state.markers, {
+          latlng: this.state.newMarkerCoordinate,
+          description: this.state.newMarkerDescription,
+          title: this.state.newMarkerName,
+          pinColor: this.state.color,
+        }]
+      })
+    }
     this._hideModal()
   }
 
   _zoomToLocation() {
-
+    this.setState({
+      region: {
+        latitudeDelta: 0.1,
+        longitudeDelta: 0.1,
+      }
+    })
     this.map.fitToCoordinates([this.state.position.coords],
       {
         edgePadding: {
@@ -191,44 +178,32 @@ export default class LaunchScreen extends Component {
         },
         animated: true
       })
+
   }
 
   _onRegionChange(region) {
-    console.log('_onRegionChange | region -> ', region)
-    if (!this.state.regionLocked) {
-      this.setState({ regionLocked: true })
-      console.log('region -> ', region)
-      this.setState({
-        region: {
-          longitude: region.longitude,
-          latitude: region.latitude,
-          latitudeDelta: 0.012,
-          longitudeDelta: 0.012,
-        }
-      })
-      console.log('this.state.region -> ', this.state.region)
-    }
+
   }
 
   render() {
+
+
+
 
     return (
       <View>
         <View style={{ flex: 1, zIndex: -1, paddingBottom: this.state.hackHeight }}>
           <MapView
-            style={styles.map}
             ref={ref => { this.map = ref; }}
-            region={this.state.region}
-            onLayout={() => this._zoomToLocation()}
+            style={styles.map}
             customMapStyle={this.mapStyle}
             showsUserLocation={true}
             showsMyLocationButton={false}
             showsBuildings={true}
             followUserLocation={true}
+            onLayout={() => this._zoomToLocation()}
             onPress={event => this._shortPress(event.nativeEvent)}
-            onLongPress={event => this._longPress(event.nativeEvent)}
-            initialRegion={this.state.initialPosition}
-            onRegionChangeComplete={this._onRegionChange.bind(this)}>
+            onLongPress={event => this._longPress(event.nativeEvent)}>
 
             {this.state.markers.map((marker, index) => (
               <MapView.Marker
@@ -265,7 +240,9 @@ export default class LaunchScreen extends Component {
         </View>
 
 
-        <View style={{ flex: 1 }} style={{ width: 50 }}>
+
+
+        <View style={{ flex: 1 }}>
           <Modal
             isVisible={this.state.isModalVisible}
             transparent={true}
@@ -275,7 +252,7 @@ export default class LaunchScreen extends Component {
             backdropColor='white'>
 
             <View style={{ flex: 1 }}>
-              <Text style={styles.markerModal} >Hello!</Text>
+              <Button title="Save" onPress={() => this._saveMarker()} />
 
               <TextInput
                 style={{ height: 40 }}
@@ -291,16 +268,28 @@ export default class LaunchScreen extends Component {
                 placeholder="Description"
               />
 
-              <Button title="Save" onPress={() => this._saveMarker()} />
+              <Text>Color</Text>
+              <TriangleColorPicker
+                defaultColor='blue'
+                color={this.state.color}
+                hideSliders={true}
+                onColorChange={color => this.changeColor({ color })}
+                onColorSelected={color => this.setState({ color })}
+                style={{ flex: 1, width: '45%', top: '-5%', marginLeft: '25%', }}
+              />
 
             </View>
+
+
           </Modal>
         </View>
       </View>
     );
   }
 
-
+  changeColor(color) {
+    this.setState({ color: fromHsv({ h: color.color.h, s: color.color.s, v: color.color.v }) })
+  }
   mapStyle = [
     {
       "elementType": "geometry",
