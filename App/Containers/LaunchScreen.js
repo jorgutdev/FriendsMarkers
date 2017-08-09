@@ -9,6 +9,7 @@ import MapView from 'react-native-maps';
 import Modal from 'react-native-modal';
 import { ModalMarker } from './ModalMarker';
 import * as firebase from "firebase";
+import { TriangleColorPicker } from 'react-native-color-picker'
 
 // Styles
 import styles from './Styles/LaunchScreenStyles'
@@ -53,6 +54,7 @@ export default class LaunchScreen extends Component {
   }
 
 
+
   componentDidMount() {
     console.log('LaunchScreen.componentDidMount')
 
@@ -60,26 +62,70 @@ export default class LaunchScreen extends Component {
       (position) => {
         console.log('componentDidMount | getCurrentPosition ', position)
         var initialPosition = JSON.stringify(position);
-        let {latitude, longitude} = position.coords;
+        let { latitude, longitude } = position.coords;
         console.log(position)
         let props = this.props
         //Zoom to user location
-        this.refs.map.fitToCoordinates({latitude, longitude}, {
-          animated: true,
-          edgePadding: DEFAULT_PADDING,
-        });
+        this.setState({ position: position })
+
 
       },
       (error) => alert(error.message),
       { enableHighAccuracy: false, timeout: 20000 }
     );
     this.watchID = navigator.geolocation.watchPosition((position) => {
-      var lastPosition = JSON.stringify(position);
       console.log('componentDidMount | watchPosition | position ', position)
+      this.setState({ position: position })
     });
 
 
   }
+  componentWillUnmount() {
+    navigator.geolocation.clearWatch(this.watchID);
+  }
+
+
+  watchLocation() {
+    console.log('LaunchScreen | watchLocation init ')
+    this.watchID = navigator.geolocation.watchPosition((position) => {
+      console.log('LaunchScreen | state ', this.state)
+      console.log('LaunchScreen | position ', position)
+      const myLastPosition = this.state.myPosition;
+      const myPosition = position.coords;
+      if (!isEqual(myPosition, myLastPosition)) {
+        this.state.myPosition = myPosition;
+      }
+    }, null, this.props.geolocationOptions);
+    this.state.mapRegion.lastLat = position.coords.latitude;
+    this.state.mapRegion.lastLong = position.coords.longitude;
+    console.log('LaunchScreen | position ', position)
+  }
+
+
+  _changeMap() {
+    console.log('_changeMap | state -> ', state)
+  }
+
+
+  // Events
+  _longPress(event) {
+    let { coordinate, position } = event
+    console.log('_longPress | event -> ', event)
+    console.log('_longPress | coordinates -> ', coordinate)
+    console.log('_longPress | position -> ', position)
+
+    this.setState({ isModalVisible: true })
+    this.setState({ newMarkerCoordinate: coordinate })
+
+  }
+
+  _shortPress(event) {
+    let { coordinate, position } = event
+    console.log('_longPress | event -> ', event)
+    console.log('_longPress | coordinates -> ', coordinate)
+    console.log('_longPress | position -> ', position)
+  }
+
 
 
   _loadMarkers() {
@@ -103,55 +149,6 @@ export default class LaunchScreen extends Component {
 
   }
 
-
-  componentWillUnmount() {
-    navigator.geolocation.clearWatch(this.watchID);
-  }
-
-  watchLocation() {
-    console.log('LaunchScreen | watchLocation init ')
-    this.watchID = navigator.geolocation.watchPosition((position) => {
-      console.log('LaunchScreen | state ', this.state)
-      console.log('LaunchScreen | position ', position)
-      const myLastPosition = this.state.myPosition;
-      const myPosition = position.coords;
-      if (!isEqual(myPosition, myLastPosition)) {
-        this.state.myPosition = myPosition;
-      }
-
-
-
-    }, null, this.props.geolocationOptions);
-    this.state.mapRegion.lastLat = position.coords.latitude;
-    this.state.mapRegion.lastLong = position.coords.longitude;
-    console.log('LaunchScreen | position ', position)
-  }
-
-
-  _changeMap() {
-    console.log('_changeMap | state -> ', state)
-  }
-
-  _longPress(event) {
-    let { coordinate, position } = event
-    console.log('_longPress | event -> ', event)
-    console.log('_longPress | coordinates -> ', coordinate)
-    console.log('_longPress | position -> ', position)
-
-    this.setState({ isModalVisible: true })
-    this.setState({ newMarkerCoordinate: coordinate })
-
-
-
-  }
-
-  _shortPress(event) {
-    let { coordinate, position } = event
-    console.log('_longPress | event -> ', event)
-    console.log('_longPress | coordinates -> ', coordinate)
-    console.log('_longPress | position -> ', position)
-  }
-
   _saveMarker() {
 
     console.log("_saveMarker | newMarkerName -> ", this.state.newMarkerName)
@@ -160,8 +157,6 @@ export default class LaunchScreen extends Component {
     console.log("_saveMarker | latitude -> ", this.state.newMarkerCoordinate.latitude)
     console.log("_saveMarker | longitude -> ", this.state.newMarkerCoordinate.longitude)
 
-    // let rootRef = firebase.database().ref()
-    // console.log('_longPress | rootRef -> ', rootRef)
     let markers = firebase.database().ref("markers/");
     markers.push({
       coordinate: this.state.newMarkerCoordinate,
@@ -184,6 +179,37 @@ export default class LaunchScreen extends Component {
     this._hideModal()
   }
 
+  _zoomToLocation() {
+
+    this.map.fitToCoordinates([this.state.position.coords],
+      {
+        edgePadding: {
+          top: 40,
+          right: 40,
+          bottom: 40,
+          left: 40
+        },
+        animated: true
+      })
+  }
+
+  _onRegionChange(region) {
+    console.log('_onRegionChange | region -> ', region)
+    if (!this.state.regionLocked) {
+      this.setState({ regionLocked: true })
+      console.log('region -> ', region)
+      this.setState({
+        region: {
+          longitude: region.longitude,
+          latitude: region.latitude,
+          latitudeDelta: 0.012,
+          longitudeDelta: 0.012,
+        }
+      })
+      console.log('this.state.region -> ', this.state.region)
+    }
+  }
+
   render() {
 
     return (
@@ -191,18 +217,23 @@ export default class LaunchScreen extends Component {
         <View style={{ flex: 1, zIndex: -1, paddingBottom: this.state.hackHeight }}>
           <MapView
             style={styles.map}
-            ref="map"
+            ref={ref => { this.map = ref; }}
+            region={this.state.region}
+            onLayout={() => this._zoomToLocation()}
             customMapStyle={this.mapStyle}
             showsUserLocation={true}
-            showsMyLocationButton={true}
+            showsMyLocationButton={false}
+            showsBuildings={true}
             followUserLocation={true}
             onPress={event => this._shortPress(event.nativeEvent)}
             onLongPress={event => this._longPress(event.nativeEvent)}
-            initialRegion={this.state.initialPosition}>
+            initialRegion={this.state.initialPosition}
+            onRegionChangeComplete={this._onRegionChange.bind(this)}>
 
-            {this.state.markers.map((marker, i) => (
+            {this.state.markers.map((marker, index) => (
               <MapView.Marker
                 id={marker.id}
+                key={index}
                 coordinate={marker.latlng}
                 title={marker.title}
                 description={marker.description}

@@ -129,21 +129,21 @@
     </item>
     <item
         is-multidex="false"
-        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\11.0.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="6688016b1c2ab0daad89bb59ca9b7acbd1c80412">
-        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-gcm-11.0.0_d6a54929fd0aef923eaf96bd8dbd48e6dbc0e02b.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.2.0\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
         sha1="8fe8a8f77d651982ce5e18f6187dc4daf914ac57">
         <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.2.0_a35fda0297015b74297fda6cec6d811c6a666e70.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\11.0.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="6688016b1c2ab0daad89bb59ca9b7acbd1c80412">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-gcm-11.0.0_d6a54929fd0aef923eaf96bd8dbd48e6dbc0e02b.jar" />
     </item>
     <item
         is-multidex="false"
