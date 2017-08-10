@@ -21,10 +21,12 @@ export default class LaunchScreen extends Component {
   state = {
     hackHeight: height,
     mapName: 'Global Map',
+    zoomed: false,
     isModalVisible: false,
     colorPickerVisible: false,
     markers: [],
     color: 'blue',
+
   }
 
 
@@ -115,7 +117,6 @@ export default class LaunchScreen extends Component {
     markers.once('value').then(snapshot => {
       let root = this;
       snapshot.forEach(function (childSnapshot) {
-        console.log("_loadMarkers | childSnapshot.val()", childSnapshot.val())
         root.setState({
           markers: [...root.state.markers, {
             id: childSnapshot.key,
@@ -162,28 +163,39 @@ export default class LaunchScreen extends Component {
   }
 
   _zoomToLocation() {
-    this.setState({
-      region: {
-        latitudeDelta: 0.1,
-        longitudeDelta: 0.1,
-      }
-    })
-    this.map.fitToCoordinates([this.state.position.coords],
-      {
-        edgePadding: {
-          top: 40,
-          right: 40,
-          bottom: 40,
-          left: 40
-        },
-        animated: true
-      })
 
+    console.log('zoomToLocation | this.state.region -> ', this.state.region)
+
+
+
+/*      this.map.fitToCoordinates([this.state.position.coords],
+        {
+          edgePadding: {
+            top: 40,
+            right: 40,
+            bottom: 40,
+            left: 40
+          },
+          animated: true
+        })*/
+    console.log('_zoomToLocation | this.state.region -> ', this.state.region)
   }
 
-  _onRegionChange(region) {
-
+  onRegionChange(region) {
+    console.log('onRegionChange | region -> ', region)   
+  }  
+  
+  onRegionChangeComplete(region) {
+    console.log(this)
+    console.log('onRegionChangeComplete | region -> ', region)
+    if(!this.zoomed){
+      console.log('onRegionChangeComplete | zoomed -> ', this.zoomed)
+      this.zoomed.value=true
+      console.log('onRegionChangeComplete | zoomed -> ', this.zoomed)
+      this.
+    }
   }
+
 
   render() {
 
@@ -193,8 +205,9 @@ export default class LaunchScreen extends Component {
     return (
       <View>
         <View style={{ flex: 1, zIndex: -1, paddingBottom: this.state.hackHeight }}>
-          <MapView
+          <MapView.Animated
             ref={ref => { this.map = ref; }}
+            region={this.state.region}
             style={styles.map}
             customMapStyle={this.mapStyle}
             showsUserLocation={true}
@@ -203,7 +216,10 @@ export default class LaunchScreen extends Component {
             followUserLocation={true}
             onLayout={() => this._zoomToLocation()}
             onPress={event => this._shortPress(event.nativeEvent)}
-            onLongPress={event => this._longPress(event.nativeEvent)}>
+            onLongPress={event => this._longPress(event.nativeEvent)}
+            onRegionChange={this.onRegionChange}
+            onRegionChangeComplete={this.onRegionChangeComplete}
+            zoomed={false} >
 
             {this.state.markers.map((marker, index) => (
               <MapView.Marker
@@ -216,7 +232,7 @@ export default class LaunchScreen extends Component {
               />
             ))}
 
-          </MapView>
+          </MapView.Animated>
 
 
 
