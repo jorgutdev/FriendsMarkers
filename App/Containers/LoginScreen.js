@@ -59,7 +59,7 @@ export default class LoginScreen extends Component {
     }
 
     googleLogin(){
-        firebase.auth().
+        
     }
     render() {
         return (

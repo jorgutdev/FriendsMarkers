@@ -26,8 +26,9 @@ export default class LaunchScreen extends Component {
     colorPickerVisible: false,
     markers: [],
     color: 'blue',
-
   }
+
+
 
 
   _showModal = () => this.setState({ isModalVisible: true })
@@ -55,7 +56,16 @@ export default class LaunchScreen extends Component {
 
   }
 
-
+getInitialState() {
+  return {
+    region: {
+      latitude: 0,
+      longitude: 0,
+      latitudeDelta: 100.0922,
+      longitudeDelta: 100.0421,
+    },
+  };
+}
 
   componentDidMount() {
     console.log('LaunchScreen.componentDidMount')
@@ -69,8 +79,6 @@ export default class LaunchScreen extends Component {
         let props = this.props
         //Zoom to user location
         this.setState({ position })
-
-
       },
       (error) => alert(error.message),
       { enableHighAccuracy: true, timeout: 500 }
@@ -162,38 +170,28 @@ export default class LaunchScreen extends Component {
     this._hideModal()
   }
 
-  _zoomToLocation() {
+  _zoomToLocation = () => {
+    console.log('_zoomToLocation | this.state --> ', this.state)
+    let region = {
+      latitude: this.state.position.coords.latitude,
+      longitude: this.state.position.coords.longitude,
+      latitudeDelta: 0.10,
+      longitudeDelta: 0.10   
+    }
 
-    console.log('zoomToLocation | this.state.region -> ', this.state.region)
-
-
-
-/*      this.map.fitToCoordinates([this.state.position.coords],
-        {
-          edgePadding: {
-            top: 40,
-            right: 40,
-            bottom: 40,
-            left: 40
-          },
-          animated: true
-        })*/
-    console.log('_zoomToLocation | this.state.region -> ', this.state.region)
+    this.map.animateToRegion(region, 100)    
   }
 
-  onRegionChange(region) {
-    console.log('onRegionChange | region -> ', region)   
+
+  // ES7 :)
+  onRegionChange = (region) => {
+    this.setState({ region : region });
+    console.log('onRegionChange | this.state.region ->', this.state.region)
   }  
   
-  onRegionChangeComplete(region) {
-    console.log(this)
-    console.log('onRegionChangeComplete | region -> ', region)
-    if(!this.zoomed){
-      console.log('onRegionChangeComplete | zoomed -> ', this.zoomed)
-      this.zoomed.value=true
-      console.log('onRegionChangeComplete | zoomed -> ', this.zoomed)
-      this.
-    }
+  onRegionChangeComplete = (region) => {
+    this.setState({ region : region });
+    console.log('onRegionChangeComplete | this.state.region ->', this.state.region)
   }
 
 
@@ -205,8 +203,14 @@ export default class LaunchScreen extends Component {
     return (
       <View>
         <View style={{ flex: 1, zIndex: -1, paddingBottom: this.state.hackHeight }}>
-          <MapView.Animated
+          <MapView
             ref={ref => { this.map = ref; }}
+            initialRegion={{
+              latitude: 0,
+              longitude: 0,
+              latitudeDelta: 100.0922,
+              longitudeDelta: 100.0421,
+            }}
             region={this.state.region}
             style={styles.map}
             customMapStyle={this.mapStyle}
@@ -214,7 +218,7 @@ export default class LaunchScreen extends Component {
             showsMyLocationButton={false}
             showsBuildings={true}
             followUserLocation={true}
-            onLayout={() => this._zoomToLocation()}
+            onLayout={this._zoomToLocation}
             onPress={event => this._shortPress(event.nativeEvent)}
             onLongPress={event => this._longPress(event.nativeEvent)}
             onRegionChange={this.onRegionChange}
@@ -232,7 +236,7 @@ export default class LaunchScreen extends Component {
               />
             ))}
 
-          </MapView.Animated>
+          </MapView>
 
 
 
