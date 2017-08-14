@@ -1,10 +1,6 @@
 [
     {
-        "merged": "/home/jorge/FriendsMarkers/android/C:\\FriendsMarkers\\android\\app\\build\\intermediates\\res\\merged\\debug\\xml\\preferences.xml",
-        "source": "/home/jorge/FriendsMarkers/android/C:\\FriendsMarkers\\android\\app\\build\\intermediates\\exploded-aar\\com.facebook.react\\react-native\\0.45.1\\res\\xml\\preferences.xml"
-    },
-    {
-        "merged": "/home/jorge/FriendsMarkers/android/app/build/intermediates/res/merged/debug/xml/preferences.xml",
-        "source": "/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.45.1/res/xml/preferences.xml"
+        "merged": "C:\\FriendsMarkers\\android\\app\\build\\intermediates\\res\\merged\\debug\\xml\\preferences.xml",
+        "source": "C:\\FriendsMarkers\\android\\app\\build\\intermediates\\exploded-aar\\com.facebook.react\\react-native\\0.45.1\\res\\xml\\preferences.xml"
     }
 ]

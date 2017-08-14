@@ -178,7 +178,6 @@ getInitialState() {
       latitudeDelta: 0.10,
       longitudeDelta: 0.10   
     }
-
     this.map.animateToRegion(region, 100)    
   }
 

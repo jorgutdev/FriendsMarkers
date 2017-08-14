@@ -1,10 +1,6 @@
 [
     {
-        "merged": "/home/jorge/FriendsMarkers/android/C:\\FriendsMarkers\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\ic_launcher.png",
-        "source": "/home/jorge/FriendsMarkers/android/C:\\FriendsMarkers\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "/home/jorge/FriendsMarkers/android/app/build/intermediates/res/merged/debug/mipmap-hdpi/ic_launcher.png",
-        "source": "/home/jorge/FriendsMarkers/android/app/src/main/res/mipmap-hdpi/ic_launcher.png"
+        "merged": "C:\\FriendsMarkers\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\ic_launcher.png",
+        "source": "C:\\FriendsMarkers\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     }
 ]

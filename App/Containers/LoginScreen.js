@@ -4,8 +4,10 @@ import { Text, Image, View, TextInput, Button, StyleSheet, Dimensions, Touchable
 // Styles
 import styles from './Styles/LoginScreenStyles'
 import * as firebase from "firebase";
-import FBSDK, { LoginManager } from 'react-native-fbsdk'
-
+const FBSDK = require('react-native-fbsdk');
+const {
+  LoginManager,
+} = FBSDK;
 export default class LoginScreen extends Component {
     state = {
 
@@ -58,8 +60,26 @@ export default class LoginScreen extends Component {
         })
     }
 
-    googleLogin(){
-        
+    facebookLogin() {
+        console.log('LoginScreen | FB Login init')
+        // Attempt a login using the Facebook login dialog asking for default permissions.
+        LoginManager.logInWithReadPermissions(['public_profile']).then(
+            function (result) {
+                if (result.isCancelled) {
+                    alert('Login cancelled');
+                } else {
+                    alert('Login success with permissions: '
+                        + result.grantedPermissions.toString());
+                }
+            },
+            function (error) {
+                alert('Login fail with error: ' + error);
+            }
+        );
+    }
+
+    googleLogin() {
+
     }
     render() {
         return (
@@ -68,8 +88,9 @@ export default class LoginScreen extends Component {
                     <TextInput placeholder="Email" ></TextInput>
                     <TextInput placeholder="Password" value={this.state.password} secureTextEntry={true} ></TextInput>
                 </View>
-<View>
-                    <Button title="Google" onPress={ () => this.googleLogin() } />
+                <View>
+                    <Button title="Google" onPress={() => this.googleLogin()} />
+                    <Button title="Facebook" onPress={() => this.facebookLogin()} />
                 </View>
             </View>
         );

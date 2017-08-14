@@ -3,336 +3,399 @@
 
     <item
         is-multidex="false"
-        jar="/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/1.0.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="5a61f17cd72e20aa4323cbf5f909b7c609619275">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-drawee-1.0.1_dcaac55f5d25c6abb787b1773b4b0cb65bdd9f93.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fresco/1.0.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="cf836a435a496eb22ff2aa69aa1e619462549f81">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fresco-1.0.1_d36fb3dcb82c16b3546b91e9b842b5378360b82f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/FriendsMarkers/react-native-i18n/unspecified/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="265d5a9330ad02283d16b9886fe8acebb306cd1e">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/FriendsMarkers-react-native-i18n-unspecified_0a93cdd6a2016d237268f6e55cb372d9820c6e75.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.2.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="8fe8a8f77d651982ce5e18f6187dc4daf914ac57">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-25.2.0_b308cff579f1dfc1a764fe3d70d286ca6c311470.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/.gradle/caches/modules-2/files-2.1/com.facebook.fbui.textlayoutbuilder/staticlayout-proxy/1.0/f162442a19fff13995fbd51ba414d9ee05579080/staticlayout-proxy-1.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="f162442a19fff13995fbd51ba414d9ee05579080">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/staticlayout-proxy-1.0_04bcb7605dd7ba4fe41deb88ae424ce04dea480f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/sdk/extras/android/m2repository/com/android/support/support-annotations/25.2.0/support-annotations-25.2.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="4a5a82a027706397fff621b22fd6fa796e91d7c5">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/support-annotations-25.2.0_db85c992f4255b3a2fd3ce68fb3c7bc35f660f2c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/1.0.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="2668e49e4e31c7d451b76a36009b902bf44e0d70">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fbcore-1.0.1_5497a206422ee6ebe6ff292431d9fa5b0f0620b5.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/1.0.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="d9c4402c3057225d80cbbbec52154e7a25b0ebdf">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-1.0.1_3c738e01b75ef1f1ad7fedafc94cfb0185639ceb.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.0.1_1705a92326400f4179e499cced7431bb92621bbd.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/11.0.4/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="d8942ee348aaa9341f08f7e2437063893fe27542">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-gcm-11.0.4_ab3f38926c991237827e22e998d46499e2395035.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.0/5871fb60dc68d67da54a663c3fd636a10a532948/jsr305-3.0.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/jsr305-3.0.0_6594e0e180a5de9373cc25ca50e6954d6851d640.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.2.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-25.2.0_2938e7c6f006b70061ff9b5c1108defae495b904.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-okhttp3/1.0.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="ba9b39366b723ccff6359d1117332968e98a4aca">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-okhttp3-1.0.1_a4fbe9624af6e79c8da4236e25eed557e4b867e7.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/FriendsMarkers/react-native-config/unspecified/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="0b54f6ac1dfe88d0583601f929f03ffbbe34ff56">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/FriendsMarkers-react-native-config-unspecified_18ba4131be1212c9f33deb1e45aee50edb52da5e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/FriendsMarkers/react-native-device-info/unspecified/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="40afce919cd7e7e5d9bd2068226bdcee20c14422">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/FriendsMarkers-react-native-device-info-unspecified_325e412e57bc441ed9c78ac730cf987a87f57e0f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/11.0.4/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="2430e711762a749feb00b3d64858ca4768251b9d">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-tasks-11.0.4_ae59d4ee4cbb678ed14e080e754667e9b9668420.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp-ws/3.4.1/8ace66ef7002d98f633377c9e67daeeb196d8c3b/okhttp-ws-3.4.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="8ace66ef7002d98f633377c9e67daeeb196d8c3b">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/okhttp-ws-3.4.1_bbfa015a52ebc570b08f84ed049bd9c527440a08.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.45.1/jars/libs/infer-annotations-4.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="9809e90be788acdb479b2b44e2112f3295a03068">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/infer-annotations-4.0_54864160bf31f2b79a486f4e885bae96ad5d4785.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/1.0.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="050f688115ea65a0292d8483a6ffe6bcdab1e2ef">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-base-1.0.1_b18d7eb497de67ced25fe99f7eab91836001f54b.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.facebook.fbui.textlayoutbuilder/textlayoutbuilder/1.0.0/jars/classes.jar"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.facebook.fbui.textlayoutbuilder\textlayoutbuilder\1.0.0\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
         sha1="f90b593491e4044903f0bbf68dc3fa2790b151b9">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/com.facebook.fbui.textlayoutbuilder-textlayoutbuilder-1.0.0_bdc221a8b712d95f77c924f2c139fe44eeac11bc.jar" />
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.facebook.fbui.textlayoutbuilder-textlayoutbuilder-1.0.0_b7415f284218fb94f16435769f89056e5d27a162.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/FriendsMarkers/react-native-maps/unspecified/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="67aa41c9cc89e2d2e4198843d451e3a55ebe9a10">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/FriendsMarkers-react-native-maps-unspecified_8d902a8c41ce46450bea78a356f312953eb1936f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/11.0.4/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="364364bf77b4a71afc5930fc3ae57b3f0eea637c">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-basement-11.0.4_eb29973e033152032347a11070a02c17b69426a6.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp-urlconnection/3.4.1/63994437f62bc861bc20c605d12962f7246116d1/okhttp-urlconnection-3.4.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="63994437f62bc861bc20c605d12962f7246116d1">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-3.4.1_d891693583e6e859ab9f18450000b4da591c03eb.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.2.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="ee394a892dd21c03a528139c1e8d4e0e1264ac84">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-25.2.0_6bd0a136b0afc780a709ead8aa2e30cf4f1f2491.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="8f615bca00639150c9eb6175d4b5471193f70794">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/com.facebook.soloader-soloader-0.1.0_ab9a2ee6a757d56325289d2c0f0c2c9ff021d4c6.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/11.0.4/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="fcae52a60bc07924d370b4d376116cd8f8581f54">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-maps-11.0.4_73bac1d829c6ce28452579531f4dde3ffd2f1a1f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-iid/11.0.4/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="dd282bdeaa904c59d77e57dedd7e0a241c9b679d">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-iid-11.0.4_8d52b51b5ce8ac6278208a9260ef6cbfdff4636d.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.4/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="70ffe00aaf049893f59d1dad57bd82992faa38ef">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-base-11.0.4_d0bf33fb66ae6206ad8ff65efdf38ba8931d70f1.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.4.1/c7c4f9e35c2fd5900da24f9872e3971801f08ce0/okhttp-3.4.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="c7c4f9e35c2fd5900da24f9872e3971801f08ce0">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/okhttp-3.4.1_9e991c3bf8252af5e570961a4f4ded9ca16abd42.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.2.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="67eb33110dbacb46a48175b08ae0c96761d2c17d">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-25.2.0_5349c7299290f23fba3d4fb53228e361cd599349.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.45.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="0d3e48e200296061415952a358fad487e129adaa">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/com.facebook.react-react-native-0.45.1_51f216f5c7b8634d931d7f6b655569d995af7079.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="6975da39a7040257bd51d21a231b76c915872d38">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/javax.inject-1_4929e04c75e5f12ca5c67ba55725f38354dc110c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.9.0/f824591a0016efbaeddb8300bee54832a1398cfa/okio-1.9.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="f824591a0016efbaeddb8300bee54832a1398cfa">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/okio-1.9.0_c86e9502b0ae4dee985bff9fe1a91a0f52cad27d.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.2.0/jars/classes.jar"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.2.0\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
         sha1="e820b7be8c035dd522da4bc822e8a76c8e27921a">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-25.2.0_54f52d279de515a1de22bb45bf915ca0c04608ee.jar" />
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.2.0_8695cf3bf349f1ed66ac18b447f505b5b0abff5f.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.2.0/jars/classes.jar"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.facebook.react\react-native\0.45.1\jars\libs\infer-annotations-4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="9809e90be788acdb479b2b44e2112f3295a03068">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\infer-annotations-4.0_3941f626b67444074f038663eb7ae7fa417994ff.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.2.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="ee394a892dd21c03a528139c1e8d4e0e1264ac84">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.2.0_d1d9ce9c7c42c3482e18e6649c94efc5b51d754e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.facebook.react\react-native\0.45.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="0d3e48e200296061415952a358fad487e129adaa">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.facebook.react-react-native-0.45.1_ac82e43da1cc649092ccd23646fa057e4288aca9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Jorge Gutiérrez\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.4.1\c7c4f9e35c2fd5900da24f9872e3971801f08ce0\okhttp-3.4.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="c7c4f9e35c2fd5900da24f9872e3971801f08ce0">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\okhttp-3.4.1_bbec61b0d61b37a74cc2caad00b93f193e1561f9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\FriendsMarkers\react-native-vector-icons\unspecified\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="b319ff9834bbeb9be394687614eb86892699ea14">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\FriendsMarkers-react-native-vector-icons-unspecified_40581a1d89ef47a80b258c2e1a6e2da436968466.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.2.0\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
         sha1="fa0446a14ed5dd3725047d6399ffea771a564b30">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-25.2.0_526f54e0a33eaacdbb59345561d8f935ea6d0d24.jar" />
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.2.0_9bcbaa2696906ca707f5ff011f0bfd045094ecf6.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/jorge/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\FriendsMarkers\react-native-i18n\unspecified\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="265d5a9330ad02283d16b9886fe8acebb306cd1e">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\FriendsMarkers-react-native-i18n-unspecified_94cac27662480e07273a0e9ceb6e11addf54efd7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.facebook.fresco\imagepipeline-okhttp3\1.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="ba9b39366b723ccff6359d1117332968e98a4aca">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.facebook.fresco-imagepipeline-okhttp3-1.0.1_41b0aeafdd31647ebdaf94014c06c3eff7b762b3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Jorge Gutiérrez\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp-ws\3.4.1\8ace66ef7002d98f633377c9e67daeeb196d8c3b\okhttp-ws-3.4.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="8ace66ef7002d98f633377c9e67daeeb196d8c3b">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\okhttp-ws-3.4.1_7ca740aeb13566c77a3d2e1f53619d84fe7b78e1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Jorge Gutiérrez\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\3.0.0\5871fb60dc68d67da54a663c3fd636a10a532948\jsr305-3.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\jsr305-3.0.0_7f416d433b8dfb9c889d4583ae70a18896fcffd3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Jorge Gutiérrez\.gradle\caches\modules-2\files-2.1\com.facebook.fbui.textlayoutbuilder\staticlayout-proxy\1.0\f162442a19fff13995fbd51ba414d9ee05579080\staticlayout-proxy-1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f162442a19fff13995fbd51ba414d9ee05579080">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\staticlayout-proxy-1.0_d69fa6dfe3d3b6a6abec6af75b9381807062b6b4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.facebook.fresco\drawee\1.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="5a61f17cd72e20aa4323cbf5f909b7c609619275">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.facebook.fresco-drawee-1.0.1_b50a096d56862a0fcbcc0e157c1e0c0d351f1c3f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.2.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="8fe8a8f77d651982ce5e18f6187dc4daf914ac57">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.2.0_a35fda0297015b74297fda6cec6d811c6a666e70.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\11.0.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="6688016b1c2ab0daad89bb59ca9b7acbd1c80412">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-gcm-11.0.0_d6a54929fd0aef923eaf96bd8dbd48e6dbc0e02b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.facebook.fresco\fresco\1.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="cf836a435a496eb22ff2aa69aa1e619462549f81">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.facebook.fresco-fresco-1.0.1_d4304c466043dfd24fcbe5755eedde63190234fe.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.2.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="67eb33110dbacb46a48175b08ae0c96761d2c17d">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.2.0_1688f0d2f5321f0d926f421f91f9a225369e23c8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.facebook.android\facebook-android-sdk\4.22.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d5cbc9214ee567ea6ef56fb2707d48e58d240fc2">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.facebook.android-facebook-android-sdk-4.22.1_372837b103750d26a37b3ffcc01f6f15f55051ac.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Jorge Gutiérrez\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp-urlconnection\3.4.1\63994437f62bc861bc20c605d12962f7246116d1\okhttp-urlconnection-3.4.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="63994437f62bc861bc20c605d12962f7246116d1">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\okhttp-urlconnection-3.4.1_d0aa585bf230cc9249f4b27bc59768dad284a654.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Jorge Gutiérrez\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-applinks\1.4.0\8ad21bf21784dacce5f2043afb97218cc377e835\bolts-applinks-1.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="8ad21bf21784dacce5f2043afb97218cc377e835">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\bolts-applinks-1.4.0_55f9cedee438bf7747b9292528d549e074e7ca43.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Jorge Gutiérrez\.gradle\caches\modules-2\files-2.1\javax.inject\javax.inject\1\6975da39a7040257bd51d21a231b76c915872d38\javax.inject-1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\javax.inject-1_1ef63a61cb7a6b81799cff5d29e2436c3bf0b553.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.0.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="8bc45ce1f63d1a391fd38b32a201be5a42f9c95d">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.0.0_ade759e39a630499bc3fc7ff5fa68704634c608e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.facebook.fresco\imagepipeline-base\1.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="050f688115ea65a0292d8483a6ffe6bcdab1e2ef">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.facebook.fresco-imagepipeline-base-1.0.1_9a4a01be4834f0a834a6c4256845198922965f95.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\11.0.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d68bbf92de9721b02a31a3833abfdc90144c7e39">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-base-11.0.0_a28b1fa0d683dd685c0d5986692e48347c112dbd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Jorge Gutiérrez\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-tasks\1.4.0\d85884acf6810a3bbbecb587f239005cbc846dc4\bolts-tasks-1.4.0.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
         sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/bolts-tasks-1.4.0_b3638fc4af45d6ca3c7ef9e88599e88f00dbc32a.jar" />
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\bolts-tasks-1.4.0_554c9ac15fa8999d5ae07b607ba2e0ee8cf39d3b.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/jorge/FriendsMarkers/android/app/build/intermediates/exploded-aar/FriendsMarkers/react-native-vector-icons/unspecified/jars/classes.jar"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-iid\11.0.0\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
-        sha1="7a2bbc9635906f8cbbbd14c053ac24efdd3a95c5">
-        <dex dex="/home/jorge/FriendsMarkers/android/app/build/intermediates/pre-dexed/debug/FriendsMarkers-react-native-vector-icons-unspecified_886ce32d195522f655d9500bc804a76d988c3dbf.jar" />
+        sha1="6bade648cc46af0ffc636586806c60dba1b7fdf8">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-iid-11.0.0_8cc829339bab9d67ca9f6c599b701aaf7e0a45bd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\11.0.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d410043f93e71bb0179ba86b85726dd080f14b79">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-tasks-11.0.0_d8fcf43dc7d5ecbdd2a91a0ade7ba290ac33fb56.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\11.0.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="5687d5d0a5cc1113f84a0477d8fdd3b91222d26e">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-maps-11.0.0_7e8b1590e15fd19fe067da0420a539419a8970fe.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\FriendsMarkers\react-native-config\unspecified\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="ea4f5d9bafe73f70afc4bf89a7851a09853772cc">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\FriendsMarkers-react-native-config-unspecified_72b6c1558a38bace0113bb70e5ae36470fd80b8c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\FriendsMarkers\react-native-maps\unspecified\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="4a5cfa49f964d9ec42d13b5c2f8bc222d2a8feab">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\FriendsMarkers-react-native-maps-unspecified_756241f298c3ee8aaf109e4d15de77a298413ad7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d29714cc76b38157e3cbd034c66e1ec808eb4c19">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-25.0.0_65fa0db25c8263fd2dabce5d57c905078fe9f16c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\11.0.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="e72c498ef3e345135b6bfdf7fc83c6b905228ade">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-basement-11.0.0_09a78bc2237af21602ed0e698b6204f480203e75.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\FriendsMarkers\react-native-device-info\unspecified\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="2e4336ffc2b7653868134d7f6f8b28523ef54645">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\FriendsMarkers-react-native-device-info-unspecified_5b5549cb8e8f0d5c990040d08b24e0141f49be0d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.2.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-25.2.0_bb971fc9df2bd7d92369ab4a53e5b7d8381620dc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.facebook.fresco\fbcore\1.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="2668e49e4e31c7d451b76a36009b902bf44e0d70">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.facebook.fresco-fbcore-1.0.1_b9a6f10579b324fd68bf2a258513673b7dd21305.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.0.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="53a420cd4f49274db6bd43475f8006ba67ef6bbd">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-25.0.0_0bf756b31da3b715116619f8ac3fecb755378db8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Jorge Gutiérrez\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.9.0\f824591a0016efbaeddb8300bee54832a1398cfa\okio-1.9.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f824591a0016efbaeddb8300bee54832a1398cfa">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\okio-1.9.0_ed28fb3369921d59a308059b01031ed0b7a98578.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\25.0.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="8a372c4191f80489770a231f7be4820b204b886a">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.android.support-cardview-v7-25.0.0_fae5ee29d4841576d83c01af6765987d83043e52.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.facebook.fresco\imagepipeline\1.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d9c4402c3057225d80cbbbec52154e7a25b0ebdf">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.facebook.fresco-imagepipeline-1.0.1_b3f38087fadbe7476c7c12bf730c438768009a34.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.facebook.soloader\soloader\0.1.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="8f615bca00639150c9eb6175d4b5471193f70794">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.facebook.soloader-soloader-0.1.0_f7ecb5ab20a1c6c4b22c00d4a9c8a5136ff99fed.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Program Files (x86)\Android\android-sdk\extras\android\m2repository\com\android\support\support-annotations\25.2.0\support-annotations-25.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="4a5a82a027706397fff621b22fd6fa796e91d7c5">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\support-annotations-25.2.0_dd984fd6016521b77d011e988948b7a57f35b0c3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\com.android.support\customtabs\25.0.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="94ba691efc31bf53264db0716d9c9ec03843ea31">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\com.android.support-customtabs-25.0.0_ed4c0ec32a1476aef32a13a90e3000fe1e993f6b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\FriendsMarkers\android\app\build\intermediates\exploded-aar\FriendsMarkers\react-native-fbsdk\unspecified\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="283cde9a97e752bf216fb0590f58e3d6e8cf2f3a">
+        <dex dex="C:\FriendsMarkers\android\app\build\intermediates\pre-dexed\debug\FriendsMarkers-react-native-fbsdk-unspecified_ec9cbd67f3804cf8cb9317f0ad58040acdde767b.jar" />
     </item>
 
 </items>
