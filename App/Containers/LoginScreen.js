@@ -6,8 +6,14 @@ import styles from './Styles/LoginScreenStyles'
 import * as firebase from "firebase";
 const FBSDK = require('react-native-fbsdk');
 const {
+  LoginButton,
   LoginManager,
+  AccessToken
 } = FBSDK;
+
+let provider = new firebase.auth.FacebookAuthProvider();
+
+
 export default class LoginScreen extends Component {
     state = {
 
@@ -16,6 +22,8 @@ export default class LoginScreen extends Component {
     static navigationOptions = {
         header: null
     }
+
+    
 
 
     constructor(props) {
@@ -33,7 +41,7 @@ export default class LoginScreen extends Component {
 
 
     componentDidMount() {
-        this.login()
+
     }
 
 
@@ -47,9 +55,8 @@ export default class LoginScreen extends Component {
             console.log('Register | error ->', error)
         })
     }
-    login() {
-        //firebase.auth.FacebookAuthProvider.credential(token).
-        //
+    loginEmail() {
+
         firebase.auth().signInWithEmailAndPassword('jorgutpar@gmail.com', '1234').then(result => {
             console.log(JSON.stringify(result))
         }, error => {
@@ -60,22 +67,18 @@ export default class LoginScreen extends Component {
         })
     }
 
-    facebookLogin() {
-        console.log('LoginScreen | FB Login init')
-        // Attempt a login using the Facebook login dialog asking for default permissions.
-        LoginManager.logInWithReadPermissions(['public_profile']).then(
-            function (result) {
-                if (result.isCancelled) {
-                    alert('Login cancelled');
-                } else {
-                    alert('Login success with permissions: '
-                        + result.grantedPermissions.toString());
-                }
-            },
-            function (error) {
-                alert('Login fail with error: ' + error);
-            }
-        );
+    facebookLogin(){
+
+        console.log('facebookLogin | currentAccessToken -> ', AccessToken.getCurrentAccessToken())
+        // firebase.auth().signInWithCredential(firebase.auth.FacebookAuthProvider.credential(LoginManager.getCurrentAccessToken()).then(
+        //     AccessToken.getCurrentAccessToken().then((data) => {
+        //         console.log(data.accessToken.toString());
+        //         console.log(res);
+        //     });
+        //     console.log(res);
+        // }, error => {
+        //     console.log(error)
+        // });
     }
 
     googleLogin() {
@@ -90,7 +93,22 @@ export default class LoginScreen extends Component {
                 </View>
                 <View>
                     <Button title="Google" onPress={() => this.googleLogin()} />
-                    <Button title="Facebook" onPress={() => this.facebookLogin()} />
+                    <Button title="Login" onPress={this.facebookLogin.bind(this)} />
+                            <LoginButton
+              publishPermissions={["publish_actions"]}
+          onLoginFinished={
+            (error, result) => {
+              if (error) {
+                console.log("Login failed with error: " + result.error);
+              } else if (result.isCancelled) {
+                console.log("Login was cancelled");
+              } else {
+                console.log("Login was successful | result -> ", result)
+                this.facebookLogin()
+              }
+            }
+          }
+          onLogoutFinished={() => alert("User logged out")}/>
                 </View>
             </View>
         );
