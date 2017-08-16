@@ -69,7 +69,27 @@ export default class LoginScreen extends Component {
 
     facebookLogin(){
 
-        console.log('facebookLogin | currentAccessToken -> ', AccessToken.getCurrentAccessToken())
+        
+        AccessToken.getCurrentAccessToken().then(
+            result => {
+                console.log('AccessToken | result ->', result)
+                var credential = firebase.auth.FacebookAuthProvider.credential(result.accessToken);
+
+                firebase.auth().signInWithCredential(credential).then(
+                    firebaseResult => {
+                        console.log('facebookLogin | firebaseResult ->', firebaseResult)
+                    },
+                    firebaseError => {
+                        console.log('facebookLogin | firebaseError ->', firebaseError)
+                    }
+                )
+            },
+            error =>{
+                console.log('AccessToken | error ->', error)
+            }
+        )
+
+
         // firebase.auth().signInWithCredential(firebase.auth.FacebookAuthProvider.credential(LoginManager.getCurrentAccessToken()).then(
         //     AccessToken.getCurrentAccessToken().then((data) => {
         //         console.log(data.accessToken.toString());
