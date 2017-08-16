@@ -7,8 +7,8 @@ import * as firebase from "firebase";
 const FBSDK = require('react-native-fbsdk');
 const {
   LoginButton,
-  LoginManager,
-  AccessToken
+    LoginManager,
+    AccessToken
 } = FBSDK;
 
 let provider = new firebase.auth.FacebookAuthProvider();
@@ -16,14 +16,14 @@ let provider = new firebase.auth.FacebookAuthProvider();
 
 export default class LoginScreen extends Component {
     state = {
-
+        authdata: null,
     }
 
     static navigationOptions = {
         header: null
     }
 
-    
+
 
 
     constructor(props) {
@@ -35,7 +35,15 @@ export default class LoginScreen extends Component {
 
 
     componentWillMount() {
-
+        // firebase.auth().onAuthStateChanged(function(user) {
+        //   if (user) {
+        //     authdata = user;
+        //     console.log(authdata)
+        //   }
+        //   else {
+        //    authdata = null;
+        //   }
+        // });
     }
 
 
@@ -67,38 +75,53 @@ export default class LoginScreen extends Component {
         })
     }
 
-    facebookLogin(){
+    facebookLogin() {
 
-        
-        AccessToken.getCurrentAccessToken().then(
+        LoginManager.logInWithReadPermissions(['public_profile'])
+            .then(
             result => {
-                console.log('AccessToken | result ->', result)
-                var credential = firebase.auth.FacebookAuthProvider.credential(result.accessToken);
-
-                firebase.auth().signInWithCredential(credential).then(
-                    firebaseResult => {
-                        console.log('facebookLogin | firebaseResult ->', firebaseResult)
+                console.log(result)
+                AccessToken.getCurrentAccessToken().then(
+                    result => {
+                        console.log(result)
+                        var credential = firebase.auth.FacebookAuthProvider.credential(result.accessToken);
+                        firebase.auth().signInWithCredential(credential)
                     },
-                    firebaseError => {
-                        console.log('facebookLogin | firebaseError ->', firebaseError)
-                    }
+                    error => console.log(error)
                 )
             },
-            error =>{
-                console.log('AccessToken | error ->', error)
+            error => {
+                console.log(error)
             }
-        )
+            ).catch(error => console.log(error))
 
+        //         var provider = new firebase.auth.FacebookAuthProvider();
 
-        // firebase.auth().signInWithCredential(firebase.auth.FacebookAuthProvider.credential(LoginManager.getCurrentAccessToken()).then(
-        //     AccessToken.getCurrentAccessToken().then((data) => {
-        //         console.log(data.accessToken.toString());
-        //         console.log(res);
-        //     });
-        //     console.log(res);
-        // }, error => {
-        //     console.log(error)
+        //         provider.addScope('user_birthday');
+
+        // firebase.auth().signInWithRedirect(provider);
+
+        // firebase.auth().getRedirectResult().then(function(authData) {
+        // 	console.log(authData);
+        // }).catch(function(error) {
+        // 	console.log(error);
         // });
+
+
+
+        // AccessToken.getCurrentAccessToken().then(
+        //     result => {
+        //         console.log('AccessToken | result ->', result)
+        //         console.log('facebookLogin | credential ->', credential)
+        //         
+        //     },
+        //     error => {
+        //         console.log('AccessToken | error ->', error)
+        //     }
+        // ).catch(error => {
+        //     console.log('facebookLogin | .catch | error -> ', error)
+        // })
+
     }
 
     googleLogin() {
@@ -114,21 +137,21 @@ export default class LoginScreen extends Component {
                 <View>
                     <Button title="Google" onPress={() => this.googleLogin()} />
                     <Button title="Login" onPress={this.facebookLogin.bind(this)} />
-                            <LoginButton
-              publishPermissions={["publish_actions"]}
-          onLoginFinished={
-            (error, result) => {
-              if (error) {
-                console.log("Login failed with error: " + result.error);
-              } else if (result.isCancelled) {
-                console.log("Login was cancelled");
-              } else {
-                console.log("Login was successful | result -> ", result)
-                this.facebookLogin()
-              }
-            }
-          }
-          onLogoutFinished={() => alert("User logged out")}/>
+                    <LoginButton
+                        publishPermissions={["publish_actions"]}
+                        onLoginFinished={
+                            (error, result) => {
+                                if (error) {
+                                    console.log("Login failed with error: " + result.error);
+                                } else if (result.isCancelled) {
+                                    console.log("Login was cancelled");
+                                } else {
+                                    console.log("Login was successful | result -> ", result)
+                                    this.facebookLogin()
+                                }
+                            }
+                        }
+                        onLogoutFinished={() => alert("User logged out")} />
                 </View>
             </View>
         );
