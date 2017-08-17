@@ -16,15 +16,8 @@ let provider = new firebase.auth.FacebookAuthProvider();
 
 export default class LoginScreen extends Component {
     state = {
-        authdata: null,
+        currentUser: null,
     }
-
-    static navigationOptions = {
-        header: null
-    }
-
-
-
 
     constructor(props) {
         super(props);
@@ -35,15 +28,18 @@ export default class LoginScreen extends Component {
 
 
     componentWillMount() {
-        // firebase.auth().onAuthStateChanged(function(user) {
-        //   if (user) {
-        //     authdata = user;
-        //     console.log(authdata)
-        //   }
-        //   else {
-        //    authdata = null;
-        //   }
-        // });
+        let currentUser = null
+        firebase.auth().onAuthStateChanged( user => {
+            if (user) {
+                currentUser = user
+                console.log('LoginScreen | User already logged -> ', user)
+                //this.props.navigation.navigate('PrimaryStack')
+            } else {
+                console.log('LoginScreen | user is not logged yet')
+            }
+        },error => {
+            console.error(error)
+        });
     }
 
 
@@ -77,15 +73,27 @@ export default class LoginScreen extends Component {
 
     facebookLogin() {
 
-        LoginManager.logInWithReadPermissions(['public_profile'])
-            .then(
+        LoginManager.logInWithReadPermissions(['public_profile']).then(
             result => {
-                console.log(result)
+                console.log('facebookLogin | logInWithReadPermissions | result -> ', result)
                 AccessToken.getCurrentAccessToken().then(
                     result => {
                         console.log(result)
                         var credential = firebase.auth.FacebookAuthProvider.credential(result.accessToken);
                         firebase.auth().signInWithCredential(credential)
+                            .then(
+                            (fbResult) => {
+                                console.log('Firebase Auth successful! | fbResult ->', fbResult)
+                                //this.props.navigation.navigate('PrimaryStack')
+                            },
+                            (fbError) => {
+                                console.error('Firebase Auth Error | fbError ->', fbError)
+                            })
+                            .catch(
+                            (fbError) => {
+                                console.error('signInWithCredential | fbError ->', fbError)
+                            }
+                            )
                     },
                     error => console.log(error)
                 )
@@ -93,34 +101,8 @@ export default class LoginScreen extends Component {
             error => {
                 console.log(error)
             }
-            ).catch(error => console.log(error))
+        ).catch(error => console.log(error))
 
-        //         var provider = new firebase.auth.FacebookAuthProvider();
-
-        //         provider.addScope('user_birthday');
-
-        // firebase.auth().signInWithRedirect(provider);
-
-        // firebase.auth().getRedirectResult().then(function(authData) {
-        // 	console.log(authData);
-        // }).catch(function(error) {
-        // 	console.log(error);
-        // });
-
-
-
-        // AccessToken.getCurrentAccessToken().then(
-        //     result => {
-        //         console.log('AccessToken | result ->', result)
-        //         console.log('facebookLogin | credential ->', credential)
-        //         
-        //     },
-        //     error => {
-        //         console.log('AccessToken | error ->', error)
-        //     }
-        // ).catch(error => {
-        //     console.log('facebookLogin | .catch | error -> ', error)
-        // })
 
     }
 

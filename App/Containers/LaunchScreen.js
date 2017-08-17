@@ -4,7 +4,7 @@ import { ButtonRight } from '../Components/ButtonRight'
 import { ButtonLeft } from '../Components/ButtonLeft'
 import { Images } from '../Themes'
 import ActionButton from 'react-native-action-button';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import MapView from 'react-native-maps';
 import Modal from 'react-native-modal';
 import { ModalMarker } from './ModalMarker';
@@ -35,10 +35,6 @@ export default class LaunchScreen extends Component {
   _hideModal = () => this.setState({ isModalVisible: false })
   _showColorPicker = () => this.setState({ colorPickerVisible: true })
   _hideColorPicker = () => this.setState({ colorPickerVisible: false })
-
-  static navigationOptions = {
-    header: null
-  }
 
 
   constructor(props) {
@@ -108,7 +104,7 @@ getInitialState() {
     console.log('_longPress | position -> ', position)
 
     this.setState({ newMarkerCoordinate: coordinate })
-    this._showModal()
+    //this._showModal()
   }
 
   _shortPress(event) {
@@ -243,15 +239,15 @@ getInitialState() {
             <Text style={styles.mapName}>{this.state.mapName}</Text>
           </TouchableHighlight>
 
-          <ActionButton buttonColor="rgba(231,76,60,1)">
+          <ActionButton buttonColor="rgba(231,76,60,1)" position='right' verticalOrientation='down'>
             <ActionButton.Item buttonColor='#9b59b6' onPress={() => console.log("notes tapped!")}>
-              <Icon name="md-person" style={styles.actionButtonIcon} />
+              <Icon name="menu" style={styles.actionButtonIcon} />
             </ActionButton.Item>
             <ActionButton.Item buttonColor='#3498db' onPress={() => this.props.navigation.navigate('DrawerOpen')}>
-              <Icon name="md-menu" style={styles.actionButtonIcon} />
+              <Icon name="account" style={styles.actionButtonIcon} />
             </ActionButton.Item>
             <ActionButton.Item buttonColor='#1abc9c' onPress={() => { }}>
-              <Icon name="md-done-all" style={styles.actionButtonIcon} />
+              <Icon name="map-marker" style={styles.actionButtonIcon} />
             </ActionButton.Item>
           </ActionButton>
 
