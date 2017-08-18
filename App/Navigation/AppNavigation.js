@@ -14,13 +14,17 @@ const PrimaryStack = StackNavigator({
 }, {
     navigationOptions: ({ navigation }) => ({
       headerMode: 'screen',
-      headerLeft: <TouchableOpacity onPress={() => { navigation.navigate('DrawerOpen') }}>
+      headerLeft: (<TouchableOpacity onPress={() => { navigation.navigate('DrawerOpen') }}>
         <Icon name="menu" style={{ color: 'black', padding: 10, marginLeft: 10, fontSize: 20 }} />
-      </TouchableOpacity>,
+      </TouchableOpacity>),
+      drawer: () => ({
+        label: 'Map',
+        icon: () => (<Icon name="rocket" size={30} color="#900" />)
+      })
     })
   });
 
-//<MenuButton navigate={navigation.navigate} />
+//<MenuButton navigate={navigati on.navigate} />
 // Manifest of possible screens
 const LoginStack = StackNavigator({
   LoginScreen: { screen: LoginScreen }
@@ -45,7 +49,13 @@ const DrawerNav = DrawerNavigator({
   LoginStack: { screen: LoginStack }
 }, {
     initialRouteName: 'LoginStack',
-    contentComponent: props => (<ScrollView><DrawerMenu {...props} /></ScrollView>)
+    contentComponent: props => (<ScrollView style={{ height:'100%', backgroundColor: '#2196F3'}}><DrawerMenu {...props} /></ScrollView>),
+    contentOptions: {
+      activeTintColor: '#e91e63',
+      style: {
+        marginVertical: 0,
+      }
+    }
   });
 
 

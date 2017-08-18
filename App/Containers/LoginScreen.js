@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Text, Image, View, TextInput, Button, StyleSheet, Dimensions, TouchableHighlight, TouchableOpacity } from 'react-native'
-
-// Styles
-import styles from './Styles/LoginScreenStyles'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import * as firebase from "firebase";
 import DrawerMenu, { logout } from './DrawerMenu'
+// Styles
+import styles from './Styles/LoginScreenStyles'
 
 const FBSDK = require('react-native-fbsdk');
 const {
@@ -20,6 +20,11 @@ export default class LoginScreen extends Component {
         currentUser: null,
     }
 
+    static navigationOptions = {
+        drawerLabel: 'Login',
+        drawerIcon: (<Icon name="account" size={25} style={{color: "#fff"}} />)
+    };
+
 
     constructor(props) {
         super(props);
@@ -31,7 +36,7 @@ export default class LoginScreen extends Component {
 
     componentWillMount() {
         let currentUser = null
-        firebase.auth().onAuthStateChanged( user => {
+        firebase.auth().onAuthStateChanged(user => {
             if (user) {
                 currentUser = user
                 console.log('LoginScreen | User already logged -> ', user)
@@ -39,7 +44,7 @@ export default class LoginScreen extends Component {
             } else {
                 console.log('LoginScreen | user is not logged yet')
             }
-        },error => {
+        }, error => {
             console.error(error)
         });
     }
@@ -47,7 +52,7 @@ export default class LoginScreen extends Component {
 
 
     componentDidMount() {
-
+        this.props.navigation.navigate('DrawerOpen')
     }
 
 
@@ -121,21 +126,7 @@ export default class LoginScreen extends Component {
                 <View>
                     <Button title="Google" onPress={() => this.googleLogin()} />
                     <Button title="Login" onPress={this.facebookLogin.bind(this)} />
-                    <LoginButton
-                        publishPermissions={["publish_actions"]}
-                        onLoginFinished={
-                            (error, result) => {
-                                if (error) {
-                                    console.log("Login failed with error: " + result.error);
-                                } else if (result.isCancelled) {
-                                    console.log("Login was cancelled");
-                                } else {
-                                    console.log("Login was successful | result -> ", result)
-                                    this.facebookLogin()
-                                }
-                            }
-                        }
-                        onLogoutFinished={() => alert("User logged out")} />
+
                 </View>
             </View>
         );

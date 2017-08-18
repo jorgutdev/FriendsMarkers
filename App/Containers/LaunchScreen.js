@@ -27,18 +27,10 @@ export default class LaunchScreen extends Component {
     markers: [],
     color: 'blue',
   }
-
-		navigationOptions = {
-			header: {
-				title: 'TITLE',
-				titleStyle: {
-					color: 'black',
-					textAlign:'center',
-					fontFamily: 'MuseoSansRounded-300',
-					fontWeight: '500'
-				}
-			}
-		}
+    static navigationOptions = {
+        drawerLabel: 'Maps',
+        drawerIcon: (<Icon name="google-maps" size={26} style={{color: "#fff"}} />)
+    };
 
 
   _showModal = () => this.setState({ isModalVisible: true })
@@ -62,16 +54,16 @@ export default class LaunchScreen extends Component {
 
   }
 
-getInitialState() {
-  return {
-    region: {
-      latitude: 0,
-      longitude: 0,
-      latitudeDelta: 100.0922,
-      longitudeDelta: 100.0421,
-    },
-  };
-}
+  getInitialState() {
+    return {
+      region: {
+        latitude: 0,
+        longitude: 0,
+        latitudeDelta: 100.0922,
+        longitudeDelta: 100.0421,
+      },
+    };
+  }
 
   componentDidMount() {
     console.log('LaunchScreen.componentDidMount')
@@ -178,19 +170,20 @@ getInitialState() {
 
   _zoomToLocation = () => {
     this.setState(
-      { 
-        region : {
+      {
+        region: {
           latitude: this.state.position.coords.latitude,
           longitude: this.state.position.coords.longitude,
           latitudeDelta: 0.10,
-          longitudeDelta: 0.10   
-      }})
+          longitudeDelta: 0.10
+        }
+      })
     console.log('_zoomToLocation | this.state --> ', this.state)
     let region = {
       latitude: this.state.position.coords.latitude,
       longitude: this.state.position.coords.longitude,
       latitudeDelta: 0.10,
-      longitudeDelta: 0.10   
+      longitudeDelta: 0.10
     }
     console.log('zoomToLocation | region -> ', region)
     this.map.animateToRegion(region, 100)
@@ -201,12 +194,12 @@ getInitialState() {
 
   // ES7 :)
   onRegionChange = (region) => {
-    this.setState({ region : region });
+    this.setState({ region: region });
     console.log('onRegionChange | this.state.region ->', this.state.region)
-  }  
-  
+  }
+
   onRegionChangeComplete = (region) => {
-    this.setState({ region : region });
+    this.setState({ region: region });
     console.log('onRegionChangeComplete | this.state.region ->', this.state.region)
   }
 
