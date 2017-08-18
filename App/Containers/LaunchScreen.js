@@ -28,7 +28,17 @@ export default class LaunchScreen extends Component {
     color: 'blue',
   }
 
-
+		navigationOptions = {
+			header: {
+				title: 'TITLE',
+				titleStyle: {
+					color: 'black',
+					textAlign:'center',
+					fontFamily: 'MuseoSansRounded-300',
+					fontWeight: '500'
+				}
+			}
+		}
 
 
   _showModal = () => this.setState({ isModalVisible: true })
@@ -167,6 +177,14 @@ getInitialState() {
   }
 
   _zoomToLocation = () => {
+    this.setState(
+      { 
+        region : {
+          latitude: this.state.position.coords.latitude,
+          longitude: this.state.position.coords.longitude,
+          latitudeDelta: 0.10,
+          longitudeDelta: 0.10   
+      }})
     console.log('_zoomToLocation | this.state --> ', this.state)
     let region = {
       latitude: this.state.position.coords.latitude,
@@ -174,7 +192,10 @@ getInitialState() {
       latitudeDelta: 0.10,
       longitudeDelta: 0.10   
     }
-    this.map.animateToRegion(region, 100)    
+    console.log('zoomToLocation | region -> ', region)
+    this.map.animateToRegion(region, 100)
+    this.map.forceUpdate()
+    this.map.animateToCoordinate(this.state.position.coords, 100)
   }
 
 

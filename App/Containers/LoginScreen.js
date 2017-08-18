@@ -4,6 +4,8 @@ import { Text, Image, View, TextInput, Button, StyleSheet, Dimensions, Touchable
 // Styles
 import styles from './Styles/LoginScreenStyles'
 import * as firebase from "firebase";
+import DrawerMenu, { logout } from './DrawerMenu'
+
 const FBSDK = require('react-native-fbsdk');
 const {
   LoginButton,
@@ -11,13 +13,13 @@ const {
     AccessToken
 } = FBSDK;
 
-let provider = new firebase.auth.FacebookAuthProvider();
 
 
 export default class LoginScreen extends Component {
     state = {
         currentUser: null,
     }
+
 
     constructor(props) {
         super(props);
