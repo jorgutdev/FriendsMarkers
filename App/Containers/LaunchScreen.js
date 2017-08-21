@@ -106,7 +106,9 @@ export default class LaunchScreen extends Component {
     console.log('_longPress | position -> ', position)
 
     this.setState({ newMarkerCoordinate: coordinate })
-    //this._showModal()
+    const {setParams} = this.props.navigation;
+    setParams({ coordinate : coordinate })    
+    this.props.navigation.navigate('AddMarkerScreen')
   }
 
   _shortPress(event) {
@@ -271,47 +273,7 @@ export default class LaunchScreen extends Component {
 
 
 
-        <View style={{ flex: 1 }}>
-          <Modal
-            isVisible={this.state.isModalVisible}
-            transparent={true}
-            animationIn={'fadeInUpBig'}
-            animationOut={'zoomOut'}
-            backdropOpacity={1}
-            backdropColor='white'>
 
-            <View style={{ flex: 1 }}>
-              <Button title="Save" onPress={() => this._saveMarker()} />
-
-              <TextInput
-                style={{ height: 40 }}
-                onChangeText={newMarkerName => this.setState({ newMarkerName })}
-                value={this.state.newMarkerName}
-                placeholder="Marker Name"
-              />
-
-              <TextInput
-                style={{ height: 40 }}
-                onChangeText={(newMarkerDescription) => this.setState({ newMarkerDescription })}
-                value={this.state.newMarkerDescription}
-                placeholder="Description"
-              />
-
-              <Text>Color</Text>
-              <TriangleColorPicker
-                defaultColor='blue'
-                color={this.state.color}
-                hideSliders={true}
-                onColorChange={color => this.changeColor({ color })}
-                onColorSelected={color => this.setState({ color })}
-                style={{ flex: 1, width: '45%', top: '-5%', marginLeft: '25%', }}
-              />
-
-            </View>
-
-
-          </Modal>
-        </View>
       </View>
     );
   }

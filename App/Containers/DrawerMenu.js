@@ -119,7 +119,7 @@ export default class DrawerMenu extends Component {
     console.log(this.props)
 
     return (
-      <View style={ styles.topContainer }>
+      <View style={styles.topContainer}>
         <View style={styles.avatarContainer}>
           <TouchableOpacity onPress={() => { }}>
             <Image style={styles.avatar} source={{ uri: this.state.currentUser.photoURL }} />
@@ -129,14 +129,17 @@ export default class DrawerMenu extends Component {
           </Text>
         </View>
 
+
+        
+
         <View style={styles.routesContainer}>
           <DrawerItems {...this.props}
             activeTintColor='#0069c0'
-            activeBackgroundColor='#0069c0'            
+            activeBackgroundColor='#0069c0'
             inactiveTintColor='#0069c0'
             inactiveBackgroundColor='#2196F3'
             style={{ backgroundColor: 'transparent' }}
-            labelStyle={{ color: '#ffffff', marginLeft:2 }} />
+            labelStyle={{ color: '#ffffff', marginLeft: 2 }} />
         </View>
         <View style={styles.buttonContainer} >
           {button}
@@ -147,14 +150,14 @@ export default class DrawerMenu extends Component {
 }
 
 var styles = StyleSheet.create({
-  routesContainer: {    
-    marginTop:'-2%',
-    flex:1,
-    alignItems:'stretch',
+  routesContainer: {
+    marginTop: '-2%',
+    flex: 1,
+    alignItems: 'stretch',
   },
-  topContainer:{
+  topContainer: {
     backgroundColor: '#2196F3',
-    height:'100%'
+    height: '100%'
   },
   name: {
     color: '#E3F2FD',
