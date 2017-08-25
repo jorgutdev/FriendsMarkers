@@ -10,7 +10,7 @@ import Modal from 'react-native-modal';
 import { ModalMarker } from './ModalMarker';
 import * as firebase from "firebase";
 import { fromHsv, toHsv, TriangleColorPicker } from 'react-native-color-picker'
-
+import MapCustom from '../Components/MapCustom'
 // Styles
 import styles from './Styles/LaunchScreenStyles'
 const { width, height } = Dimensions.get('window');
@@ -248,7 +248,6 @@ export default class LaunchScreen extends Component {
             ))}
 
           </MapView>
-
 
 
           <TouchableHighlight onPress={this._changeMap}>

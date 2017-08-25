@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { Text, Image, View, TextInput, Button, StyleSheet, Dimensions, TouchableHighlight, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import * as firebase from "firebase";
+import MapCustom from '../Components/MapCustom'
 const FBSDK = require('react-native-fbsdk');
 const {
     LoginManager,
@@ -124,9 +125,14 @@ export default class DrawerMenu extends Component {
           <TouchableOpacity onPress={() => { }}>
             <Image style={styles.avatar} source={{ uri: this.state.currentUser.photoURL }} />
           </TouchableOpacity>
+          
           <Text style={styles.name}>
             {this.state.currentUser.displayName}
           </Text>
+
+          <MapCustom />
+
+
         </View>
 
 
