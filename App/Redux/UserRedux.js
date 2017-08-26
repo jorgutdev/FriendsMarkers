@@ -5,9 +5,9 @@ import Immutable from 'seamless-immutable'
 
 const { Types, Creators } = createActions({
   userLogin: null,
-  // markers -> in success function will be accesible from action.success
-  loginSuccess: ['user'],
-  loginFailure: null
+  // user -> in success function will be accesible from action.success
+  userLoginSuccess: ['user'],
+  userLoginFailure: null
 })
 
 export const UserTypes = Types
@@ -17,6 +17,7 @@ export default Creators
 
 export const INITIAL_STATE = Immutable({
   user: null,
+  isLogged: null,
   logging: null,
   error: null,
 })
@@ -24,24 +25,46 @@ export const INITIAL_STATE = Immutable({
 /* ------------- Reducers ------------- */
 
 
-// successful avatar lookup
-export const success = (state, action) => {
-  const { user } = action
-  console.log('state ->', state)
-  console.log('action ->', action)
-  state.merge({ logging: false, error: null, user })
 
-  return state
-}
 
 export const login = (state) => {
-    state.merge({ logging: true })
+    state.merge({ logging: true, isLogged: false })
     return state
 }
 
-// failed to get the avatar
+export const logout = (state) => {
+  state.merge({ logging: false, user: null, isLogged: false })
+  return state
+}
+
+
+export const success = (state, action) => {
+  const { user } = action
+
+  const { displayName, photoURL, email } = user
+
+  let myUser = {
+    displayName,
+    photoURL,
+    email
+  }
+
+  let myState = state.asMutable();
+
+  myState.user = {
+    displayName,
+    photoURL,
+    email
+  } 
+  console.log('myState ', myState)
+  
+  
+  console.log('success | returning state -> ', myState)
+  return myState
+}
+
 export const failure = (state, error) => {
-    state.merge({ fetching: false, error: true })
+    state.merge({ logging: false, error })
 
     return state
 }

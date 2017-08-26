@@ -8,12 +8,14 @@ import DebugConfig from '../Config/DebugConfig'
 import { StartupTypes } from '../Redux/StartupRedux'
 import { GithubTypes } from '../Redux/GithubRedux'
 import { MarkersTypes } from '../Redux/MarkersRedux'
+import { UserTypes } from '../Redux/UserRedux'
 
 /* ------------- Sagas ------------- */
 
 import { startup } from './StartupSagas'
 import { getUserAvatar } from './GithubSagas'
 import { getMarkers } from './MarkersSagas'
+import { login } from './UserSagas'
 
 /* ------------- API ------------- */
 
@@ -29,6 +31,8 @@ export default function * root () {
     takeLatest(StartupTypes.STARTUP, startup),
 
     takeLatest(MarkersTypes.MARKERS_REQUEST, getMarkers),
+    takeLatest(UserTypes.USER_LOGIN, login),
+    
     // some sagas receive extra parameters in addition to an action
     takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api)
   ]
