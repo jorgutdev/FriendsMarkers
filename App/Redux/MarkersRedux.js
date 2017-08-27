@@ -15,30 +15,39 @@ export default Creators
 
 /* ------------- Initial State ------------- */
 
-export const INITIAL_STATE = Immutable({
-  markers: null,
+export const INITIAL_STATE = {
+  markers: [],
   fetching: null,
   error: null,
-})
+}
 
 /* ------------- Reducers ------------- */
 
-// request the avatar for a user
 export const request = (state) => {
-  state.merge({ fetching: true })
+  state = {
+    ...state,
+    fetching: true,
+  }
   return state;
 }
-// successful avatar lookup
 export const success = (state, action) => {
   const { markers } = action
-  console.log('state ->', state)
-  console.log('action ->', action)
-  return state.merge({ fetching: false, error: null, markers })
+  let myMarkers = Array.from(markers)
+  state = {
+    ...state,
+    fetching: false,
+    markers,
+  }
+  return state
 }
 
-// failed to get the avatar
-export const failure = (state, error) =>
-  state.merge({ fetching: false, error: true, avatar: null })
+export const failure = (state, error) => {
+  state = {
+    ...state,
+    fetching: false,
+    error,
+  }
+}
 
 /* ------------- Hookup Reducers To Types ------------- */
 

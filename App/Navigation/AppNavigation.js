@@ -83,7 +83,7 @@ const DrawerNav = DrawerNavigator({
   LoginStack: { screen: LoginStack },
 
 }, {
-    initialRouteName: 'LoginStack',
+    initialRouteName: 'PrimaryStack',
     contentComponent: props => (<ScrollView style={{ height: '100%', backgroundColor: '#2196F3' }}><DrawerMenu {...props} /></ScrollView>),
     contentOptions: {
       activeTintColor: '#e91e63',

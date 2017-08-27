@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import { TouchableOpacity, Image, View, Text, StyleSheet } from 'react-native'
-import { call, put } from 'redux-saga/effects'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux'
 import UserActions from '../Redux/UserRedux'
-import * as firebase from 'firebase'
 
 
 
@@ -59,10 +57,6 @@ export class Avatar extends Component {
   }
 }
 
-var anonymousUser = {
-  displayName: 'Anonymous',
-  photoURL: 'http://www.free-avatars.com/data/media/37/cat_avatar_0597.jpg'
-}
 
 var styles = StyleSheet.create({
   name: {
@@ -92,7 +86,7 @@ var styles = StyleSheet.create({
 })
 
 function mapStateToProps(state) {
-  console.log('avatar | mapStateToProps', state)
+  console.log('Avatar | mapStateToProps', state)
   return {
     user: state.userReducer.user,
     isLogged: state.userReducer.isLogged,

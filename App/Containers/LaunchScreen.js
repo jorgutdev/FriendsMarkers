@@ -5,13 +5,14 @@ import { ButtonLeft } from '../Components/ButtonLeft'
 import { Images } from '../Themes'
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import MapView from 'react-native-maps';
+import CustomMap from '../Components/CustomMap';
 import Modal from 'react-native-modal';
 import { ModalMarker } from './ModalMarker';
 import * as firebase from "firebase";
 import { fromHsv, toHsv, TriangleColorPicker } from 'react-native-color-picker'
 // Styles
 import styles from './Styles/LaunchScreenStyles'
+
 const { width, height } = Dimensions.get('window');
 const DEFAULT_PADDING = { top: 40, right: 40, bottom: 40, left: 40 };
 
@@ -53,42 +54,13 @@ export default class LaunchScreen extends Component {
 
   }
 
-  getInitialState() {
-    return {
-      region: {
-        latitude: 0,
-        longitude: 0,
-        latitudeDelta: 100.0922,
-        longitudeDelta: 100.0421,
-      },
-    };
-  }
 
   componentDidMount() {
-    console.log('LaunchScreen.componentDidMount')
-
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        console.log('componentDidMount | getCurrentPosition ', position)
-        var initialPosition = JSON.stringify(position);
-        let { latitude, longitude } = position.coords;
-        console.log(position)
-        let props = this.props
-        //Zoom to user location
-        this.setState({ position })
-      },
-      (error) => alert(error.message),
-      { enableHighAccuracy: true, timeout: 500 }
-    );
-
-
-
+    console.log('LaunchScreen | componentDidMount')
   }
 
 
-  componentWillUnmount() {
-    navigator.geolocation.clearWatch(this.watchID);
-  }
+
 
 
 
@@ -213,40 +185,8 @@ export default class LaunchScreen extends Component {
     return (
       <View>
         <View style={{ flex: 1, zIndex: -1, paddingBottom: this.state.hackHeight }}>
-          <MapView
-            ref={ref => { this.map = ref; }}
-            initialRegion={{
-              latitude: 0,
-              longitude: 0,
-              latitudeDelta: 100.0922,
-              longitudeDelta: 100.0421,
-            }}
-            region={this.state.region}
-            style={styles.map}
-            customMapStyle={this.mapStyle}
-            showsUserLocation={true}
-            showsMyLocationButton={false}
-            showsBuildings={true}
-            followUserLocation={true}
-            onLayout={this._zoomToLocation}
-            onPress={event => this._shortPress(event.nativeEvent)}
-            onLongPress={event => this._longPress(event.nativeEvent)}
-            onRegionChange={this.onRegionChange}
-            onRegionChangeComplete={this.onRegionChangeComplete}
-            zoomed={false} >
-
-            {this.state.markers.map((marker, index) => (
-              <MapView.Marker
-                id={marker.id}
-                key={index}
-                coordinate={marker.latlng}
-                title={marker.title}
-                description={marker.description}
-                pinColor={marker.pinColor}
-              />
-            ))}
-
-          </MapView>
+      
+        <CustomMap />
 
 
           <TouchableHighlight onPress={this._changeMap}>

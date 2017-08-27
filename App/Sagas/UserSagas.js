@@ -13,7 +13,7 @@ export function* login() {
 
         let accessToken = yield AccessToken.getCurrentAccessToken()
         console.log('*login | accessToken -> ',accessToken)
-        let promise = yield LoginManager.logInWithReadPermissions(['public_profile']);
+        let promise = yield LoginManager.logInWithReadPermissions(['public_profile','email','user_friends']);
         console.log('*login | promise -> ',promise)
         let user = yield firebase.auth().signInWithCredential(
             firebase.auth.FacebookAuthProvider.credential(accessToken.accessToken)
