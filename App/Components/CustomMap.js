@@ -16,8 +16,10 @@ export class CustomMap extends Component {
       },
     }
 
+
     constructor(props){
         super(props)
+        console.log('constructor props ->', props)
     }
 
     componentWillMount(){
@@ -32,7 +34,17 @@ export class CustomMap extends Component {
         );
     }
     
+      // Events
+  longPress(event) {
+    let { coordinate, position } = event
+    console.log('_longPress | event -> ', event)
+    console.log('_longPress | coordinates -> ', coordinate)
+    console.log('_longPress | position -> ', position)
 
+    const {setParams} = this.props.navigation;
+    setParams({ coordinate : coordinate })    
+    this.props.navigation.navigate('AddMarkerScreen')
+  }
 
 
     zoomToLocation(position){
@@ -73,7 +85,7 @@ export class CustomMap extends Component {
             followUserLocation={true}
             //onLayout={this.onLayout()}
             //onPress={event => this._shortPress(event.nativeEvent)}
-            //onLongPress={event => this._longPress(event.nativeEvent)}
+            onLongPress={event => this.longPress(event.nativeEvent)}
             //onRegionChange={this.onRegionChange}
             //onRegionChangeComplete={this.onRegionChangeComplete}
             //zoomed={false}

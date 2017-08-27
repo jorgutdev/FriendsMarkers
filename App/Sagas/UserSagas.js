@@ -32,9 +32,13 @@ export function* login() {
 
 export function* getCurrentUser(){
     try {
-        let user = firebase.auth().currentUser
+        let accessToken = yield AccessToken.getCurrentAccessToken()
+        if(accessToken){
+            let user = yield firebase.auth().signInWithCredential(
+                firebase.auth.FacebookAuthProvider.credential(accessToken.accessToken)
+            )
+        }
         if(user){
-
             yield put(UserActions.userLoginSuccess(user))
         }
     } catch (error) {

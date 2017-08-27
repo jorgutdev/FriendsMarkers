@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, Image, View, TextInput, Button, StyleSheet, Dimensions, TouchableHighlight, TouchableOpacity } from 'react-native'
+import { Text, Image, KeyboardAvoidingView, View, ScrollView, TextInput, Button, StyleSheet, Dimensions, TouchableHighlight, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import * as firebase from "firebase";
 import DrawerMenu, { logout } from './DrawerMenu'
@@ -23,6 +23,11 @@ export default class AddMarker extends Component {
         color: 'blue',
     }
 
+    constructor(props){
+        super(props)
+        console.log('AddMarker props -> ', props)
+    }
+
     markerStyle = function (options) {
         return {
             color: this.state.color,
@@ -37,7 +42,7 @@ export default class AddMarker extends Component {
     static navigationOptions = {
         header: ({ state }) => ({
             right: <TouchableOpacity onPress={() => { this.addMarker() }}>
-                <Icon name="map-marker-plus" style={{ padding: 10 }} size={28} color='#000' />
+                <Icon name="map-marker-plus" style={{ padding: 10 }} size={28} color='#fff' />
             </TouchableOpacity>
         })
     };
@@ -47,11 +52,6 @@ export default class AddMarker extends Component {
         title: 'Adding marker to map ...'
     }
 
-    constructor(props) {
-        super(props);
-        console.log('AddMarker constructor | props -> ', props)
-        console.log('AddMarker constructor | initial state -> ', this.state)
-    }
 
     addMarker() {
         alert("Wiii")
@@ -86,15 +86,49 @@ export default class AddMarker extends Component {
         if(this.state.newMarkerName=="" || this.state.newMarkerName==null )
             alert('Marker name cannot be empty')
         else {
-            this.props.navigation.navigate('LaunchScreen', { newMarker })
+            /* MarkersActions.addMarkerToMap(
+                {
+                    title: this.state.newMarkerName,
+                    description: '',
+                    latlng: {
+                        latitude: this.props.coords.latitude,
+                        longitude: this.props.coords.longitude,
+                    },
+                    pinColor: this.state.color,
+                    user: this.props.user.USER ID O ALGO,
+                    map: this.props.mapId,
+                }
+                )
+            */
+        this.props.navigation.navigate('LaunchScreen')
         }
     }
 
     render() {
         return (
-            <View style={{ flex: 1, backgroundColor: '#fff' }}>
+            <View style={{ flex: 1, backgroundColor: '#fff', }} >
 
-
+                <View style={{
+                    flexDirection: 'row',
+                    flex: 1,
+                }} behavior="padding"
+                >
+                    <View style={{ flex: 1, height: '100%' }} behavior="padding">
+                        <ColorPicker
+                            defaultColor='blue'
+                            color={this.state.color}
+                            hideSliders={true}
+                            onColorChange={
+                                color => {
+                                    let myColor = fromHsv(color)
+                                    this.setState({ color: myColor })
+                                }
+                            }
+                            onColorSelected={color => this.setState({ color })}
+                            style={{ flex: 1,  width: '100%', alignSelf: 'center' }}
+                        />
+                    </View>
+                </View>
 
                 <View style={{ padding: '10%' }}>
                     <TextInput
@@ -108,30 +142,10 @@ export default class AddMarker extends Component {
                 </View>
 
 
-                <View style={{
-                    flexDirection: 'row',
-                    flex: 1,
-                }}
-                >
-                    <View style={{ flex: 1 }}>
-                        <ColorPicker
-                            defaultColor='blue'
-                            color={this.state.color}
-                            hideSliders={true}
-                            onColorChange={
-                                color => {
-                                    let myColor = fromHsv(color)
-                                    this.setState({ color: myColor })
-                                }
-                            }
-                            onColorSelected={color => this.setState({ color })}
-                            style={{ flex: 1, width: '100%', alignSelf: 'center' }}
-                        />
-                    </View>
 
 
-                </View>
-                <View style={{ flex: 1, margin: 40 }}>
+
+                <View style={{ flex: 1, margin: 40 }} >
                     <TouchableOpacity onPress={() => { this.saveMarker() }} style={{
                         alignItems: 'center',
 
@@ -143,8 +157,8 @@ export default class AddMarker extends Component {
                             borderRadius: 56,
                             borderColor: this.state.color,
                             paddingRight: 10,
-                            backgroundColor: '#fff',
-                        }}>
+                            backgroundColor: 'transparent',
+                        }} >
                             <Icon name="map-marker-plus" style={{ padding: 10 }} size={28} color={this.state.color} />
                             <Text style={{
                                 color: this.state.color,
