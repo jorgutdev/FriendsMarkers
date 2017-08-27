@@ -24,20 +24,17 @@ export class Avatar extends Component {
 
 
   render() {
-    console.log('render', this)
     let avatar, loginButton
 
-    if (this.props.user == null) {
-      avatar = anonymousUser
+    if (!this.props.isLogged) {
       loginButton = (
         <Icon.Button name="facebook" backgroundColor="#3b5998" onPress={() => this.props.facebookLogin()}>
           <Text style={styles.buttonText}>Login with Facebook</Text>
         </Icon.Button>
       )
     } else {
-      avatar = this.props.user
       loginButton = (
-        <Icon.Button name="sign-out" backgroundColor="black" onPress={() => this.props.logout()}>
+        <Icon.Button name="sign-out" backgroundColor="black" onPress={() => this.props.facebookLogout()}>
           <Text style={styles.buttonText}>Logout</Text>
         </Icon.Button>
       )
@@ -49,10 +46,10 @@ export class Avatar extends Component {
     return (
       <View style={styles.avatarContainer}>
         <TouchableOpacity onPress={() => { }}>
-          <Image style={styles.avatar} source={{ uri: avatar.photoURL }} />
+          <Image style={styles.avatar} source={{ uri: this.props.user.photoURL }} />
         </TouchableOpacity>
         <Text style={styles.name}>
-          {avatar.displayName}
+          {this.props.user.displayName}
         </Text>
         
         { loginButton }
@@ -87,12 +84,18 @@ var styles = StyleSheet.create({
     borderWidth: 4,
     borderColor: '#0069c0',
   },
+    buttonText: {
+    fontFamily: 'Roboto',
+    fontSize: 15,
+    color: 'white'
+  },
 })
 
 function mapStateToProps(state) {
   console.log('avatar | mapStateToProps', state)
   return {
-    user: state.userReducer.user
+    user: state.userReducer.user,
+    isLogged: state.userReducer.isLogged,
   }
 }
 

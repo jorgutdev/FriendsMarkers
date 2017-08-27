@@ -5,7 +5,9 @@ import Immutable from 'seamless-immutable'
 
 const { Types, Creators } = createActions({
   userLogin: null,
+  userLogout: null,
   // user -> in success function will be accesible from action.success
+  getCurrentUser: null,
   userLoginSuccess: ['user'],
   userLoginFailure: null
 })
@@ -15,62 +17,91 @@ export default Creators
 
 /* ------------- Initial State ------------- */
 
-export const INITIAL_STATE = Immutable({
-  user: null,
-  isLogged: null,
+export const INITIAL_STATE = {
+  user: {
+    displayName: 'Anonymous',
+    photoURL: 'http://www.free-avatars.com/data/media/37/cat_avatar_0597.jpg',
+    email: ""
+  },
+  isLogged: false,
   logging: null,
   error: null,
-})
+}
 
 /* ------------- Reducers ------------- */
 
-
+let myState
 
 
 export const login = (state) => {
-    state.merge({ logging: true, isLogged: false })
-    return state
+  myState = {
+    ...state,
+    logging: true,
+    isLogged: false,
+  }
+  return myState
 }
 
 export const logout = (state) => {
-  state.merge({ logging: false, user: null, isLogged: false })
-  return state
+  myState = {
+    ...state, 
+    logging: false, 
+    user: {
+      displayName: 'Anonymous',
+      photoURL: 'http://www.free-avatars.com/data/media/37/cat_avatar_0597.jpg',
+      email: ""
+    },
+    isLogged: false 
+  }
+  return myState
 }
 
 
 export const success = (state, action) => {
   const { user } = action
-
   const { displayName, photoURL, email } = user
 
-  let myUser = {
-    displayName,
-    photoURL,
-    email
+  myState = {
+    ...state,
+    logging: false,
+    isLogged: true,
+    user: {
+      displayName,
+      photoURL,
+      email
+    }
   }
 
-  let myState = state.asMutable();
 
-  myState.user = {
-    displayName,
-    photoURL,
-    email
-  } 
-  console.log('myState ', myState)
-  
   
   console.log('success | returning state -> ', myState)
   return myState
 }
 
 export const failure = (state, error) => {
-    state.merge({ logging: false, error })
-
+  myState = {
+    ...state,
+    logging:false,
+    error
+  }
     return state
 }
+
+export const getCurrentUser = (state) => {
+  let myState = {
+    ...state,
+     isLogged: false, 
+     logging: true 
+  }
+    return myState
+}
+
+
+
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.GET_CURRENT_USER]: getCurrentUser,
   [Types.USER_LOGIN]: login,
   [Types.USER_LOGOUT]: logout,
   [Types.USER_LOGIN_SUCCESS]: success,

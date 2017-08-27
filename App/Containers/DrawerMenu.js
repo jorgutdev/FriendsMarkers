@@ -15,12 +15,6 @@ const {
 
 export default class DrawerMenu extends Component {
 
-  anonymous = {
-    currentUser: {
-      displayName: 'Anonymous',
-      photoURL: 'http://www.free-avatars.com/data/media/37/cat_avatar_0597.jpg'
-    }
-  }
 
   contentOptions = {
     activeTintColor: '#e91e63',
@@ -30,12 +24,6 @@ export default class DrawerMenu extends Component {
     drawerIcon: 'menu'
   }
 
-  state = {
-    currentUser: {
-      displayName: 'Anonymous',
-      photoURL: 'http://www.free-avatars.com/data/media/37/cat_avatar_0597.jpg'
-    }
-  }
 
   firebaseLogin() {
     AccessToken.getCurrentAccessToken().then(
@@ -100,28 +88,12 @@ export default class DrawerMenu extends Component {
 
   render() {
 
-    const isLogged = this.state.isLogged;
-
-    let button = null
-
-    if (isLogged) { // Show logout button 
-      button = (
-        <Icon.Button name="sign-out" backgroundColor="black" onPress={() => this.logout()}>
-          <Text style={styles.buttonText}>Logout</Text>
-        </Icon.Button>
-      )
-    } else {
-      button = (
-        <Icon.Button name="facebook" backgroundColor="#3b5998" onPress={() => this.facebookLogin()}>
-          <Text style={styles.buttonText}>Login with Facebook</Text>
-        </Icon.Button>
-      )
-    }
-
-    console.log(this.props)
 
     return (
       <View style={styles.topContainer}>
+
+
+        
         <Avatar />
 
 
@@ -137,7 +109,6 @@ export default class DrawerMenu extends Component {
             labelStyle={{ color: '#ffffff', marginLeft: 2 }} />
         </View>
         <View style={styles.buttonContainer} >
-          {button}
         </View>
       </View>
     )

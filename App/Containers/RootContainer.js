@@ -3,6 +3,7 @@ import { View, StatusBar } from 'react-native'
 import ReduxNavigation from '../Navigation/ReduxNavigation'
 import { connect } from 'react-redux'
 import StartupActions from '../Redux/StartupRedux'
+import UserActions from '../Redux/UserRedux'
 import ReduxPersist from '../Config/ReduxPersist'
 
 // Styles
@@ -14,6 +15,7 @@ class RootContainer extends Component {
     if (!ReduxPersist.active) {
       this.props.startup()
     }
+    this.props.getCurrentUser()
   }
 
   render () {
@@ -28,7 +30,8 @@ class RootContainer extends Component {
 
 // wraps dispatch to create nicer functions to call within our component
 const mapDispatchToProps = (dispatch) => ({
-  startup: () => dispatch(StartupActions.startup())
+  startup: () => dispatch(StartupActions.startup()),
+  getCurrentUser: () => dispatch(UserActions.getCurrentUser())
 })
 
 export default connect(null, mapDispatchToProps)(RootContainer)

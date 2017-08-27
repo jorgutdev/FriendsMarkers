@@ -29,6 +29,21 @@ export function* login() {
     }
 }
 
+
+export function* getCurrentUser(){
+    try {
+        let user = firebase.auth().currentUser
+        if(user){
+
+            yield put(UserActions.userLoginSuccess(user))
+        }
+    } catch (error) {
+        yield put(UserActions.userLoginFailure(error))
+    }
+}
+
+
+
 export function* logout(){
     LoginManager.logOut()
     firebase.auth().signOut()

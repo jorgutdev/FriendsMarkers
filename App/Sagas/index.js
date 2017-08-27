@@ -15,7 +15,7 @@ import { UserTypes } from '../Redux/UserRedux'
 import { startup } from './StartupSagas'
 import { getUserAvatar } from './GithubSagas'
 import { getMarkers } from './MarkersSagas'
-import { login } from './UserSagas'
+import { login, getCurrentUser } from './UserSagas'
 
 /* ------------- API ------------- */
 
@@ -32,6 +32,7 @@ export default function * root () {
 
     takeLatest(MarkersTypes.MARKERS_REQUEST, getMarkers),
     takeLatest(UserTypes.USER_LOGIN, login),
+    takeLatest(UserTypes.GET_CURRENT_USER, getCurrentUser),
     
     // some sagas receive extra parameters in addition to an action
     takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api)
