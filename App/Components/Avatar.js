@@ -22,8 +22,8 @@ export class Avatar extends Component {
 
 
   render() {
-    let avatar, loginButton
-
+    
+    let loginButton
     if (!this.props.isLogged) {
       loginButton = (
         <Icon.Button name="facebook" backgroundColor="#3b5998" onPress={() => this.props.facebookLogin()}>
@@ -49,9 +49,7 @@ export class Avatar extends Component {
         <Text style={styles.name}>
           {this.props.user.displayName}
         </Text>
-        
         { loginButton }
-
       </View>
     )
   }
@@ -66,9 +64,9 @@ var styles = StyleSheet.create({
     fontFamily: 'Roboto'
   },
   avatarContainer: {
-    flex: 1,
     alignItems: 'center',
     backgroundColor: '#2196F3',
+    marginBottom: '4%'
   },
   avatar: {
     marginTop: '5%',

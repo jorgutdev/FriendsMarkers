@@ -21,7 +21,7 @@ const PrimaryStack = StackNavigator({
     screen: LaunchScreen,
     navigationOptions: ({ navigation }) => ({
       headerMode: 'screen',
-      title: 'Global Map',
+      title: '',
       headerLeft: (<TouchableOpacity onPress={() => { navigation.navigate('DrawerOpen') }}>
         <Icon name="menu" style={{ color: 'black', padding: 10, marginLeft: 10, fontSize: 20 }} />
       </TouchableOpacity>),

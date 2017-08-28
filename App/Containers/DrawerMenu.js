@@ -69,18 +69,6 @@ export default class DrawerMenu extends Component {
   }
 
   componentDidMount() {
-    if (firebase.auth().currentUser) {
-      this.setState({ currentUser: firebase.auth().currentUser })
-    }
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        console.log('LoginScreen | User already logged -> ', user)
-      } else {
-        console.log('LoginScreen | user is not logged yet')
-      }
-    }, error => {
-      console.error(error)
-    });
   }
 
 
