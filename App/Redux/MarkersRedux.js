@@ -7,7 +7,9 @@ const { Types, Creators } = createActions({
   markersRequest: null,
   // markers -> in success function will be accesible from action.success
   markersSuccess: ['markers'],
-  markersFailure: null
+  markersFailure: null,
+  addMarkerToMap: ['marker'],
+  markerAdded: null,
 })
 
 export const MarkersTypes = Types
@@ -49,10 +51,38 @@ export const failure = (state, error) => {
   }
 }
 
+
+export const addMarkerToMap = (state, parameters) => {
+
+  debugger;;
+
+  const { marker } = parameters
+
+  myState = {
+    ...state,
+    addingMarker: true,
+    newMarker: marker,
+  }
+  return myState
+}
+
+export const markerAdded = (state) => {
+  debugger;;
+  myState = {
+    ...state,
+    addingMarker: false,
+  }
+  return myState
+}
+
+
+
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.MARKERS_REQUEST]: request,
   [Types.MARKERS_SUCCESS]: success,
-  [Types.MARKERS_FAILURE]: failure
+  [Types.MARKERS_FAILURE]: failure,
+  [Types.ADD_MARKER_TO_MAP]: addMarkerToMap,
+  [Types.MARKER_ADDED]: markerAdded,
 })

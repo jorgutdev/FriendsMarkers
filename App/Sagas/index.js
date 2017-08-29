@@ -15,7 +15,7 @@ import { MapsTypes } from '../Redux/MapsRedux'
 
 import { startup } from './StartupSagas'
 import { getUserAvatar } from './GithubSagas'
-import { getMarkers } from './MarkersSagas'
+import { getMarkers, addMarkerToMap } from './MarkersSagas'
 import { login, getCurrentUser } from './UserSagas'
 import { addMap, loadMap } from './MapsSagas'
 
@@ -33,6 +33,7 @@ export default function * root () {
     takeLatest(StartupTypes.STARTUP, startup),
 
     takeLatest(MarkersTypes.MARKERS_REQUEST, getMarkers),
+    takeLatest(MarkersTypes.ADD_MARKER_TO_MAP, addMarkerToMap),
     takeLatest(UserTypes.USER_LOGIN, login),
     takeLatest(UserTypes.GET_CURRENT_USER, getCurrentUser),
     takeLatest(MapsTypes.ADD_MAP, addMap),

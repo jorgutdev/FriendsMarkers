@@ -39,9 +39,7 @@ export class CustomMap extends Component {
     console.log('_longPress | coordinates -> ', coordinate)
     console.log('_longPress | position -> ', position)
 
-    const { setParams } = this.props.navigation;
-    setParams({ coordinate: coordinate })
-    this.props.navigation.navigate('AddMarkerScreen')
+    this.props.navigation.navigate('AddMarkerScreen', coordinate)
   }
 
 

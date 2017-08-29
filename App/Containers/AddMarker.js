@@ -3,6 +3,9 @@ import { Text, Image, KeyboardAvoidingView, View, ScrollView, TextInput, Button,
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import * as firebase from "firebase";
 import DrawerMenu, { logout } from './DrawerMenu'
+import MarkersActions from '../Redux/MarkersRedux'
+import { connect } from 'react-redux'
+
 // Styles
 import { fromHsv, toHsv, ColorPicker } from 'react-native-color-picker'
 
@@ -15,7 +18,7 @@ const {
 
 
 
-export default class AddMarker extends Component {
+export class AddMarker extends Component {
 
     state = {
         newMarkerName: null,
@@ -53,9 +56,6 @@ export default class AddMarker extends Component {
     }
 
 
-    addMarker() {
-        alert("Wiii")
-    }
 
     componentWillMount() {
         /*         let currentUser = null
@@ -86,21 +86,19 @@ export default class AddMarker extends Component {
         if(this.state.newMarkerName=="" || this.state.newMarkerName==null )
             alert('Marker name cannot be empty')
         else {
-            /* MarkersActions.addMarkerToMap(
-                {
+            let marker = {
                     title: this.state.newMarkerName,
                     description: '',
                     latlng: {
-                        latitude: this.props.coords.latitude,
-                        longitude: this.props.coords.longitude,
+                        latitude: this.props.navigation.state.params.latitude,
+                        longitude: this.props.navigation.state.params.longitude,
                     },
                     pinColor: this.state.color,
-                    user: this.props.user.USER ID O ALGO,
-                    map: this.props.mapId,
+                    user: this.props.user.email,
+                    map: this.props.map.id,
                 }
-                )
-            */
-        this.props.navigation.navigate('LaunchScreen')
+            this.props.addMarkerToMap(marker)
+                        this.props.navigation.navigate('LaunchScreen')
         }
     }
 
@@ -179,3 +177,22 @@ const styles = StyleSheet.create({
         width: 40,
     },
 });
+
+function mapStateToProps(state) {
+  console.log('LaunchScreen | mapStateToProps', state)
+  return {
+    map: state.mapsReducer.map,
+    user: state.userReducer.user,
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addMarkerToMap: (marker) => dispatch(MarkersActions.addMarkerToMap(marker))
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddMarker)

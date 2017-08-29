@@ -25,11 +25,18 @@ export function* loadMap(action) {
     const { id } = action
     try {
         let promise = yield firebase.database().ref('maps/' + id).once('value')
+        let markersArray = promise.val().markers
+
+        let markers = []
+        for( var index in markersArray){
+            markers.push(markersArray[index])
+        }
+
         let map = {
-            markers: [],
             users: [],
             id,
             ...promise.val(),
+            markers,            
         }
         yield put(MapsActions.mapLoaded(map))
     } catch (error) {

@@ -15,3 +15,16 @@ export function* getMarkers() {
         yield put(MarkersActions.markersFailure(error))
     }
 }
+
+
+export function* addMarkerToMap(action) {
+    debugger;;
+    const { marker } = action
+    try {
+        let key = firebase.database().ref('maps/'+marker.map+'/markers').push().key
+        yield firebase.database().ref('maps/'+marker.map+'/markers/'+key).set(marker)
+        yield put(MarkersActions.markerAdded())
+    } catch (error) {
+        console.error(error)
+    }
+}

@@ -15,6 +15,7 @@ class RootContainer extends Component {
   componentDidMount () {
     console.ignoredYellowBox = ['Setting a timer'];
     this.props.loadMap('global')
+    this.props.loadUser()
   }
 
   render () {
@@ -30,6 +31,7 @@ class RootContainer extends Component {
 // wraps dispatch to create nicer functions to call within our component
 const mapDispatchToProps = (dispatch) => ({
   loadMap: (id) => dispatch(MapsActions.loadMap(id)),
+  loadUser: () => dispatch(UserActions.getCurrentUser())
 })
 
 export default connect(null, mapDispatchToProps)(RootContainer)
