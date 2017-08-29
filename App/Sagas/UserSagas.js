@@ -4,25 +4,25 @@ import * as firebase from 'firebase'
 const FBSDK = require('react-native-fbsdk');
 const {
     LoginManager,
-  AccessToken,
-  LoginButton
+    AccessToken,
+    LoginButton
 } = FBSDK
 
 export function* login() {
     try {
-
+        debugger;;
         let accessToken = yield AccessToken.getCurrentAccessToken()
-        console.log('*login | accessToken -> ',accessToken)
-        let promise = yield LoginManager.logInWithReadPermissions(['public_profile','email','user_friends']);
-        console.log('*login | promise -> ',promise)
+        console.log('*login | accessToken -> ', accessToken)
+        let promise = yield LoginManager.logInWithReadPermissions(['public_profile', 'email', 'user_friends']);
+        console.log('*login | promise -> ', promise)
         let user = yield firebase.auth().signInWithCredential(
             firebase.auth.FacebookAuthProvider.credential(accessToken.accessToken)
         )
-        console.log('*login | user -> ',user)
-        
+        console.log('*login | user -> ', user)
 
-    
-        yield put(UserActions.userLoginSuccess(user)) 
+
+
+        yield put(UserActions.userLoginSuccess(user))
     } catch (error) {
         console.error(error)
         yield put(UserActions.userLoginFailure(error))
@@ -30,19 +30,19 @@ export function* login() {
 }
 
 
-export function* getCurrentUser(){
+export function* getCurrentUser() {
     try {
         let accessToken = yield AccessToken.getCurrentAccessToken()
         let currentUser = firebase.auth().currentUser
-        if(accessToken){
-            let user = yield firebase.auth().signInWithCredential(
-                firebase.auth.FacebookAuthProvider.credential(accessToken.accessToken)
-            )
-        }
-    debugger;;
-        
-        if(user){
+        if (currentUser) {
             yield put(UserActions.userLoginSuccess(user))
+        } else {
+            if (accessToken) {
+                let user = yield firebase.auth().signInWithCredential(
+                    firebase.auth.FacebookAuthProvider.credential(accessToken.accessToken)
+                )
+                yield put(UserActions.userLoginSuccess(user))
+            }
         }
     } catch (error) {
         yield put(UserActions.userLoginFailure(error))
@@ -53,7 +53,9 @@ export function* getCurrentUser(){
 
 
 
-export function* logout(){
+export function* logout() {
     LoginManager.logOut()
-    firebase.auth().signOut()
+    yield firebase.auth().signOut()
+    yield put(UserActions.userLogout())
+    
 }

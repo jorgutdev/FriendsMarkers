@@ -13,8 +13,6 @@ export class ActionButtonBar extends Component {
 
     constructor(props) {
         super(props)
-        console.log('ActionButtonBar props', props)
-        
     }
 
     componentDidMount() {
@@ -28,7 +26,7 @@ export class ActionButtonBar extends Component {
     render() {
 
         return (
-            <ActionButton buttonColor="rgba(231,76,60,1)" position='left' verticalOrientation='down'>
+            <ActionButton buttonColor="rgba(231,76,60,1)" position='left' verticalOrientation='down' style={ styles.buttonContainer}>
                 <ActionButton.Item buttonColor='#9b59b6' onPress={this.showModal}>
                     <Icon name="map-marker-plus" style={styles.actionButtonIcon} />
                 </ActionButton.Item>
@@ -49,6 +47,10 @@ var styles = StyleSheet.create({
         color: '#fff',
         fontSize: 18,
     },
+    buttonContainer: {
+        top: '9%',
+        left: '-2%'
+    }
 })
 
 function mapStateToProps(state) {

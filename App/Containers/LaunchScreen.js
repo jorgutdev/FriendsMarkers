@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScrollView, Text, Image, View, TextInput, Button, StyleSheet, Dimensions, TouchableHighlight, TouchableOpacity } from 'react-native'
+import { View, StyleSheet, KeyboardAvoidingView } from 'react-native'
 import { Images } from '../Themes'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { connect } from 'react-redux'
@@ -7,32 +7,25 @@ import { connect } from 'react-redux'
 import ActionButtonBar from '../Components/ActionButtonBar';
 import CustomMap from '../Components/CustomMap';
 import AddMapModal from '../Components/AddMapModal';
+import AddMarkerModal from '../Components/AddMarkerModal';
 
 import * as firebase from "firebase";
 import { fromHsv, toHsv, TriangleColorPicker } from 'react-native-color-picker'
-// Styles
-import styles from './Styles/LaunchScreenStyles'
-
-const { width, height } = Dimensions.get('window');
-const DEFAULT_PADDING = { top: 40, right: 40, bottom: 40, left: 40 };
-
 
 export class LaunchScreen extends Component {
   state = {
-    hackHeight: height,
-    mapName: this.props.map.name,
-    isModalVisible: false,
-    color: 'blue',
+    isMapModalVisible: false,
+    isMarkerModalVisible: false,
   }
-    static navigationOptions = {
-        drawerLabel: 'Maps',
-        drawerIcon: (<Icon name="google-maps" size={26} style={{color: "#fff"}} />),
-    };
+  static navigationOptions = {
+    header: null,
+    drawerLabel: 'Maps',
+    drawerIcon: (<Icon name="google-maps" size={26} style={{ color: "#fff" }} />),
+  };
 
 
 
   constructor(props) {
-    console.log('launchscreen | props -> ', props)
     super(props);
   }
 
@@ -45,43 +38,54 @@ export class LaunchScreen extends Component {
   componentDidMount() {
   }
 
-
-  showModal = () => {
-    this.setState({ isModalVisible: true })
+  showAddMarkerModal = (event) => {
+    this.setState({ isMarkerModalVisible: true })
   }
-  closeModal = () => {
-    this.setState({ isModalVisible: false })
+  closeAddMarkerModal = () => {
+    this.setState({ isMarkerModalVisible: false })
+  }
+
+  showAddMapModal = () => {
+    this.setState({ isMapModalVisible: true })
+  }
+  closeAddMapModal = () => {
+    this.setState({ isMapModalVisible: false })
   }
 
   render() {
     return (
-      <View>
+      <View style={styles.map}>
         <View style={{ flex: 1, paddingBottom: this.state.hackHeight }}>
-      
-        <CustomMap navigation={this.props.navigation} />
-        <ActionButtonBar navigation={this.props.navigation}  showModal={this.showModal}    />
-        <AddMapModal isModalVisible={this.state.isModalVisible} closeModal={this.closeModal}  />
-        
+
+          <CustomMap
+            navigation={this.props.navigation}
+            showAddMapModal={this.showAddMapModal}
+            showAddMarkerModal={this.showAddMarkerModal} />
+
+          <AddMapModal
+            isModalVisible={this.state.isMapModalVisible}
+            closeModal={this.closeAddMapModal} />
+
+          <AddMarkerModal
+            isModalVisible={this.state.isMarkerModalVisible}
+            closeModal={this.closeAddMarkerModal} />
+
+
         </View>
       </View>
     );
   }
 
-  changeColor(color) {
-    this.setState({ 
-      color: fromHsv({ 
-        h: color.color.h,
-        s: color.color.s,
-        v: color.color.v 
-      })
-    })
-      
-  }
 }
+
+let styles = StyleSheet.create({
+  map: {
+    ...StyleSheet.absoluteFillObject
+  },
+})
 
 
 function mapStateToProps(state) {
-  console.log('LaunchScreen | mapStateToProps', state)
   return {
     map: state.mapsReducer.map,
   }

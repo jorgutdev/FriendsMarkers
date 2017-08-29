@@ -7,7 +7,6 @@ import DebugConfig from '../Config/DebugConfig'
 
 import { StartupTypes } from '../Redux/StartupRedux'
 import { GithubTypes } from '../Redux/GithubRedux'
-import { MarkersTypes } from '../Redux/MarkersRedux'
 import { UserTypes } from '../Redux/UserRedux'
 import { MapsTypes } from '../Redux/MapsRedux'
 
@@ -15,9 +14,8 @@ import { MapsTypes } from '../Redux/MapsRedux'
 
 import { startup } from './StartupSagas'
 import { getUserAvatar } from './GithubSagas'
-import { getMarkers, addMarkerToMap } from './MarkersSagas'
 import { login, getCurrentUser } from './UserSagas'
-import { addMap, loadMap } from './MapsSagas'
+import { addMap, loadMap, addMarkerToMap } from './MapsSagas'
 
 /* ------------- API ------------- */
 
@@ -32,12 +30,12 @@ export default function * root () {
     // some sagas only receive an action
     takeLatest(StartupTypes.STARTUP, startup),
 
-    takeLatest(MarkersTypes.MARKERS_REQUEST, getMarkers),
-    takeLatest(MarkersTypes.ADD_MARKER_TO_MAP, addMarkerToMap),
     takeLatest(UserTypes.USER_LOGIN, login),
     takeLatest(UserTypes.GET_CURRENT_USER, getCurrentUser),
     takeLatest(MapsTypes.ADD_MAP, addMap),
     takeLatest(MapsTypes.LOAD_MAP, loadMap),
+    takeLatest(MapsTypes.ADD_MARKER_TO_MAP, addMarkerToMap),
+    
     // some sagas receive extra parameters in addition to an action
     takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api)
   ]

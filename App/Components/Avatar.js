@@ -13,7 +13,6 @@ export class Avatar extends Component {
 
   constructor(props) {
     super(props)
-    console.log('constructor props', props)
   }
 
   componentDidMount() {
@@ -33,7 +32,7 @@ export class Avatar extends Component {
     } else {
       loginButton = (
         <Icon.Button name="sign-out" backgroundColor="black" onPress={() => this.props.facebookLogout()}>
-          <Text style={styles.buttonText}>Logout</Text>
+          <Text style={styles.buttonText}>       Logout        </Text>
         </Icon.Button>
       )
     }
@@ -84,7 +83,6 @@ var styles = StyleSheet.create({
 })
 
 function mapStateToProps(state) {
-  console.log('Avatar | mapStateToProps', state)
   return {
     user: state.userReducer.user,
     isLogged: state.userReducer.isLogged,

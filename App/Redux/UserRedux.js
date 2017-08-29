@@ -60,7 +60,6 @@ export const logout = (state) => {
 export const success = (state, action) => {
   const { user } = action
   const { displayName, photoURL, email } = user
-
   myState = {
     ...state,
     logging: false,
@@ -71,10 +70,6 @@ export const success = (state, action) => {
       email
     }
   }
-
-
-  
-  console.log('success | returning state -> ', myState)
   return myState
 }
 

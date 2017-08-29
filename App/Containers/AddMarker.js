@@ -3,7 +3,7 @@ import { Text, Image, KeyboardAvoidingView, View, ScrollView, TextInput, Button,
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import * as firebase from "firebase";
 import DrawerMenu, { logout } from './DrawerMenu'
-import MarkersActions from '../Redux/MarkersRedux'
+import MapsActions from '../Redux/MapsRedux'
 import { connect } from 'react-redux'
 
 // Styles
@@ -58,18 +58,7 @@ export class AddMarker extends Component {
 
 
     componentWillMount() {
-        /*         let currentUser = null
-                firebase.auth().onAuthStateChanged(user => {
-                    if (user) {
-                        currentUser = user
-                        console.log('LoginScreen | User already logged -> ', user)
-                        //this.props.navigation.navigate('PrimaryStack')
-                    } else {
-                        console.log('LoginScreen | user is not logged yet')
-                    }
-                }, error => {
-                    console.error(error)
-                }); */
+
     }
 
 
@@ -98,7 +87,7 @@ export class AddMarker extends Component {
                     map: this.props.map.id,
                 }
             this.props.addMarkerToMap(marker)
-                        this.props.navigation.navigate('LaunchScreen')
+            this.props.navigation.navigate('LaunchScreen')
         }
     }
 
@@ -179,7 +168,6 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state) {
-  console.log('LaunchScreen | mapStateToProps', state)
   return {
     map: state.mapsReducer.map,
     user: state.userReducer.user,
@@ -188,7 +176,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    addMarkerToMap: (marker) => dispatch(MarkersActions.addMarkerToMap(marker))
+    addMarkerToMap: (marker) => dispatch(MapsActions.addMarkerToMap(marker))
   }
 }
 

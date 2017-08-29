@@ -8,6 +8,8 @@ const { Types, Creators } = createActions({
   returnToMap: ['map'],
   loadMap: ['id'],
   mapLoaded: ['map'],
+  addMarkerToMap: ['marker'],
+  markerAddedSuccessfully: ['marker'],
 })
 
 export const MapsTypes = Types
@@ -71,9 +73,7 @@ export const addMap = (state, parameters) => {
 
 
 export const returnToMap = (state, action) => {
-
   const { map } = action
-  debugger;;
   myState = {
     ...state,
     map,
@@ -83,6 +83,34 @@ export const returnToMap = (state, action) => {
 }
 
 
+export const addMarkerToMap = (state, parameters) => {
+  const { marker } = parameters
+  myState = {
+    ...state,
+    addingMarker: true,
+  }
+  return myState
+}
+
+
+export const markerAddedSuccessfully = (state, parameters) => {
+  const { marker } = parameters
+  myState = {
+    ...state,
+    addingMarker: false,
+    map: {
+      ...state.map,
+      markers: [
+        ...state.map.markers,
+        marker,
+      ]
+    }
+  }
+  return myState
+}
+
+
+
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -90,4 +118,6 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.RETURN_TO_MAP]: returnToMap,
   [Types.LOAD_MAP]: loadMap,
   [Types.MAP_LOADED]: mapLoaded,
+  [Types.ADD_MARKER_TO_MAP]: addMarkerToMap,
+  [Types.MARKER_ADDED_SUCCESSFULLY]: markerAddedSuccessfully,
 })

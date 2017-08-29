@@ -47,3 +47,13 @@ export function* loadMap(action) {
 
 
 
+export function* addMarkerToMap(action) {
+    const { marker } = action
+    try {
+        let key = firebase.database().ref('maps/'+marker.map+'/markers').push().key
+        yield firebase.database().ref('maps/'+marker.map+'/markers/'+key).set(marker)
+        yield put(MapsActions.markerAddedSuccessfully(marker))
+    } catch (error) {
+        console.error(error)
+    }
+}
