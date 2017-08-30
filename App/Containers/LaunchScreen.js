@@ -14,8 +14,7 @@ import { fromHsv, toHsv, TriangleColorPicker } from 'react-native-color-picker'
 
 export class LaunchScreen extends Component {
   state = {
-    isMapModalVisible: false,
-    isMarkerModalVisible: false,
+
   }
   static navigationOptions = {
     header: null,
@@ -38,19 +37,7 @@ export class LaunchScreen extends Component {
   componentDidMount() {
   }
 
-  showAddMarkerModal = (event) => {
-    this.setState({ isMarkerModalVisible: true })
-  }
-  closeAddMarkerModal = () => {
-    this.setState({ isMarkerModalVisible: false })
-  }
 
-  showAddMapModal = () => {
-    this.setState({ isMapModalVisible: true })
-  }
-  closeAddMapModal = () => {
-    this.setState({ isMapModalVisible: false })
-  }
 
   render() {
     return (
@@ -61,15 +48,6 @@ export class LaunchScreen extends Component {
             navigation={this.props.navigation}
             showAddMapModal={this.showAddMapModal}
             showAddMarkerModal={this.showAddMarkerModal} />
-
-          <AddMapModal
-            isModalVisible={this.state.isMapModalVisible}
-            closeModal={this.closeAddMapModal} />
-
-          <AddMarkerModal
-            isModalVisible={this.state.isMarkerModalVisible}
-            closeModal={this.closeAddMarkerModal} />
-
 
         </View>
       </View>

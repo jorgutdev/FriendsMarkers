@@ -4,17 +4,15 @@ import { connect } from 'react-redux'
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import ActionButtonBar from './ActionButtonBar';
 import Header from './Header';
-
+import AddMapModal from '../Components/AddMapModal';
+import AddMarkerModal from '../Components/AddMarkerModal';
 
 export class CustomMap extends Component {
 
   state = {
-    region: {
-      latitude: 0,
-      longitude: 0,
-      latitudeDelta: 80.0922,
-      longitudeDelta: 80.0421,
-    },
+
+        isMapModalVisible: false,
+    isMarkerModalVisible: false,
   }
 
 
@@ -56,6 +54,26 @@ export class CustomMap extends Component {
     navigator.geolocation.clearWatch(this.watchID);
   }
 
+
+
+  showAddMarkerModal = (event) => {
+    this.setState({ 
+      isMarkerModalVisible: true,
+      newMarkerCoordinate: event.coordinate,
+   })
+  }
+
+  closeAddMarkerModal = () => {
+    this.setState({ isMarkerModalVisible: false })
+  }
+
+  showAddMapModal = () => {
+    this.setState({ isMapModalVisible: true })
+  }
+  closeAddMapModal = () => {
+    this.setState({ isMapModalVisible: false })
+  }
+
   render() {
     return (
       <View style={styles.map}>
@@ -76,7 +94,7 @@ export class CustomMap extends Component {
           followUserLocation={true}
           //onLayout={this.onLayout()}
           //onPress={event => this._shortPress(event.nativeEvent)}
-          onLongPress={event => this.props.showAddMarkerModal(event.nativeEvent)}
+          onLongPress={event => this.showAddMarkerModal(event.nativeEvent)}
         //onRegionChange={this.onRegionChange}
         //onRegionChangeComplete={this.onRegionChangeComplete}
         //zoomed={false}
@@ -95,8 +113,19 @@ export class CustomMap extends Component {
         </MapView>
 
 
-        <ActionButtonBar navigation={this.props.navigation} showModal={this.props.showAddMapModal} />
+        <ActionButtonBar navigation={this.props.navigation} showModal={this.showAddMapModal} />
         <Header navigation={this.props.navigation}  name={this.props.map.name} />
+
+
+          <AddMapModal
+            isModalVisible={this.state.isMapModalVisible}
+            closeModal={this.closeAddMapModal} />
+
+          <AddMarkerModal
+            isModalVisible={this.state.isMarkerModalVisible}
+            coordinate={this.state.newMarkerCoordinate}
+            closeModal={this.closeAddMarkerModal} />
+
 
         
       </View>

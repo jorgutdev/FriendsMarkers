@@ -71,25 +71,7 @@ export class AddMarker extends Component {
     componentWillUnmount() {
     }
 
-    saveMarker() {
-        if(this.state.newMarkerName=="" || this.state.newMarkerName==null )
-            alert('Marker name cannot be empty')
-        else {
-            let marker = {
-                    title: this.state.newMarkerName,
-                    description: '',
-                    latlng: {
-                        latitude: this.props.navigation.state.params.latitude,
-                        longitude: this.props.navigation.state.params.longitude,
-                    },
-                    pinColor: this.state.color,
-                    user: this.props.user.email,
-                    map: this.props.map.id,
-                }
-            this.props.addMarkerToMap(marker)
-            this.props.navigation.navigate('LaunchScreen')
-        }
-    }
+
 
     render() {
         return (

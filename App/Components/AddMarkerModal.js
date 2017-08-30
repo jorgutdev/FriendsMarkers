@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { TouchableOpacity, Image, View, Text, StyleSheet, TextInput, KeyboardAvoidingView } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { connect } from 'react-redux'
-import ActionButton from 'react-native-action-button';
 import Modal from 'react-native-modal'
 import MapsActions from '../Redux/MapsRedux'
 import { fromHsv, toHsv, ColorPicker } from 'react-native-color-picker'
@@ -21,6 +20,27 @@ export class AddMarkerModal extends Component {
     componentDidMount() {
     }
 
+
+        saveMarker(){
+        if(this.state.newMarkerName=="" || this.state.newMarkerName==null )
+            alert('Marker name cannot be empty')
+        else {
+            let marker = {
+                    title: this.state.newMarkerName,
+                    description: '',
+                    latlng: {
+                        latitude: this.props.coordinate.latitude,
+                        longitude: this.props.coordinate.longitude,
+                    },
+                    pinColor: this.state.color,
+                    user: this.props.user.email,
+                    map: this.props.map.id,
+                }
+                debugger;;
+            this.props.addMarkerToMap(marker)
+        }
+    }
+
     render() {
         return (
             <View>
@@ -31,12 +51,19 @@ export class AddMarkerModal extends Component {
                     animationOut="slideOutDown"
                 >
 
-                    <View style={styles.modalHeader} >
-                        <Text style={styles.headerText}>Adding marker</Text>
-                        <TouchableOpacity onPress={() => this.props.closeModal()} >
-                            <Icon style={styles.iconClose} name="close" color="#fff" />
-                        </TouchableOpacity>
-                    </View>
+            <View style={styles.header}  >
+                <View style={styles.nameContainer} >
+                    <Text style={styles.name}>
+                        Adding marker
+                    </Text>
+                </View>
+                <View style={styles.searchIconContainer}>
+                    <TouchableOpacity onPress={() => { this.props.closeModal() }}>
+                        <Icon name="close" style={styles.searchIcon} />
+                    </TouchableOpacity>
+                </View>
+            </View>
+
                     <View style={styles.modalContent}>
                         <View style={{ padding: '10%' }}>
                             <TextInput
@@ -44,7 +71,8 @@ export class AddMarkerModal extends Component {
                                 onChangeText={newMarkerName => this.setState({ newMarkerName })}
                                 value={this.state.newMarkerName}
                                 placeholder="Marker Name"
-                                autoFocus={true}
+                                autoFocus={false}
+                                underlineColorAndroid="transparent"
                             />
 
                         </View>
@@ -68,7 +96,7 @@ export class AddMarkerModal extends Component {
 
 
                         <View style={{ flex: 1, margin: 40 }} >
-                            <TouchableOpacity onPress={() => { this.saveMarker() }} style={{
+                            <TouchableOpacity onPress={() => { this.saveMarker }} style={{
                                 alignItems: 'center',
 
                             }} >
@@ -98,43 +126,38 @@ export class AddMarkerModal extends Component {
 
 
 var styles = StyleSheet.create({
-    textInputView: {
-    },
-    saveView: {
-        alignSelf: 'center',
-        margin: 50,
-    },
-    textinput: {
-        fontSize: 23,
-        width: '50%',
-        alignSelf: 'center'
-    },
-    iconSave: {
-        fontSize: 20,
-    },
-    iconClose: {
-        fontSize: 20,
-        paddingTop: 15,
-        paddingLeft: '9%',
-
-    },
-    modalHeader: {
-        backgroundColor: '#0069c0',
-        flexDirection: 'row',
-    },
-    headerText: {
-        fontSize: 28,
-        color: '#fff',
-        padding: 10,
-    },
-    modal: {
-        backgroundColor: 'transparent',
-    },
     modalContent: {
-        backgroundColor: '#6ec6ff',
+        backgroundColor: '#E0E0E0',
         height: '70%',
     },
-
+    
+        header: {
+        backgroundColor: 'rgba(0,0, 0, 1)',
+        padding: 15,
+        justifyContent: 'space-between',        
+        flexDirection: 'row',
+    },
+    menuIconContainer: {
+        alignSelf: 'flex-start',
+    },
+    menuIcon: {
+        color: 'white',
+        fontSize: 25,
+    },
+    searchIconContainer: {
+        alignSelf: 'flex-end',
+    },
+    searchIcon: {
+        color: 'white',
+        fontSize: 25,
+    },
+    nameContainer: {
+        alignSelf: 'center',
+    },
+    name: {
+        fontSize: 20,
+        color: 'white',
+    },
 })
 
 function mapStateToProps(state) {
@@ -146,6 +169,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
+        addMarkerToMap: (marker) => dispatch(MapsActions.addMarkerToMap(marker))
     }
 }
 
