@@ -1,0 +1,15 @@
+dependencies: \
+  /Users/jorge/Desktop/FriendsMarkers/node_modules/react-native/Libraries/Network/RCTHTTPRequestHandler.mm \
+  /Users/jorge/Desktop/FriendsMarkers/node_modules/react-native/Libraries/Network/RCTHTTPRequestHandler.h \
+  /Users/jorge/Desktop/FriendsMarkers/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h \
+  /Users/jorge/Desktop/FriendsMarkers/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTURLRequestHandler.h \
+  /Users/jorge/Desktop/FriendsMarkers/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
+  /Users/jorge/Desktop/FriendsMarkers/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTDefines.h \
+  /Users/jorge/Desktop/FriendsMarkers/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTURLRequestDelegate.h \
+  /Users/jorge/Desktop/FriendsMarkers/node_modules/react-native/Libraries/Network/RCTNetworking.h \
+  /Users/jorge/Desktop/FriendsMarkers/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTEventEmitter.h \
+  /Users/jorge/Desktop/FriendsMarkers/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridge.h \
+  /Users/jorge/Desktop/FriendsMarkers/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeDelegate.h \
+  /Users/jorge/Desktop/FriendsMarkers/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTJavaScriptLoader.h \
+  /Users/jorge/Desktop/FriendsMarkers/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTFrameUpdate.h \
+  /Users/jorge/Desktop/FriendsMarkers/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTNetworkTask.h
