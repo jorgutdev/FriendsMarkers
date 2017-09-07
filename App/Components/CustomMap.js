@@ -6,21 +6,27 @@ import ActionButtonBar from './ActionButtonBar';
 import Header from './Header';
 import AddMapModal from '../Components/AddMapModal';
 import AddMarkerModal from '../Components/AddMarkerModal';
-
+import TempButtons from '../Components/TempButtons'
 export class CustomMap extends Component {
 
-  state = {
+  
 
-        isMapModalVisible: false,
+
+  state = {
+    temporalMarker: null,
+    isMapModalVisible: false,
     isMarkerModalVisible: false,
   }
 
 
   constructor(props) {
     super(props)
+    let color
+    let tempMarker=null
+    
   }
 
-  componentWillMount() {
+  componentDidMount() {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         this.zoomToLocation(position)
@@ -33,9 +39,43 @@ export class CustomMap extends Component {
   // Events
   longPress(event) {
     let { coordinate, position } = event
-    
+  
+    // New temporal marker
+    let temporalMarker = {
+      coordinate: coordinate,
+    }
+
+    this.displayTempMarker(coordinate)
+
+    this.setState({ temporalMarker: temporalMarker })
   }
 
+// to change
+  displayTempMarker(coordinate){
+    var myArray = ['red','tomato','orange','yellow','gold','wheat','tan','linen','green','blue','navy','aqua','teal','turquoise','violet','purple','plum','indigo']    
+    
+    auxMarker = (
+        <MapView.Marker draggable
+          coordinate={coordinate}
+          pinColor={this.color}
+          onDragStart={ event => {
+            var rand = myArray[Math.floor(Math.random() * myArray.length)];
+            this.color=rand
+          }}
+          onDrag={ event => {
+            var rand = myArray[Math.floor(Math.random() * myArray.length)];
+            this.color=rand            
+          }}
+          onDragEnd={ (event) => {
+            var rand = myArray[Math.floor(Math.random() * myArray.length)];
+            this.color=rand
+                        this.map.forceUpdate()
+
+          }}
+          />
+      )
+      this.tempMarker = auxMarker
+  }
 
   zoomToLocation(position) {
     this.setState(
@@ -75,16 +115,12 @@ export class CustomMap extends Component {
   }
 
   render() {
+
+
     return (
       <View style={styles.map}>
         <MapView
           ref={ref => { this.map = ref; }}
-          initialRegion={{
-            latitude: 0,
-            longitude: 0,
-            latitudeDelta: 50.0922,
-            longitudeDelta: 50.0421,
-          }}
           region={this.state.region}
           style={styles.map}
           //customMapStyle={this.mapStyle}
@@ -94,7 +130,7 @@ export class CustomMap extends Component {
           followUserLocation={true}
           //onLayout={this.onLayout()}
           //onPress={event => this._shortPress(event.nativeEvent)}
-          onLongPress={event => this.showAddMarkerModal(event.nativeEvent)}
+          onLongPress={event => this.longPress(event.nativeEvent)}
         //onRegionChange={this.onRegionChange}
         //onRegionChangeComplete={this.onRegionChangeComplete}
         //zoomed={false}
@@ -110,11 +146,17 @@ export class CustomMap extends Component {
               pinColor={marker.pinColor}
             />
           ))}
+
+          { this.tempMarker }
+          { this.temporalButton }
         </MapView>
-
-
-        <ActionButtonBar navigation={this.props.navigation} showModal={this.showAddMapModal} />
         <Header navigation={this.props.navigation}  name={this.props.map.name} />
+
+        <TempButtons />
+ 
+        <ActionButtonBar    navigation={this.props.navigation} showModal={this.showAddMapModal} />
+
+
 
 
           <AddMapModal
