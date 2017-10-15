@@ -14,26 +14,28 @@ import { connect } from "react-redux";
 import Modal from 'react-native-modalbox';
 import MapsActions from "../Redux/MapsRedux";
 import { fromHsv, toHsv, ColorPicker } from "react-native-color-picker";
-
+import { AnimatedTextInput } from './animated/AnimatedTextInput'
 export class AddMarkerModal extends Component {
   state = {
-    newMarkerName: ""
+    name: ""
   };
 
   constructor(props) {
     super(props);
   }
 
-  componentDidMount() {}
 
-  saveMarker() {
-    if (this.state.newMarkerName == "" || this.state.newMarkerName == null)
+
+  componentDidMount() { }
+
+  saveMarker = () => {
+    if (this.state.name == "" || this.state.name == null)
       alert("Marker name cannot be empty");
     else {
-      console.log('this.props', this.props)
-      
+      console.log(' this.props', this.props)
+
       let marker = {
-        title: this.state.newMarkerName,
+        title: this.state.name,
         description: "",
         latlng: {
           latitude: this.props.coordinate.latitude,
@@ -53,86 +55,23 @@ export class AddMarkerModal extends Component {
     return (
       <Modal
         isOpen={this.props.isModalVisible}
-          
-        >
-          <View style={styles.header}>
-            <View style={styles.nameContainer}>
-              <Text style={styles.name}>Adding marker</Text>
-            </View>
-            <View style={styles.searchIconContainer}>
-              <TouchableOpacity
-                onPress={() => {
-                  this.props.closeModal();
-                }}
-              >
-                <Icon name="close" style={styles.searchIcon} />
-              </TouchableOpacity>
-            </View>
-          </View>
+        position={"center"}
+        style={{
+          width: 300,
+          height: 200,
 
-          <View style={styles.modalContent}>
-            <View style={{ padding: "10%" }}>
-              <TextInput
-                style={{ padding: 10, fontSize: 30 }}
-                onChangeText={newMarkerName => this.setState({ newMarkerName })}
-                value={this.state.newMarkerName}
-                placeholder="Marker Name"
-                autoFocus={false}
-                underlineColorAndroid="transparent"
-              />
-            </View>
+        }}
+      >
+      <View style={ styles.rootHeader } ></View>
+      
+          <Text>{this.state.name}</Text>
+          <AnimatedTextInput
 
-            <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
-              <ColorPicker
-                defaultColor="blue"
-                color={this.state.color}
-                hideSliders={true}
-                onColorChange={color => {
-                  let myColor = fromHsv(color);
-                  this.setState({ color: myColor });
-                }}
-                onColorSelected={color => this.setState({ color })}
-                style={{ flex: 1, width: "100%", alignSelf: "center" }}
-              />
-            </KeyboardAvoidingView>
-
-            <View style={{ flex: 1, margin: 40 }}>
-              <TouchableOpacity
-                onPress={this.saveMarker.bind(this) }
-                style={{
-                  alignItems: "center"
-                }}
-              >
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    borderWidth: 1.5,
-                    borderRadius: 56,
-                    borderColor: this.state.color,
-                    paddingRight: 10,
-                    backgroundColor: "transparent"
-                  }}
-                >
-                  <Icon
-                    name="map-marker-plus"
-                    style={{ padding: 10 }}
-                    size={28}
-                    color={this.state.color}
-                  />
-                  <Text
-                    style={{
-                      color: this.state.color,
-                      fontWeight: "bold"
-                    }}
-                  >
-                    Save Marker
-                  </Text>
-                </View>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </Modal>
+          />
+        <TouchableOpacity onPress={ () => this.saveMarker() }   >
+        <Text>Next</Text>
+        </TouchableOpacity>
+      </Modal>
     );
   }
 }
@@ -187,3 +126,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddMarkerModal);
+
