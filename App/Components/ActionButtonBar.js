@@ -26,7 +26,7 @@ export class ActionButtonBar extends Component {
     render() {
 
         return (
-            <ActionButton buttonColor="rgba(231,76,60,1)" position='left' verticalOrientation='down' style={ styles.buttonContainer}>
+            <ActionButton buttonColor="rgba(231,76,60,1)" position='left' verticalOrientation='down' style={styles.buttonContainer}>
                 <ActionButton.Item buttonColor='#9b59b6' onPress={this.showModal}>
                     <Icon name="map-marker-plus" style={styles.actionButtonIcon} />
                 </ActionButton.Item>

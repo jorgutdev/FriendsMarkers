@@ -3,3 +3,5 @@ android/app/build
 android/.gradle
 .vscode/
 .env
+Tests/
+npm-debug.log

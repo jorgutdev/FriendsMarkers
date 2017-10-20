@@ -6,8 +6,8 @@ import ActionButton from 'react-native-action-button';
 import Modal from 'react-native-modal'
 import MapsActions from '../Redux/MapsRedux'
 
-
-
+import Contacts from 'react-native-contacts'
+import * as firebase from 'firebase'
 export class AddMapModal extends Component {
     state = {
         newMapName: '',
@@ -18,6 +18,7 @@ export class AddMapModal extends Component {
     }
 
     componentDidMount() {
+
     }
 
     render() {
