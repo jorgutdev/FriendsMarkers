@@ -1,12 +1,12 @@
-import React from 'react';
-import { DrawerNavigator, StackNavigator } from 'react-navigation';
-import LaunchScreen from '../Containers/LaunchScreen';
-import LoginScreen from '../Containers/LoginScreen';
-import AddMarker from '../Containers/AddMarker';
-import DrawerMenu from '../Containers/DrawerMenu';
+import React from 'react'
+import { DrawerNavigator, StackNavigator } from 'react-navigation'
+import LaunchScreen from '../Containers/LaunchScreen'
+import LoginScreen from '../Containers/LoginScreen'
+import AddMarker from '../Containers/AddMarker'
+import DrawerMenu from '../Containers/DrawerMenu'
 
-import { TouchableOpacity, ScrollView } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { TouchableOpacity, ScrollView } from 'react-native'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 // Manifest of possible screens
 const PrimaryStack = StackNavigator({
@@ -18,11 +18,11 @@ const PrimaryStack = StackNavigator({
       headerLeft: (
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('DrawerOpen');
+            navigation.navigate('DrawerOpen')
           }}
         >
           <Icon
-            name="menu"
+            name='menu'
             style={{
               color: 'black',
               padding: 10,
@@ -34,7 +34,7 @@ const PrimaryStack = StackNavigator({
       ),
       drawer: () => ({
         label: 'Maps',
-        icon: () => <Icon name="rocket" size={30} color="#900" />
+        icon: () => <Icon name='rocket' size={30} color='#900' />
       })
     })
   },
@@ -49,7 +49,7 @@ const PrimaryStack = StackNavigator({
       headerMode: 'screen'
     })
   }
-});
+})
 
 /* const AddMarkerStack = StackNavigator({
   AddMarkerScreen: {
@@ -75,11 +75,11 @@ const LoginStack = StackNavigator(
       headerLeft: (
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('DrawerOpen');
+            navigation.navigate('DrawerOpen')
           }}
         >
           <Icon
-            name="menu"
+            name='menu'
             style={{
               color: 'black',
               padding: 10,
@@ -91,7 +91,7 @@ const LoginStack = StackNavigator(
       )
     })
   }
-);
+)
 
 const DrawerNav = DrawerNavigator(
   {
@@ -112,6 +112,6 @@ const DrawerNav = DrawerNavigator(
       }
     }
   }
-);
+)
 
-export default DrawerNav;
+export default DrawerNav

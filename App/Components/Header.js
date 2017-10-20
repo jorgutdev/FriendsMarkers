@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 export class Header extends Component {
-  render() {
+  render () {
     return (
       <View style={styles.header}>
         <View style={styles.menuIconContainer}>
           <TouchableOpacity
             onPress={() => {
-              this.props.navigation.navigate('DrawerOpen');
+              this.props.navigation.navigate('DrawerOpen')
             }}
           >
-            <Icon name="menu" style={styles.menuIcon} />
+            <Icon name='menu' style={styles.menuIcon} />
           </TouchableOpacity>
         </View>
         <View style={styles.nameContainer}>
@@ -25,11 +25,11 @@ export class Header extends Component {
               // TODO
             }}
           >
-            <Icon name="magnify" style={styles.searchIcon} />
+            <Icon name='magnify' style={styles.searchIcon} />
           </TouchableOpacity>
         </View>
       </View>
-    );
+    )
   }
 }
 
@@ -61,14 +61,14 @@ let styles = StyleSheet.create({
     fontSize: 20,
     color: 'white'
   }
-});
+})
 
-function mapStateToProps(state) {
-  return {};
+function mapStateToProps (state) {
+  return {}
 }
 
-function mapDispatchToProps(dispatch) {
-  return {};
+function mapDispatchToProps (dispatch) {
+  return {}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

@@ -1,11 +1,11 @@
-import { DrawerItems } from 'react-navigation';
-import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
-import * as firebase from 'firebase';
-import Avatar from '../Components/drawer/Avatar';
+import { DrawerItems } from 'react-navigation'
+import React, { Component } from 'react'
+import { View, StyleSheet } from 'react-native'
+import * as firebase from 'firebase'
+import Avatar from '../Components/drawer/Avatar'
 
-const FBSDK = require('react-native-fbsdk');
-const { LoginManager, AccessToken } = FBSDK;
+const FBSDK = require('react-native-fbsdk')
+const { LoginManager, AccessToken } = FBSDK
 
 export default class DrawerMenu extends Component {
   contentOptions = {
@@ -16,50 +16,50 @@ export default class DrawerMenu extends Component {
     drawerIcon: 'menu'
   };
 
-  firebaseLogin() {
+  firebaseLogin () {
     AccessToken.getCurrentAccessToken().then(result => {
-      console.log('AccessToken | firebaseLogin | result -> ', result);
+      console.log('AccessToken | firebaseLogin | result -> ', result)
       let credential = firebase.auth.FacebookAuthProvider.credential(
         result.accessToken
-      );
+      )
       firebase
         .auth()
         .signInWithCredential(credential)
         .then(
           fbResult => {
-            console.log('Firebase Auth successful! | fbResult ->', fbResult);
-            this.setState({ currentUser: firebase.auth().currentUser });
-            this.setState({ isLogged: true });
+            console.log('Firebase Auth successful! | fbResult ->', fbResult)
+            this.setState({ currentUser: firebase.auth().currentUser })
+            this.setState({ isLogged: true })
           },
           fbError => {
-            console.error('Firebase Auth Error | fbError ->', fbError);
+            console.error('Firebase Auth Error | fbError ->', fbError)
           }
         )
         .catch(fbError => {
-          console.error('signInWithCredential | fbError ->', fbError);
-        });
-    });
+          console.error('signInWithCredential | fbError ->', fbError)
+        })
+    })
   }
 
-  facebookLogin() {
+  facebookLogin () {
     LoginManager.logInWithReadPermissions(['public_profile'])
       .then(result => {})
       .then(result => {
-        this.firebaseLogin();
-      });
+        this.firebaseLogin()
+      })
   }
 
-  logout() {
-    console.log('Loggin out ');
-    this.setState({ isLogged: false });
-    this.setState({ currentUser: this.anonymous.currentUser });
-    LoginManager.logOut();
-    firebase.auth().signOut();
+  logout () {
+    console.log('Loggin out ')
+    this.setState({ isLogged: false })
+    this.setState({ currentUser: this.anonymous.currentUser })
+    LoginManager.logOut()
+    firebase.auth().signOut()
   }
 
-  componentDidMount() {}
+  componentDidMount () {}
 
-  render() {
+  render () {
     return (
       <View style={styles.topContainer}>
         <Avatar />
@@ -67,17 +67,17 @@ export default class DrawerMenu extends Component {
         <View style={styles.routesContainer}>
           <DrawerItems
             {...this.props}
-            activeTintColor="#0069c0"
-            activeBackgroundColor="#0069c0"
-            inactiveTintColor="#0069c0"
-            inactiveBackgroundColor="#2196F3"
+            activeTintColor='#0069c0'
+            activeBackgroundColor='#0069c0'
+            inactiveTintColor='#0069c0'
+            inactiveBackgroundColor='#2196F3'
             style={{ backgroundColor: 'transparent' }}
             labelStyle={{ color: '#ffffff', marginLeft: 2 }}
           />
         </View>
         <View style={styles.buttonContainer} />
       </View>
-    );
+    )
   }
 }
 
@@ -120,4 +120,4 @@ var styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%'
   }
-});
+})

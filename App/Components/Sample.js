@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { View } from 'react-native';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import { View } from 'react-native'
+import { connect } from 'react-redux'
 
 export class Sample extends Component {
-  componentDidMount() {}
+  componentDidMount () {}
 
-  render() {
-    return <View style={styles.container} />;
+  render () {
+    return <View style={styles.container} />
   }
 }
 
@@ -14,14 +14,14 @@ var styles = StyleSheet.create({
   container: {
     flex: 1
   }
-});
+})
 
-function mapStateToProps(state) {
-  return {};
+function mapStateToProps (state) {
+  return {}
 }
 
-function mapDispatchToProps(dispatch) {
-  return {};
+function mapDispatchToProps (dispatch) {
+  return {}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ActionButtonBar);
+export default connect(mapStateToProps, mapDispatchToProps)(ActionButtonBar)
