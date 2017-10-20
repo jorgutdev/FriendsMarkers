@@ -11,10 +11,10 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { connect } from "react-redux";
-import Modal from 'react-native-modalbox';
+import Modal from "react-native-modalbox";
 import MapsActions from "../Redux/MapsRedux";
 import { fromHsv, toHsv, ColorPicker } from "react-native-color-picker";
-import { AnimatedTextInput } from './animated/AnimatedTextInput'
+import { AnimatedTextInput } from "./animated/AnimatedTextInput";
 export class AddMarkerModal extends Component {
   state = {
     name: ""
@@ -24,15 +24,13 @@ export class AddMarkerModal extends Component {
     super(props);
   }
 
-
-
-  componentDidMount() { }
+  componentDidMount() {}
 
   saveMarker = () => {
     if (this.state.name == "" || this.state.name == null)
       alert("Marker name cannot be empty");
     else {
-      console.log(' this.props', this.props)
+      console.log(" this.props", this.props);
 
       let marker = {
         title: this.state.name,
@@ -49,7 +47,7 @@ export class AddMarkerModal extends Component {
 
       this.props.markerSaved();
     }
-  }
+  };
 
   render() {
     return (
@@ -58,18 +56,15 @@ export class AddMarkerModal extends Component {
         position={"center"}
         style={{
           width: 300,
-          height: 200,
-
+          height: 200
         }}
       >
-      <View style={ styles.rootHeader } ></View>
-      
-          <Text>{this.state.name}</Text>
-          <AnimatedTextInput
+        <View style={styles.rootHeader} />
 
-          />
-        <TouchableOpacity onPress={ () => this.saveMarker() }   >
-        <Text>Next</Text>
+        <Text>{this.state.name}</Text>
+        <AnimatedTextInput />
+        <TouchableOpacity onPress={() => this.saveMarker()}>
+          <Text>Next</Text>
         </TouchableOpacity>
       </Modal>
     );
@@ -126,4 +121,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddMarkerModal);
-

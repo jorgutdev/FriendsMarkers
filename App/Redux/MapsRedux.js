@@ -1,115 +1,98 @@
-import { createReducer, createActions } from 'reduxsauce'
-import Immutable from 'seamless-immutable'
+import { createReducer, createActions } from "reduxsauce";
+import Immutable from "seamless-immutable";
 
 /* ------------- Types and Action Creators ------------- */
 
 const { Types, Creators } = createActions({
-  addMap: ['name'],
-  returnToMap: ['map'],
-  loadMap: ['id'],
-  mapLoaded: ['map'],
-  addMarkerToMap: ['marker'],
-  markerAddedSuccessfully: ['marker'],
-})
+  addMap: ["name"],
+  returnToMap: ["map"],
+  loadMap: ["id"],
+  mapLoaded: ["map"],
+  addMarkerToMap: ["marker"],
+  markerAddedSuccessfully: ["marker"]
+});
 
-export const MapsTypes = Types
-export default Creators
+export const MapsTypes = Types;
+export default Creators;
 
 /* ------------- Initial State ------------- */
 
 export const INITIAL_STATE = {
   map: {
-    name: '',
+    name: "",
     id: null,
     markers: [],
     creator: null,
-    users: null,
+    users: null
   },
   loadingMap: false,
   addingMap: false,
-  error: null,
-}
+  error: null
+};
 
 /* ------------- Reducers ------------- */
 
-
-
-
-
-export const loadMap = (state) => {
+export const loadMap = state => {
   myState = {
     ...state,
-    loadingMap: true,
-  }
-  return myState
-}
-
-
-
+    loadingMap: true
+  };
+  return myState;
+};
 
 export const mapLoaded = (state, action) => {
-  const { map } = action
+  const { map } = action;
   myState = {
     ...state,
     map,
-    loadingMap: false,
-  }
-  return myState
-}
-
-
+    loadingMap: false
+  };
+  return myState;
+};
 
 export const addMap = (state, parameters) => {
   myState = {
     ...state,
     map: {
       ...state.map,
-      name: parameters.name,
+      name: parameters.name
     },
-    addingMap: true,
-  }
-  return myState
-}
-
+    addingMap: true
+  };
+  return myState;
+};
 
 export const returnToMap = (state, action) => {
-  const { map } = action
+  const { map } = action;
   myState = {
     ...state,
     map,
-    addingMap: false,
-  }
-  return myState
-}
-
+    addingMap: false
+  };
+  return myState;
+};
 
 export const addMarkerToMap = (state, parameters) => {
-  const { marker } = parameters
+  const { marker } = parameters;
   myState = {
     ...state,
-    addingMarker: true,
-  }
-  return myState
-}
-
+    addingMarker: true
+  };
+  return myState;
+};
 
 export const markerAddedSuccessfully = (state, parameters) => {
-  const { marker } = parameters
+  const { marker } = parameters;
   myState = {
     ...state,
     addingMarker: false,
     map: {
       ...state.map,
-      markers: [
-        ...state.map.markers,
-        marker,
-      ]
+      markers: [...state.map.markers, marker]
     }
-  }
-  return myState
-}
-
-
+  };
+  return myState;
+};
 
 /* ------------- Hookup Reducers To Types ------------- */
 
@@ -119,5 +102,5 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.LOAD_MAP]: loadMap,
   [Types.MAP_LOADED]: mapLoaded,
   [Types.ADD_MARKER_TO_MAP]: addMarkerToMap,
-  [Types.MARKER_ADDED_SUCCESSFULLY]: markerAddedSuccessfully,
-})
+  [Types.MARKER_ADDED_SUCCESSFULLY]: markerAddedSuccessfully
+});

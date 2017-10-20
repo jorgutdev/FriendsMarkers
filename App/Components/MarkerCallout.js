@@ -14,11 +14,13 @@ export default class MarkerCallout extends Component {
   }
   render() {
     return (
-      <View style={{
-          width:150,
-          height:150,
-          backgroundColor: 'transparent'
-      }}>
+      <View
+        style={{
+          width: 150,
+          height: 150,
+          backgroundColor: "transparent"
+        }}
+      >
         <Text>Aqui va a ir todo </Text>
       </View>
     );

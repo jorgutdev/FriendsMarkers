@@ -59,24 +59,14 @@ export class TempButtons extends Component {
           <ActionButton
             buttonColor="rgba(20, 4, 4,1.0)"
             onPress={this.props.onCancel}
-            icon={
-              <Icon
-                name="close"
-                style={styles.cancelIcon}
-              />
-            }
+            icon={<Icon name="close" style={styles.cancelIcon} />}
           />
         </View>
         <View style={styles.okButton}>
           <ActionButton
             buttonColor="rgba(82, 255, 30,1)"
-            onPress={this.props.onSave}            
-            icon={
-              <Icon
-                name="check"
-                style={styles.okIcon}
-              />
-            }
+            onPress={this.props.onSave}
+            icon={<Icon name="check" style={styles.okIcon} />}
           />
         </View>
       </View>

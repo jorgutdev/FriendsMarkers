@@ -1,20 +1,20 @@
-import {StyleSheet} from 'react-native'
-import { Fonts, Colors, Metrics } from '../../Themes/'
+import { StyleSheet } from "react-native";
+import { Fonts, Colors, Metrics } from "../../Themes/";
 
 export default StyleSheet.create({
   container: {
     flex: 1,
     marginTop: Metrics.smallMargin,
     backgroundColor: Colors.transparent,
-    flexDirection: 'row',
+    flexDirection: "row",
     width: Metrics.screenWidth - Metrics.baseMargin
   },
   searchInput: {
     flex: 5,
     height: Metrics.searchBarHeight,
-    alignSelf: 'center',
+    alignSelf: "center",
     padding: Metrics.smallMargin,
-    textAlign: 'left',
+    textAlign: "left",
     fontFamily: Fonts.type.base,
     fontSize: Fonts.size.instructions,
     borderRadius: 5,
@@ -22,17 +22,17 @@ export default StyleSheet.create({
     borderColor: Colors.snow,
     paddingLeft: 30,
     color: Colors.snow,
-    flexDirection: 'row'
+    flexDirection: "row"
   },
   searchIcon: {
     left: Metrics.doubleBaseMargin,
-    alignSelf: 'center',
+    alignSelf: "center",
     color: Colors.snow,
     backgroundColor: Colors.transparent
   },
   cancelButton: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     marginHorizontal: Metrics.baseMargin
   },
   buttonLabel: {
@@ -40,4 +40,4 @@ export default StyleSheet.create({
     fontFamily: Fonts.type.base,
     fontSize: Fonts.size.regular
   }
-})
+});

@@ -1,5 +1,5 @@
-import { createReducer, createActions } from 'reduxsauce'
-import Immutable from 'seamless-immutable'
+import { createReducer, createActions } from "reduxsauce";
+import Immutable from "seamless-immutable";
 
 /* ------------- Types and Action Creators ------------- */
 
@@ -8,58 +8,56 @@ const { Types, Creators } = createActions({
   userLogout: null,
   // user -> in success function will be accesible from action.success
   getCurrentUser: null,
-  userLoginSuccess: ['user'],
+  userLoginSuccess: ["user"],
   userLoginFailure: null
-})
+});
 
-export const UserTypes = Types
-export default Creators
+export const UserTypes = Types;
+export default Creators;
 
 /* ------------- Initial State ------------- */
 
 export const INITIAL_STATE = {
   user: {
-    displayName: 'Anonymous',
-    photoURL: 'http://www.free-avatars.com/data/media/37/cat_avatar_0597.jpg',
+    displayName: "Anonymous",
+    photoURL: "http://www.free-avatars.com/data/media/37/cat_avatar_0597.jpg",
     email: ""
   },
   isLogged: false,
   logging: null,
-  error: null,
-}
+  error: null
+};
 
 /* ------------- Reducers ------------- */
 
-let myState
+let myState;
 
-
-export const login = (state) => {
+export const login = state => {
   myState = {
     ...state,
     logging: true,
-    isLogged: false,
-  }
-  return myState
-}
+    isLogged: false
+  };
+  return myState;
+};
 
-export const logout = (state) => {
+export const logout = state => {
   myState = {
-    ...state, 
-    logging: false, 
+    ...state,
+    logging: false,
     user: {
-      displayName: 'Anonymous',
-      photoURL: 'http://www.free-avatars.com/data/media/37/cat_avatar_0597.jpg',
+      displayName: "Anonymous",
+      photoURL: "http://www.free-avatars.com/data/media/37/cat_avatar_0597.jpg",
       email: ""
     },
-    isLogged: false 
-  }
-  return myState
-}
-
+    isLogged: false
+  };
+  return myState;
+};
 
 export const success = (state, action) => {
-  const { user } = action
-  const { displayName, photoURL, email } = user
+  const { user } = action;
+  const { displayName, photoURL, email } = user;
   myState = {
     ...state,
     logging: false,
@@ -69,29 +67,27 @@ export const success = (state, action) => {
       photoURL,
       email
     }
-  }
-  return myState
-}
+  };
+  return myState;
+};
 
 export const failure = (state, error) => {
   myState = {
     ...state,
-    logging:false,
+    logging: false,
     error
-  }
-    return state
-}
+  };
+  return state;
+};
 
-export const getCurrentUser = (state) => {
+export const getCurrentUser = state => {
   let myState = {
     ...state,
-     isLogged: false, 
-     logging: true 
-  }
-    return myState
-}
-
-
+    isLogged: false,
+    logging: true
+  };
+  return myState;
+};
 
 /* ------------- Hookup Reducers To Types ------------- */
 
@@ -102,5 +98,5 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.USER_LOGIN_SUCCESS]: success,
   [Types.USER_LOGOUT_SUCCESS]: success,
   [Types.USER_LOGIN_FAILURE]: failure,
-  [Types.USER_LOGOUT_FAILURE]: failure,
-})
+  [Types.USER_LOGOUT_FAILURE]: failure
+});
