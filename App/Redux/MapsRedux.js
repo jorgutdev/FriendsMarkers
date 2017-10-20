@@ -1,15 +1,15 @@
-import { createReducer, createActions } from "reduxsauce";
-import Immutable from "seamless-immutable";
+import { createReducer, createActions } from 'reduxsauce';
+import Immutable from 'seamless-immutable';
 
 /* ------------- Types and Action Creators ------------- */
 
 const { Types, Creators } = createActions({
-  addMap: ["name"],
-  returnToMap: ["map"],
-  loadMap: ["id"],
-  mapLoaded: ["map"],
-  addMarkerToMap: ["marker"],
-  markerAddedSuccessfully: ["marker"]
+  addMap: ['name'],
+  returnToMap: ['map'],
+  loadMap: ['id'],
+  mapLoaded: ['map'],
+  addMarkerToMap: ['marker'],
+  markerAddedSuccessfully: ['marker']
 });
 
 export const MapsTypes = Types;
@@ -19,7 +19,7 @@ export default Creators;
 
 export const INITIAL_STATE = {
   map: {
-    name: "",
+    name: '',
     id: null,
     markers: [],
     creator: null,

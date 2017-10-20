@@ -1,6 +1,6 @@
-import { put, take } from "redux-saga/effects";
-import MapsActions from "../Redux/MapsRedux";
-import * as firebase from "firebase";
+import { put, take } from 'redux-saga/effects';
+import MapsActions from '../Redux/MapsRedux';
+import * as firebase from 'firebase';
 
 export function* addMap(action) {
   let user = yield firebase.auth().currentUser;
@@ -14,11 +14,11 @@ export function* addMap(action) {
   try {
     let key = firebase
       .database()
-      .ref("maps")
+      .ref('maps')
       .push().key;
     yield firebase
       .database()
-      .ref("maps")
+      .ref('maps')
       .child(key)
       .set(map);
     yield put(MapsActions.returnToMap(map));
@@ -32,8 +32,8 @@ export function* loadMap(action) {
   try {
     let promise = yield firebase
       .database()
-      .ref("maps/" + id)
-      .once("value");
+      .ref('maps/' + id)
+      .once('value');
     let markersArray = promise.val().markers;
 
     let markers = [];
@@ -58,11 +58,11 @@ export function* addMarkerToMap(action) {
   try {
     let key = firebase
       .database()
-      .ref("maps/" + marker.map + "/markers")
+      .ref('maps/' + marker.map + '/markers')
       .push().key;
     yield firebase
       .database()
-      .ref("maps/" + marker.map + "/markers/" + key)
+      .ref('maps/' + marker.map + '/markers/' + key)
       .set(marker);
     yield put(MapsActions.markerAddedSuccessfully(marker));
   } catch (error) {

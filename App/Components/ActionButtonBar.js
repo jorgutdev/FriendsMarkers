@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { TouchableOpacity, Image, View, Text, StyleSheet } from "react-native";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { connect } from "react-redux";
-import ActionButton from "react-native-action-button";
+import React, { Component } from 'react';
+import { TouchableOpacity, Image, View, Text, StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { connect } from 'react-redux';
+import ActionButton from 'react-native-action-button';
 
 export class ActionButtonBar extends Component {
   showModal = () => {
@@ -22,7 +22,7 @@ export class ActionButtonBar extends Component {
         </ActionButton.Item>
         <ActionButton.Item
           buttonColor="#3498db"
-          onPress={() => this.props.navigation.navigate("DrawerOpen")}
+          onPress={() => this.props.navigation.navigate('DrawerOpen')}
         >
           <Icon name="account" style={styles.actionButtonIcon} />
         </ActionButton.Item>
@@ -36,12 +36,12 @@ export class ActionButtonBar extends Component {
 
 var styles = StyleSheet.create({
   actionButtonIcon: {
-    color: "#fff",
+    color: '#fff',
     fontSize: 18
   },
   buttonContainer: {
-    top: "9%",
-    left: "-2%"
+    top: '9%',
+    left: '-2%'
   }
 });
 

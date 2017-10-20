@@ -1,5 +1,5 @@
-import { createReducer, createActions } from "reduxsauce";
-import Immutable from "seamless-immutable";
+import { createReducer, createActions } from 'reduxsauce';
+import Immutable from 'seamless-immutable';
 
 /* ------------- Types and Action Creators ------------- */
 
@@ -8,7 +8,7 @@ const { Types, Creators } = createActions({
   userLogout: null,
   // user -> in success function will be accesible from action.success
   getCurrentUser: null,
-  userLoginSuccess: ["user"],
+  userLoginSuccess: ['user'],
   userLoginFailure: null
 });
 
@@ -19,9 +19,9 @@ export default Creators;
 
 export const INITIAL_STATE = {
   user: {
-    displayName: "Anonymous",
-    photoURL: "http://www.free-avatars.com/data/media/37/cat_avatar_0597.jpg",
-    email: ""
+    displayName: 'Anonymous',
+    photoURL: 'http://www.free-avatars.com/data/media/37/cat_avatar_0597.jpg',
+    email: ''
   },
   isLogged: false,
   logging: null,
@@ -46,9 +46,9 @@ export const logout = state => {
     ...state,
     logging: false,
     user: {
-      displayName: "Anonymous",
-      photoURL: "http://www.free-avatars.com/data/media/37/cat_avatar_0597.jpg",
-      email: ""
+      displayName: 'Anonymous',
+      photoURL: 'http://www.free-avatars.com/data/media/37/cat_avatar_0597.jpg',
+      email: ''
     },
     isLogged: false
   };

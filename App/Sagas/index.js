@@ -1,16 +1,16 @@
-import { takeLatest } from "redux-saga/effects";
+import { takeLatest } from 'redux-saga/effects';
 
 /* ------------- Types ------------- */
 
-import { StartupTypes } from "../Redux/StartupRedux";
-import { UserTypes } from "../Redux/UserRedux";
-import { MapsTypes } from "../Redux/MapsRedux";
+import { StartupTypes } from '../Redux/StartupRedux';
+import { UserTypes } from '../Redux/UserRedux';
+import { MapsTypes } from '../Redux/MapsRedux';
 
 /* ------------- Sagas ------------- */
 
-import { startup } from "./StartupSagas";
-import { login, getCurrentUser } from "./UserSagas";
-import { addMap, loadMap, addMarkerToMap } from "./MapsSagas";
+import { startup } from './StartupSagas';
+import { login, getCurrentUser } from './UserSagas';
+import { addMap, loadMap, addMarkerToMap } from './MapsSagas';
 
 /* ------------- API ------------- */
 

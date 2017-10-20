@@ -1,8 +1,8 @@
-import R from "ramda";
-import Immutable from "seamless-immutable";
+import R from 'ramda';
+import Immutable from 'seamless-immutable';
 
 // is this object already Immutable?
-const isImmutable = R.has("asMutable");
+const isImmutable = R.has('asMutable');
 
 // change this Immutable object into a JS object
 const convertToJs = state => state.asMutable({ deep: true });

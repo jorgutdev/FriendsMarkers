@@ -1,14 +1,14 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   DrawerNavigator,
   StackNavigator,
   NavigationActions,
   DrawerItems
-} from "react-navigation";
-import LaunchScreen from "../Containers/LaunchScreen";
-import LoginScreen from "../Containers/LoginScreen";
-import AddMarker from "../Containers/AddMarker";
-import DrawerMenu from "../Containers/DrawerMenu";
+} from 'react-navigation';
+import LaunchScreen from '../Containers/LaunchScreen';
+import LoginScreen from '../Containers/LoginScreen';
+import AddMarker from '../Containers/AddMarker';
+import DrawerMenu from '../Containers/DrawerMenu';
 
 import {
   Button,
@@ -16,9 +16,9 @@ import {
   View,
   ScrollView,
   StyleSheet
-} from "react-native";
-import styles from "./Styles/NavigationStyles";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+} from 'react-native';
+import styles from './Styles/NavigationStyles';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 class Hidden extends React.Component {
   render() {
@@ -30,18 +30,18 @@ const PrimaryStack = StackNavigator({
   LaunchScreen: {
     screen: LaunchScreen,
     navigationOptions: ({ navigation }) => ({
-      headerMode: "screen",
-      title: "",
+      headerMode: 'screen',
+      title: '',
       headerLeft: (
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("DrawerOpen");
+            navigation.navigate('DrawerOpen');
           }}
         >
           <Icon
             name="menu"
             style={{
-              color: "black",
+              color: 'black',
               padding: 10,
               marginLeft: 10,
               fontSize: 20
@@ -50,7 +50,7 @@ const PrimaryStack = StackNavigator({
         </TouchableOpacity>
       ),
       drawer: () => ({
-        label: "Maps",
+        label: 'Maps',
         icon: () => <Icon name="rocket" size={30} color="#900" />
       })
     })
@@ -62,8 +62,8 @@ const PrimaryStack = StackNavigator({
   AddMarkerScreen: {
     screen: AddMarker,
     navigationOptions: ({ navigation }) => ({
-      drawerLockMode: "locked-closed",
-      headerMode: "screen"
+      drawerLockMode: 'locked-closed',
+      headerMode: 'screen'
     })
   }
 });
@@ -88,17 +88,17 @@ const LoginStack = StackNavigator(
   },
   {
     navigationOptions: ({ navigation }) => ({
-      headerMode: "screen",
+      headerMode: 'screen',
       headerLeft: (
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("DrawerOpen");
+            navigation.navigate('DrawerOpen');
           }}
         >
           <Icon
             name="menu"
             style={{
-              color: "black",
+              color: 'black',
               padding: 10,
               marginLeft: 10,
               fontSize: 20
@@ -118,14 +118,14 @@ const DrawerNav = DrawerNavigator(
     LoginStack: { screen: LoginStack }
   },
   {
-    initialRouteName: "PrimaryStack",
+    initialRouteName: 'PrimaryStack',
     contentComponent: props => (
-      <ScrollView style={{ height: "100%", backgroundColor: "#2196F3" }}>
+      <ScrollView style={{ height: '100%', backgroundColor: '#2196F3' }}>
         <DrawerMenu {...props} />
       </ScrollView>
     ),
     contentOptions: {
-      activeTintColor: "#e91e63",
+      activeTintColor: '#e91e63',
       style: {
         marginVertical: 0
       }

@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { Animated, Text, View, StyleSheet, TextInput } from "react-native";
+import React, { Component } from 'react';
+import { Animated, Text, View, StyleSheet, TextInput } from 'react-native';
 
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { connect } from "react-redux";
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { connect } from 'react-redux';
 
 export class AnimatedTextInput extends Component {
   state = {
-    text: "",
+    text: '',
     fadeAnim: new Animated.Value(0) // Initial value for opacity: 0
   };
 

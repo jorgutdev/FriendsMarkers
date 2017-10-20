@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   TouchableOpacity,
   Image,
@@ -6,18 +6,18 @@ import {
   Text,
   StyleSheet,
   TextInput
-} from "react-native";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { connect } from "react-redux";
-import ActionButton from "react-native-action-button";
-import Modal from "react-native-modal";
-import MapsActions from "../Redux/MapsRedux";
+} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { connect } from 'react-redux';
+import ActionButton from 'react-native-action-button';
+import Modal from 'react-native-modal';
+import MapsActions from '../Redux/MapsRedux';
 
-import Contacts from "react-native-contacts";
-import * as firebase from "firebase";
+import Contacts from 'react-native-contacts';
+import * as firebase from 'firebase';
 export class AddMapModal extends Component {
   state = {
-    newMapName: ""
+    newMapName: ''
   };
 
   constructor(props) {
@@ -76,13 +76,13 @@ export class AddMapModal extends Component {
 var styles = StyleSheet.create({
   textInputView: {},
   saveView: {
-    alignSelf: "center",
+    alignSelf: 'center',
     margin: 50
   },
   textinput: {
     fontSize: 23,
-    width: "50%",
-    alignSelf: "center"
+    width: '50%',
+    alignSelf: 'center'
   },
   iconSave: {
     fontSize: 20
@@ -90,23 +90,23 @@ var styles = StyleSheet.create({
   iconClose: {
     fontSize: 20,
     paddingTop: 15,
-    paddingLeft: "9%"
+    paddingLeft: '9%'
   },
   modalHeader: {
-    backgroundColor: "#0069c0",
-    flexDirection: "row"
+    backgroundColor: '#0069c0',
+    flexDirection: 'row'
   },
   headerText: {
     fontSize: 28,
-    color: "#fff",
+    color: '#fff',
     padding: 10
   },
   modal: {
-    backgroundColor: "transparent"
+    backgroundColor: 'transparent'
   },
   modalContent: {
-    backgroundColor: "#6ec6ff",
-    height: "70%"
+    backgroundColor: '#6ec6ff',
+    height: '70%'
   }
 });
 

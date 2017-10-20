@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { TouchableOpacity, Image, View, Text, StyleSheet } from "react-native";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { TouchableOpacity, Image, View, Text, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
 
 export class Sample extends Component {
   constructor(props) {

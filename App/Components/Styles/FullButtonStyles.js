@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
-import { Fonts, Colors } from "../../Themes/";
+import { StyleSheet } from 'react-native';
+import { Fonts, Colors } from '../../Themes/';
 
 export default StyleSheet.create({
   button: {
@@ -12,7 +12,7 @@ export default StyleSheet.create({
   },
   buttonText: {
     margin: 18,
-    textAlign: "center",
+    textAlign: 'center',
     color: Colors.snow,
     fontSize: Fonts.size.medium,
     fontFamily: Fonts.type.bold

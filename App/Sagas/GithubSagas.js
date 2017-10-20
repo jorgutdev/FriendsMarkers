@@ -1,6 +1,6 @@
-import { call, put } from "redux-saga/effects";
-import { path } from "ramda";
-import GithubActions from "../Redux/GithubRedux";
+import { call, put } from 'redux-saga/effects';
+import { path } from 'ramda';
+import GithubActions from '../Redux/GithubRedux';
 
 export function* getUserAvatar(api, action) {
   const { username } = action;
@@ -8,7 +8,7 @@ export function* getUserAvatar(api, action) {
   const response = yield call(api.getUser, username);
 
   if (response.ok) {
-    const firstUser = path(["data", "items"], response)[0];
+    const firstUser = path(['data', 'items'], response)[0];
     const avatar = firstUser.avatar_url;
     // do data conversion here if needed
     yield put(GithubActions.userSuccess(avatar));

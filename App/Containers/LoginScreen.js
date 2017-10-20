@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Text,
   Image,
@@ -9,14 +9,14 @@ import {
   Dimensions,
   TouchableHighlight,
   TouchableOpacity
-} from "react-native";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import * as firebase from "firebase";
-import DrawerMenu, { logout } from "./DrawerMenu";
+} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import * as firebase from 'firebase';
+import DrawerMenu, { logout } from './DrawerMenu';
 // Styles
-import styles from "./Styles/LoginScreenStyles";
+import styles from './Styles/LoginScreenStyles';
 
-const FBSDK = require("react-native-fbsdk");
+const FBSDK = require('react-native-fbsdk');
 const { LoginButton, LoginManager, AccessToken } = FBSDK;
 
 export default class LoginScreen extends Component {
@@ -25,14 +25,14 @@ export default class LoginScreen extends Component {
   };
 
   static navigationOptions = {
-    drawerLabel: "Login",
-    drawerIcon: <Icon name="account" size={25} style={{ color: "#fff" }} />
+    drawerLabel: 'Login',
+    drawerIcon: <Icon name="account" size={25} style={{ color: '#fff' }} />
   };
 
   constructor(props) {
     super(props);
-    console.log("LoginScreen constructor | props -> ", props);
-    console.log("LoginScreen constructor | initial state -> ", this.state);
+    console.log('LoginScreen constructor | props -> ', props);
+    console.log('LoginScreen constructor | initial state -> ', this.state);
   }
 
   componentWillMount() {
@@ -41,10 +41,10 @@ export default class LoginScreen extends Component {
       user => {
         if (user) {
           currentUser = user;
-          console.log("LoginScreen | User already logged -> ", user);
+          console.log('LoginScreen | User already logged -> ', user);
           //this.props.navigation.navigate('PrimaryStack')
         } else {
-          console.log("LoginScreen | user is not logged yet");
+          console.log('LoginScreen | user is not logged yet');
         }
       },
       error => {
@@ -54,7 +54,7 @@ export default class LoginScreen extends Component {
   }
 
   componentDidMount() {
-    this.props.navigation.navigate("DrawerOpen");
+    this.props.navigation.navigate('DrawerOpen');
   }
 
   componentWillUnmount() {}
@@ -62,27 +62,27 @@ export default class LoginScreen extends Component {
   register() {
     firebase
       .auth()
-      .createUserWithEmailAndPassword("jorgutpar@gmail.com", "1234")
+      .createUserWithEmailAndPassword('jorgutpar@gmail.com', '1234')
       .then(
         result => {
           console.log(JSON.stringify(result));
         },
         error => {
-          console.log("Register | error ->", error);
+          console.log('Register | error ->', error);
         }
       );
   }
   loginEmail() {
     firebase
       .auth()
-      .signInWithEmailAndPassword("jorgutpar@gmail.com", "1234")
+      .signInWithEmailAndPassword('jorgutpar@gmail.com', '1234')
       .then(
         result => {
           console.log(JSON.stringify(result));
         },
         error => {
-          if (error.code == "auth/user-not-found") {
-            console.log("Login | error code -> auth/user-not-found");
+          if (error.code == 'auth/user-not-found') {
+            console.log('Login | error code -> auth/user-not-found');
             this.register();
           }
         }
@@ -90,11 +90,11 @@ export default class LoginScreen extends Component {
   }
 
   facebookLogin() {
-    LoginManager.logInWithReadPermissions(["public_profile"])
+    LoginManager.logInWithReadPermissions(['public_profile'])
       .then(
         result => {
           console.log(
-            "facebookLogin | logInWithReadPermissions | result -> ",
+            'facebookLogin | logInWithReadPermissions | result -> ',
             result
           );
           AccessToken.getCurrentAccessToken().then(
@@ -109,17 +109,17 @@ export default class LoginScreen extends Component {
                 .then(
                   fbResult => {
                     console.log(
-                      "Firebase Auth successful! | fbResult ->",
+                      'Firebase Auth successful! | fbResult ->',
                       fbResult
                     );
                     //this.props.navigation.navigate('PrimaryStack')
                   },
                   fbError => {
-                    console.error("Firebase Auth Error | fbError ->", fbError);
+                    console.error('Firebase Auth Error | fbError ->', fbError);
                   }
                 )
                 .catch(fbError => {
-                  console.error("signInWithCredential | fbError ->", fbError);
+                  console.error('signInWithCredential | fbError ->', fbError);
                 });
             },
             error => console.log(error)
@@ -135,7 +135,7 @@ export default class LoginScreen extends Component {
   googleLogin() {}
   render() {
     return (
-      <View style={{ backgroundColor: "#4fafea" }}>
+      <View style={{ backgroundColor: '#4fafea' }}>
         <View>
           <TextInput placeholder="Email" />
           <TextInput

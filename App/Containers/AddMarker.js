@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Text,
   Image,
@@ -11,29 +11,29 @@ import {
   Dimensions,
   TouchableHighlight,
   TouchableOpacity
-} from "react-native";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import * as firebase from "firebase";
-import DrawerMenu, { logout } from "./DrawerMenu";
-import MapsActions from "../Redux/MapsRedux";
-import { connect } from "react-redux";
+} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import * as firebase from 'firebase';
+import DrawerMenu, { logout } from './DrawerMenu';
+import MapsActions from '../Redux/MapsRedux';
+import { connect } from 'react-redux';
 
 // Styles
-import { fromHsv, toHsv, ColorPicker } from "react-native-color-picker";
+import { fromHsv, toHsv, ColorPicker } from 'react-native-color-picker';
 
-const FBSDK = require("react-native-fbsdk");
+const FBSDK = require('react-native-fbsdk');
 const { LoginButton, LoginManager, AccessToken } = FBSDK;
 
 export class AddMarker extends Component {
   state = {
     newMarkerName: null,
     newMarkerDescription: null,
-    color: "blue"
+    color: 'blue'
   };
 
   constructor(props) {
     super(props);
-    console.log("AddMarker props -> ", props);
+    console.log('AddMarker props -> ', props);
   }
 
   markerStyle = function(options) {
@@ -66,28 +66,28 @@ export class AddMarker extends Component {
   };
 
   static navigationOptions = {
-    title: "Adding marker to map ..."
+    title: 'Adding marker to map ...'
   };
 
   componentWillMount() {}
 
   componentDidMount() {
-    console.log("AddMarker | componentDidMount | this -> ", this);
+    console.log('AddMarker | componentDidMount | this -> ', this);
   }
 
   componentWillUnmount() {}
 
   render() {
     return (
-      <View style={{ flex: 1, backgroundColor: "#fff" }}>
+      <View style={{ flex: 1, backgroundColor: '#fff' }}>
         <View
           style={{
-            flexDirection: "row",
+            flexDirection: 'row',
             flex: 1
           }}
           behavior="padding"
         >
-          <View style={{ flex: 1, height: "100%" }} behavior="padding">
+          <View style={{ flex: 1, height: '100%' }} behavior="padding">
             <ColorPicker
               defaultColor="blue"
               color={this.state.color}
@@ -97,12 +97,12 @@ export class AddMarker extends Component {
                 this.setState({ color: myColor });
               }}
               onColorSelected={color => this.setState({ color })}
-              style={{ flex: 1, width: "100%", alignSelf: "center" }}
+              style={{ flex: 1, width: '100%', alignSelf: 'center' }}
             />
           </View>
         </View>
 
-        <View style={{ padding: "10%" }}>
+        <View style={{ padding: '10%' }}>
           <TextInput
             style={{ padding: 10, fontSize: 30 }}
             onChangeText={newMarkerName => this.setState({ newMarkerName })}
@@ -118,18 +118,18 @@ export class AddMarker extends Component {
               this.saveMarker();
             }}
             style={{
-              alignItems: "center"
+              alignItems: 'center'
             }}
           >
             <View
               style={{
-                flexDirection: "row",
-                alignItems: "center",
+                flexDirection: 'row',
+                alignItems: 'center',
                 borderWidth: 1.5,
                 borderRadius: 56,
                 borderColor: this.state.color,
                 paddingRight: 10,
-                backgroundColor: "transparent"
+                backgroundColor: 'transparent'
               }}
             >
               <Icon
@@ -141,7 +141,7 @@ export class AddMarker extends Component {
               <Text
                 style={{
                   color: this.state.color,
-                  fontWeight: "bold"
+                  fontWeight: 'bold'
                 }}
               >
                 Save Marker

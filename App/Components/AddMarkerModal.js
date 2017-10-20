@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   TouchableOpacity,
   Image,
@@ -8,16 +8,16 @@ import {
   TextInput,
   KeyboardAvoidingView,
   Picker
-} from "react-native";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { connect } from "react-redux";
-import Modal from "react-native-modalbox";
-import MapsActions from "../Redux/MapsRedux";
-import { fromHsv, toHsv, ColorPicker } from "react-native-color-picker";
-import { AnimatedTextInput } from "./animated/AnimatedTextInput";
+} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { connect } from 'react-redux';
+import Modal from 'react-native-modalbox';
+import MapsActions from '../Redux/MapsRedux';
+import { fromHsv, toHsv, ColorPicker } from 'react-native-color-picker';
+import { AnimatedTextInput } from './animated/AnimatedTextInput';
 export class AddMarkerModal extends Component {
   state = {
-    name: ""
+    name: ''
   };
 
   constructor(props) {
@@ -27,14 +27,14 @@ export class AddMarkerModal extends Component {
   componentDidMount() {}
 
   saveMarker = () => {
-    if (this.state.name == "" || this.state.name == null)
-      alert("Marker name cannot be empty");
+    if (this.state.name == '' || this.state.name == null)
+      alert('Marker name cannot be empty');
     else {
-      console.log(" this.props", this.props);
+      console.log(' this.props', this.props);
 
       let marker = {
         title: this.state.name,
-        description: "",
+        description: '',
         latlng: {
           latitude: this.props.coordinate.latitude,
           longitude: this.props.coordinate.longitude
@@ -53,7 +53,7 @@ export class AddMarkerModal extends Component {
     return (
       <Modal
         isOpen={this.props.isModalVisible}
-        position={"center"}
+        position={'center'}
         style={{
           width: 300,
           height: 200
@@ -73,36 +73,36 @@ export class AddMarkerModal extends Component {
 
 var styles = StyleSheet.create({
   modalContent: {
-    backgroundColor: "#E0E0E0",
-    height: "70%"
+    backgroundColor: '#E0E0E0',
+    height: '70%'
   },
 
   header: {
-    backgroundColor: "rgba(0,0, 0, 1)",
+    backgroundColor: 'rgba(0,0, 0, 1)',
     padding: 15,
-    justifyContent: "space-between",
-    flexDirection: "row"
+    justifyContent: 'space-between',
+    flexDirection: 'row'
   },
   menuIconContainer: {
-    alignSelf: "flex-start"
+    alignSelf: 'flex-start'
   },
   menuIcon: {
-    color: "white",
+    color: 'white',
     fontSize: 25
   },
   searchIconContainer: {
-    alignSelf: "flex-end"
+    alignSelf: 'flex-end'
   },
   searchIcon: {
-    color: "white",
+    color: 'white',
     fontSize: 25
   },
   nameContainer: {
-    alignSelf: "center"
+    alignSelf: 'center'
   },
   name: {
     fontSize: 20,
-    color: "white"
+    color: 'white'
   }
 });
 

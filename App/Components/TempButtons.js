@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   TouchableOpacity,
   Image,
@@ -6,35 +6,35 @@ import {
   Text,
   StyleSheet,
   ToastAndroid
-} from "react-native";
-import { connect } from "react-redux";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import ActionButton from "react-native-action-button";
+} from 'react-native';
+import { connect } from 'react-redux';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import ActionButton from 'react-native-action-button';
 
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignSelf: "center",
-    flexDirection: "row",
-    width: "100%",
-    bottom: "-100%"
+    alignSelf: 'center',
+    flexDirection: 'row',
+    width: '100%',
+    bottom: '-100%'
   },
   cancelButton: {
     flex: 1,
-    height: "20%",
-    left: "4%"
+    height: '20%',
+    left: '4%'
   },
   cancelIcon: {
-    color: "white",
+    color: 'white',
     fontSize: 20
   },
   okButton: {
     flex: 1,
-    height: "20%",
-    left: "-17%"
+    height: '20%',
+    left: '-17%'
   },
   okIcon: {
-    color: "black",
+    color: 'black',
     fontSize: 20
   }
 });
@@ -46,7 +46,7 @@ export class TempButtons extends Component {
 
   componentDidMount() {
     ToastAndroid.showWithGravity(
-      "Adding marker\nPress the marker to move it",
+      'Adding marker\nPress the marker to move it',
       ToastAndroid.LONG,
       ToastAndroid.BOTTOM
     );

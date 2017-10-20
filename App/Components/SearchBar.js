@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
-import styles from "./Styles/SearchBarStyles";
-import { Colors, Metrics } from "../Themes/";
-import Icon from "react-native-vector-icons/FontAwesome";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import styles from './Styles/SearchBarStyles';
+import { Colors, Metrics } from '../Themes/';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default class SearchBar extends Component {
   static propTypes = {
@@ -33,7 +33,7 @@ export default class SearchBar extends Component {
           onChangeText={onSearch}
           autoCapitalize="none"
           onSubmitEditing={onSubmitEditing}
-          returnKeyType={"search"}
+          returnKeyType={'search'}
           autoCorrect={false}
           selectionColor={Colors.snow}
         />

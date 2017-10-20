@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { TouchableOpacity, Image, View, Text, StyleSheet } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
-import { connect } from "react-redux";
-import UserActions from "../Redux/UserRedux";
+import React, { Component } from 'react';
+import { TouchableOpacity, Image, View, Text, StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { connect } from 'react-redux';
+import UserActions from '../Redux/UserRedux';
 
 export class Avatar extends Component {
   render() {
@@ -46,28 +46,28 @@ export class Avatar extends Component {
 
 var styles = StyleSheet.create({
   name: {
-    color: "#E3F2FD",
-    margin: "5%",
+    color: '#E3F2FD',
+    margin: '5%',
     fontSize: 21,
-    fontFamily: "Roboto"
+    fontFamily: 'Roboto'
   },
   avatarContainer: {
-    alignItems: "center",
-    backgroundColor: "#2196F3",
-    marginBottom: "4%"
+    alignItems: 'center',
+    backgroundColor: '#2196F3',
+    marginBottom: '4%'
   },
   avatar: {
-    marginTop: "5%",
+    marginTop: '5%',
     height: 128,
     width: 128,
     borderRadius: 64,
     borderWidth: 4,
-    borderColor: "#0069c0"
+    borderColor: '#0069c0'
   },
   buttonText: {
-    fontFamily: "Roboto",
+    fontFamily: 'Roboto',
     fontSize: 15,
-    color: "white"
+    color: 'white'
   }
 });
 

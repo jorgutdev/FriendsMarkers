@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import MapView from "react-native-maps";
-import { connect } from "react-redux";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
-import ActionButtonBar from "./ActionButtonBar";
-import Header from "./Header";
-import AddMapModal from "../Components/AddMapModal";
-import AddMarkerModal from "../Components/AddMarkerModal";
-import TempButtons from "../Components/TempButtons";
-import MarkerCallout from "../Components/MarkerCallout";
+import React, { Component } from 'react';
+import MapView from 'react-native-maps';
+import { connect } from 'react-redux';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import ActionButtonBar from './ActionButtonBar';
+import Header from './Header';
+import AddMapModal from '../Components/AddMapModal';
+import AddMarkerModal from '../Components/AddMarkerModal';
+import TempButtons from '../Components/TempButtons';
+import MarkerCallout from '../Components/MarkerCallout';
 
 export class CustomMap extends Component {
   state = {
@@ -195,7 +195,7 @@ export class CustomMap extends Component {
   }
 
   markerSaved() {
-    alert("marker saved!");
+    alert('marker saved!');
     this.setState({ isMarkerModalVisible: false });
   }
 }
@@ -205,13 +205,13 @@ let styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject
   },
   nameContainer: {
-    backgroundColor: "rgba(52, 52, 52, 0.9)",
-    height: "7%"
+    backgroundColor: 'rgba(52, 52, 52, 0.9)',
+    height: '7%'
   },
   name: {
     fontSize: 20,
-    color: "white",
-    alignSelf: "center"
+    color: 'white',
+    alignSelf: 'center'
   }
 });
 

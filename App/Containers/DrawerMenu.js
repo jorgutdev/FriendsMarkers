@@ -1,5 +1,5 @@
-import { DrawerItems } from "react-navigation";
-import React, { Component } from "react";
+import { DrawerItems } from 'react-navigation';
+import React, { Component } from 'react';
 import {
   Text,
   Image,
@@ -10,26 +10,26 @@ import {
   Dimensions,
   TouchableHighlight,
   TouchableOpacity
-} from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
-import * as firebase from "firebase";
-import Avatar from "../Components/Avatar";
+} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import * as firebase from 'firebase';
+import Avatar from '../Components/Avatar';
 
-const FBSDK = require("react-native-fbsdk");
+const FBSDK = require('react-native-fbsdk');
 const { LoginManager, AccessToken, LoginButton } = FBSDK;
 
 export default class DrawerMenu extends Component {
   contentOptions = {
-    activeTintColor: "#e91e63",
+    activeTintColor: '#e91e63',
     style: {
       marginVertical: 0
     },
-    drawerIcon: "menu"
+    drawerIcon: 'menu'
   };
 
   firebaseLogin() {
     AccessToken.getCurrentAccessToken().then(result => {
-      console.log("AccessToken | firebaseLogin | result -> ", result);
+      console.log('AccessToken | firebaseLogin | result -> ', result);
       let credential = firebase.auth.FacebookAuthProvider.credential(
         result.accessToken
       );
@@ -38,22 +38,22 @@ export default class DrawerMenu extends Component {
         .signInWithCredential(credential)
         .then(
           fbResult => {
-            console.log("Firebase Auth successful! | fbResult ->", fbResult);
+            console.log('Firebase Auth successful! | fbResult ->', fbResult);
             this.setState({ currentUser: firebase.auth().currentUser });
             this.setState({ isLogged: true });
           },
           fbError => {
-            console.error("Firebase Auth Error | fbError ->", fbError);
+            console.error('Firebase Auth Error | fbError ->', fbError);
           }
         )
         .catch(fbError => {
-          console.error("signInWithCredential | fbError ->", fbError);
+          console.error('signInWithCredential | fbError ->', fbError);
         });
     });
   }
 
   facebookLogin() {
-    LoginManager.logInWithReadPermissions(["public_profile"])
+    LoginManager.logInWithReadPermissions(['public_profile'])
       .then(result => {})
       .then(result => {
         this.firebaseLogin();
@@ -61,7 +61,7 @@ export default class DrawerMenu extends Component {
   }
 
   logout() {
-    console.log("Loggin out ");
+    console.log('Loggin out ');
     this.setState({ isLogged: false });
     this.setState({ currentUser: this.anonymous.currentUser });
     LoginManager.logOut();
@@ -82,8 +82,8 @@ export default class DrawerMenu extends Component {
             activeBackgroundColor="#0069c0"
             inactiveTintColor="#0069c0"
             inactiveBackgroundColor="#2196F3"
-            style={{ backgroundColor: "transparent" }}
-            labelStyle={{ color: "#ffffff", marginLeft: 2 }}
+            style={{ backgroundColor: 'transparent' }}
+            labelStyle={{ color: '#ffffff', marginLeft: 2 }}
           />
         </View>
         <View style={styles.buttonContainer} />
@@ -94,41 +94,41 @@ export default class DrawerMenu extends Component {
 
 var styles = StyleSheet.create({
   routesContainer: {
-    marginTop: "-2%",
+    marginTop: '-2%',
     flex: 1,
-    alignItems: "stretch"
+    alignItems: 'stretch'
   },
   topContainer: {
-    backgroundColor: "#2196F3",
-    height: "100%"
+    backgroundColor: '#2196F3',
+    height: '100%'
   },
   name: {
-    color: "#E3F2FD",
-    margin: "5%",
+    color: '#E3F2FD',
+    margin: '5%',
     fontSize: 21,
-    fontFamily: "Roboto"
+    fontFamily: 'Roboto'
   },
   buttonText: {
-    fontFamily: "Roboto",
+    fontFamily: 'Roboto',
     fontSize: 15,
-    color: "white"
+    color: 'white'
   },
   avatarContainer: {
     flex: 1,
-    alignItems: "center",
-    backgroundColor: "#2196F3"
+    alignItems: 'center',
+    backgroundColor: '#2196F3'
   },
   avatar: {
-    marginTop: "5%",
+    marginTop: '5%',
     height: 128,
     width: 128,
     borderRadius: 64,
     borderWidth: 4,
-    borderColor: "#0069c0"
+    borderColor: '#0069c0'
   },
   buttonContainer: {
-    marginTop: "2%",
-    alignItems: "center",
-    width: "100%"
+    marginTop: '2%',
+    alignItems: 'center',
+    width: '100%'
   }
 });

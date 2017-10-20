@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import MapView from "react-native-maps";
-import { connect } from "react-redux";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
-import ActionButtonBar from "../Components/ActionButtonBar";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import React, { Component } from 'react';
+import MapView from 'react-native-maps';
+import { connect } from 'react-redux';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import ActionButtonBar from '../Components/ActionButtonBar';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export class Header extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ export class Header extends Component {
         <View style={styles.menuIconContainer}>
           <TouchableOpacity
             onPress={() => {
-              this.props.navigation.navigate("DrawerOpen");
+              this.props.navigation.navigate('DrawerOpen');
             }}
           >
             <Icon name="menu" style={styles.menuIcon} />
@@ -28,7 +28,7 @@ export class Header extends Component {
         <View style={styles.searchIconContainer}>
           <TouchableOpacity
             onPress={() => {
-              alert("Search something");
+              alert('Search something');
             }}
           >
             <Icon name="magnify" style={styles.searchIcon} />
@@ -41,31 +41,31 @@ export class Header extends Component {
 
 let styles = StyleSheet.create({
   header: {
-    backgroundColor: "rgba(52, 52, 52, 0.9)",
+    backgroundColor: 'rgba(52, 52, 52, 0.9)',
     padding: 15,
-    justifyContent: "space-between",
-    flexDirection: "row"
+    justifyContent: 'space-between',
+    flexDirection: 'row'
   },
   menuIconContainer: {
-    alignSelf: "flex-start"
+    alignSelf: 'flex-start'
   },
   menuIcon: {
-    color: "white",
+    color: 'white',
     fontSize: 25
   },
   searchIconContainer: {
-    alignSelf: "flex-end"
+    alignSelf: 'flex-end'
   },
   searchIcon: {
-    color: "white",
+    color: 'white',
     fontSize: 25
   },
   nameContainer: {
-    alignSelf: "center"
+    alignSelf: 'center'
   },
   name: {
     fontSize: 20,
-    color: "white"
+    color: 'white'
   }
 });
 

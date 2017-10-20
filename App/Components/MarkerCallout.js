@@ -1,16 +1,16 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
   Text,
   TextInput,
   TouchableOpacity
-} from "react-native";
+} from 'react-native';
 
 export default class MarkerCallout extends Component {
   constructor(props) {
     super(props);
-    this.state = { text: "" };
+    this.state = { text: '' };
   }
   render() {
     return (
@@ -18,7 +18,7 @@ export default class MarkerCallout extends Component {
         style={{
           width: 150,
           height: 150,
-          backgroundColor: "transparent"
+          backgroundColor: 'transparent'
         }}
       >
         <Text>Aqui va a ir todo </Text>

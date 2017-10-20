@@ -1,6 +1,6 @@
-import { put, select } from "redux-saga/effects";
-import GithubActions from "../Redux/GithubRedux";
-import { is } from "ramda";
+import { put, select } from 'redux-saga/effects';
+import GithubActions from '../Redux/GithubRedux';
+import { is } from 'ramda';
 
 // exported to make available for tests
 export const selectAvatar = state => state.github.avatar;
@@ -13,7 +13,7 @@ export function* startup(action) {
 
     // logging an object for better clarity
     console.tron.log({
-      message: "pass objects for better logging",
+      message: 'pass objects for better logging',
       someGeneratorFunction: selectAvatar
     });
 
@@ -21,10 +21,10 @@ export function* startup(action) {
     const subObject = { a: 1, b: [1, 2, 3], c: true };
     subObject.circularDependency = subObject; // osnap!
     console.tron.display({
-      name: "🔥 IGNITE 🔥",
-      preview: "You should totally expand this",
+      name: '🔥 IGNITE 🔥',
+      preview: 'You should totally expand this',
       value: {
-        "💃": "Welcome to the future!",
+        '💃': 'Welcome to the future!',
         subObject,
         someInlineFunction: () => true,
         someGeneratorFunction: startup,
@@ -35,6 +35,6 @@ export function* startup(action) {
   const avatar = yield select(selectAvatar);
   // only get if we don't have it yet
   if (!is(String, avatar)) {
-    yield put(GithubActions.userRequest("GantMan"));
+    yield put(GithubActions.userRequest('GantMan'));
   }
 }

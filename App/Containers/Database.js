@@ -1,4 +1,4 @@
-import * as firebase from "firebase";
+import * as firebase from 'firebase';
 
 class Database {
   /**
@@ -8,7 +8,7 @@ class Database {
      * @returns {firebase.Promise<any>|!firebase.Promise.<void>}
      */
   static setUserMobile(userId, mobile) {
-    let userMobilePath = "/user/" + userId + "/details";
+    let userMobilePath = '/user/' + userId + '/details';
 
     return firebase
       .database()
@@ -24,13 +24,13 @@ class Database {
      * @param callback Users mobile number
      */
   static listenUserMobile(userId, callback) {
-    let userMobilePath = "/user/" + userId + "/details";
+    let userMobilePath = '/user/' + userId + '/details';
 
     firebase
       .database()
       .ref(userMobilePath)
-      .on("value", snapshot => {
-        var mobile = "";
+      .on('value', snapshot => {
+        var mobile = '';
 
         if (snapshot.val()) {
           mobile = snapshot.val().mobile;
