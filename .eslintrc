@@ -7,7 +7,21 @@
   "env": {
     "es6": true
   },
+  "extends": [
+    "standard",
+    "prettier",
+    "prettier/flowtype",
+    "prettier/react",
+    "prettier/standard"
+  ],
   "plugins": [
-    "react"
-  ]
+    "react",
+    "react-native",
+    "flowtype",
+    "prettier",
+    "standard"
+  ],
+  "scripts": {
+    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
+  }
 }

@@ -5,3 +5,4 @@ android/.gradle
 .env
 Tests/
 npm-debug.log
+husky.log
