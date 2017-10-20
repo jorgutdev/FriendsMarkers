@@ -1,36 +1,36 @@
-import React, { Component } from 'react'
-import { TouchableOpacity, Image, View, Text, StyleSheet } from 'react-native'
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import { connect } from 'react-redux'
-import ActionButton from 'react-native-action-button'
+import React, { Component } from 'react';
+import { StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { connect } from 'react-redux';
+import ActionButton from 'react-native-action-button';
 
 export class ActionButtonBar extends Component {
   showModal = () => {
-    this.props.showModal()
+    this.props.showModal();
   };
 
-  render () {
+  render() {
     return (
       <ActionButton
-        buttonColor='rgba(231,76,60,1)'
-        position='left'
-        verticalOrientation='down'
+        buttonColor="rgba(231,76,60,1)"
+        position="left"
+        verticalOrientation="down"
         style={styles.buttonContainer}
       >
-        <ActionButton.Item buttonColor='#9b59b6' onPress={this.showModal}>
-          <Icon name='map-marker-plus' style={styles.actionButtonIcon} />
+        <ActionButton.Item buttonColor="#9b59b6" onPress={this.showModal}>
+          <Icon name="map-marker-plus" style={styles.actionButtonIcon} />
         </ActionButton.Item>
         <ActionButton.Item
-          buttonColor='#3498db'
+          buttonColor="#3498db"
           onPress={() => this.props.navigation.navigate('DrawerOpen')}
         >
-          <Icon name='account' style={styles.actionButtonIcon} />
+          <Icon name="account" style={styles.actionButtonIcon} />
         </ActionButton.Item>
-        <ActionButton.Item buttonColor='#1abc9c' onPress={() => {}}>
-          <Icon name='map-marker' style={styles.actionButtonIcon} />
+        <ActionButton.Item buttonColor="#1abc9c" onPress={() => {}}>
+          <Icon name="map-marker" style={styles.actionButtonIcon} />
         </ActionButton.Item>
       </ActionButton>
-    )
+    );
   }
 }
 
@@ -43,16 +43,16 @@ var styles = StyleSheet.create({
     top: '9%',
     left: '-2%'
   }
-})
+});
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return {
     isLogged: state.userReducer.isLogged
-  }
+  };
 }
 
-function mapDispatchToProps (dispatch) {
-  return {}
+function mapDispatchToProps(dispatch) {
+  return {};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ActionButtonBar)
+export default connect(mapStateToProps, mapDispatchToProps)(ActionButtonBar);

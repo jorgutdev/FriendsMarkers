@@ -1,55 +1,47 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {
   TouchableOpacity,
-  Image,
   View,
   Text,
   StyleSheet,
   TextInput
-} from 'react-native'
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import { connect } from 'react-redux'
-import ActionButton from 'react-native-action-button'
-import Modal from 'react-native-modal'
-import MapsActions from '../Redux/MapsRedux'
+} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { connect } from 'react-redux';
+import Modal from 'react-native-modal';
+import MapsActions from '../Redux/MapsRedux';
 
-import Contacts from 'react-native-contacts'
-import * as firebase from 'firebase'
 export class AddMapModal extends Component {
   state = {
     newMapName: ''
   };
 
-  constructor (props) {
-    super(props)
-  }
+  componentDidMount() {}
 
-  componentDidMount () {}
-
-  render () {
+  render() {
     return (
       <View>
         <Modal
           isVisible={this.props.isModalVisible}
           style={styles.modal}
-          animationIn='slideInUp'
-          animationOut='slideOutDown'
+          animationIn="slideInUp"
+          animationOut="slideOutDown"
         >
           <View style={styles.modalHeader}>
             <Text style={styles.headerText}>Creating new map</Text>
             <TouchableOpacity onPress={() => this.props.closeModal()}>
-              <Icon style={styles.iconClose} name='close' color='#fff' />
+              <Icon style={styles.iconClose} name="close" color="#fff" />
             </TouchableOpacity>
           </View>
           <View style={styles.modalContent}>
             <View style={styles.textInputView}>
               <TextInput
                 style={styles.textinput}
-                underlineColorAndroid='transparent'
+                underlineColorAndroid="transparent"
                 onChangeText={newMapName => this.setState({ newMapName })}
                 value={this.state.newMapName}
-                placeholder='Map Name'
-                defaultValue='MapName'
+                placeholder="Map Name"
+                defaultValue="MapName"
                 autoFocus={false}
               />
             </View>
@@ -59,8 +51,8 @@ export class AddMapModal extends Component {
               >
                 <Icon
                   style={styles.iconSave}
-                  name='google-maps'
-                  color='#0069c0'
+                  name="google-maps"
+                  color="#0069c0"
                 >
                   <Text> Add Map</Text>
                 </Icon>
@@ -69,7 +61,7 @@ export class AddMapModal extends Component {
           </View>
         </Modal>
       </View>
-    )
+    );
   }
 }
 
@@ -108,19 +100,19 @@ var styles = StyleSheet.create({
     backgroundColor: '#6ec6ff',
     height: '70%'
   }
-})
+});
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return {
     user: state.userReducer.user,
     isLogged: state.userReducer.isLogged
-  }
+  };
 }
 
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
     addMap: name => dispatch(MapsActions.addMap(name))
-  }
+  };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddMapModal)
+export default connect(mapStateToProps, mapDispatchToProps)(AddMapModal);
