@@ -9,7 +9,7 @@ export default () => {
     mapsReducer: require('./MapsRedux').reducer,
     nav: require('./NavigationRedux').reducer,
     github: require('./GithubRedux').reducer,
-    search: require('./SearchRedux').reducer,
+    search: require('./SearchRedux').reducer
 
   })
 
