@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   DrawerNavigator,
   StackNavigator,
   NavigationActions,
   DrawerItems
-} from 'react-navigation';
-import LaunchScreen from '../Containers/LaunchScreen';
-import LoginScreen from '../Containers/LoginScreen';
-import AddMarker from '../Containers/AddMarker';
-import DrawerMenu from '../Containers/DrawerMenu';
+} from 'react-navigation'
+import LaunchScreen from '../Containers/LaunchScreen'
+import LoginScreen from '../Containers/LoginScreen'
+import AddMarker from '../Containers/AddMarker'
+import DrawerMenu from '../Containers/DrawerMenu'
 
 import {
   Button,
@@ -16,13 +16,13 @@ import {
   View,
   ScrollView,
   StyleSheet
-} from 'react-native';
-import styles from './Styles/NavigationStyles';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+} from 'react-native'
+import styles from './Styles/NavigationStyles'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 class Hidden extends React.Component {
-  render() {
-    return null;
+  render () {
+    return null
   }
 }
 // Manifest of possible screens
@@ -35,11 +35,11 @@ const PrimaryStack = StackNavigator({
       headerLeft: (
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('DrawerOpen');
+            navigation.navigate('DrawerOpen')
           }}
         >
           <Icon
-            name="menu"
+            name='menu'
             style={{
               color: 'black',
               padding: 10,
@@ -51,13 +51,13 @@ const PrimaryStack = StackNavigator({
       ),
       drawer: () => ({
         label: 'Maps',
-        icon: () => <Icon name="rocket" size={30} color="#900" />
+        icon: () => <Icon name='rocket' size={30} color='#900' />
       })
     })
   },
 
   /*    merged with:
-     https://stackoverflow.com/questions/43885690/how-to-lock-drawer-for-specific-page-using-drawernavigation-react-navigationr 
+     https://stackoverflow.com/questions/43885690/how-to-lock-drawer-for-specific-page-using-drawernavigation-react-navigationr
      */
   AddMarkerScreen: {
     screen: AddMarker,
@@ -66,7 +66,7 @@ const PrimaryStack = StackNavigator({
       headerMode: 'screen'
     })
   }
-});
+})
 
 /* const AddMarkerStack = StackNavigator({
   AddMarkerScreen: {
@@ -80,7 +80,7 @@ const PrimaryStack = StackNavigator({
   }),
 }, });
  */
-//<MenuButton navigate={navigati on.navigate} />
+// <MenuButton navigate={navigati on.navigate} />
 // Manifest of possible screens
 const LoginStack = StackNavigator(
   {
@@ -92,11 +92,11 @@ const LoginStack = StackNavigator(
       headerLeft: (
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('DrawerOpen');
+            navigation.navigate('DrawerOpen')
           }}
         >
           <Icon
-            name="menu"
+            name='menu'
             style={{
               color: 'black',
               padding: 10,
@@ -108,9 +108,9 @@ const LoginStack = StackNavigator(
       )
     })
   }
-);
+)
 
-const MenuButton = <View />;
+const MenuButton = <View />
 
 const DrawerNav = DrawerNavigator(
   {
@@ -131,6 +131,6 @@ const DrawerNav = DrawerNavigator(
       }
     }
   }
-);
+)
 
-export default DrawerNav;
+export default DrawerNav

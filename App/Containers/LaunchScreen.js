@@ -1,34 +1,34 @@
-import React, { Component } from 'react';
-import { View, StyleSheet, KeyboardAvoidingView } from 'react-native';
-import { Images } from '../Themes';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import { View, StyleSheet, KeyboardAvoidingView } from 'react-native'
+import { Images } from '../Themes'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import { connect } from 'react-redux'
 
-import ActionButtonBar from '../Components/ActionButtonBar';
-import CustomMap from '../Components/CustomMap';
-import AddMapModal from '../Components/AddMapModal';
-import AddMarkerModal from '../Components/AddMarkerModal';
+import ActionButtonBar from '../Components/ActionButtonBar'
+import CustomMap from '../Components/CustomMap'
+import AddMapModal from '../Components/AddMapModal'
+import AddMarkerModal from '../Components/AddMarkerModal'
 
-import * as firebase from 'firebase';
-import { fromHsv, toHsv, TriangleColorPicker } from 'react-native-color-picker';
+import * as firebase from 'firebase'
+import { fromHsv, toHsv, TriangleColorPicker } from 'react-native-color-picker'
 
 export class LaunchScreen extends Component {
   state = {};
   static navigationOptions = {
     header: null,
     drawerLabel: 'Maps',
-    drawerIcon: <Icon name="google-maps" size={26} style={{ color: '#fff' }} />
+    drawerIcon: <Icon name='google-maps' size={26} style={{ color: '#fff' }} />
   };
 
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
   }
 
-  componentWillMount() {}
+  componentWillMount () {}
 
-  componentDidMount() {}
+  componentDidMount () {}
 
-  render() {
+  render () {
     return (
       <View style={styles.map}>
         <View style={{ flex: 1, paddingBottom: this.state.hackHeight }}>
@@ -39,7 +39,7 @@ export class LaunchScreen extends Component {
           />
         </View>
       </View>
-    );
+    )
   }
 }
 
@@ -47,16 +47,16 @@ let styles = StyleSheet.create({
   map: {
     ...StyleSheet.absoluteFillObject
   }
-});
+})
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     map: state.mapsReducer.map
-  };
+  }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {};
+function mapDispatchToProps (dispatch) {
+  return {}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LaunchScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(LaunchScreen)

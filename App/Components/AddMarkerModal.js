@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   TouchableOpacity,
   Image,
@@ -8,29 +8,27 @@ import {
   TextInput,
   KeyboardAvoidingView,
   Picker
-} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { connect } from 'react-redux';
-import Modal from 'react-native-modalbox';
-import MapsActions from '../Redux/MapsRedux';
-import { fromHsv, toHsv, ColorPicker } from 'react-native-color-picker';
-import { AnimatedTextInput } from './animated/AnimatedTextInput';
+} from 'react-native'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import { connect } from 'react-redux'
+import Modal from 'react-native-modalbox'
+import MapsActions from '../Redux/MapsRedux'
+import { fromHsv, toHsv, ColorPicker } from 'react-native-color-picker'
+import { AnimatedTextInput } from './animated/AnimatedTextInput'
 export class AddMarkerModal extends Component {
   state = {
     name: ''
   };
 
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
   }
 
-  componentDidMount() {}
+  componentDidMount () {}
 
   saveMarker = () => {
-    if (this.state.name == '' || this.state.name == null)
-      alert('Marker name cannot be empty');
-    else {
-      console.log(' this.props', this.props);
+    if (this.state.name == '' || this.state.name == null) { alert('Marker name cannot be empty') } else {
+      console.log(' this.props', this.props)
 
       let marker = {
         title: this.state.name,
@@ -42,14 +40,14 @@ export class AddMarkerModal extends Component {
         pinColor: this.state.color,
         user: this.props.user.email,
         map: this.props.map.id
-      };
-      this.props.addMarkerToMap(marker);
+      }
+      this.props.addMarkerToMap(marker)
 
-      this.props.markerSaved();
+      this.props.markerSaved()
     }
   };
 
-  render() {
+  render () {
     return (
       <Modal
         isOpen={this.props.isModalVisible}
@@ -67,7 +65,7 @@ export class AddMarkerModal extends Component {
           <Text>Next</Text>
         </TouchableOpacity>
       </Modal>
-    );
+    )
   }
 }
 
@@ -104,20 +102,20 @@ var styles = StyleSheet.create({
     fontSize: 20,
     color: 'white'
   }
-});
+})
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     user: state.userReducer.user,
     isLogged: state.userReducer.isLogged,
     map: state.mapsReducer.map
-  };
+  }
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return {
     addMarkerToMap: marker => dispatch(MapsActions.addMarkerToMap(marker))
-  };
+  }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddMarkerModal);
+export default connect(mapStateToProps, mapDispatchToProps)(AddMarkerModal)

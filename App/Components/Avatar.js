@@ -1,32 +1,32 @@
-import React, { Component } from 'react';
-import { TouchableOpacity, Image, View, Text, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { connect } from 'react-redux';
-import UserActions from '../Redux/UserRedux';
+import React, { Component } from 'react'
+import { TouchableOpacity, Image, View, Text, StyleSheet } from 'react-native'
+import Icon from 'react-native-vector-icons/FontAwesome'
+import { connect } from 'react-redux'
+import UserActions from '../Redux/UserRedux'
 
 export class Avatar extends Component {
-  render() {
-    let loginButton;
+  render () {
+    let loginButton
     if (!this.props.isLogged) {
       loginButton = (
         <Icon.Button
-          name="facebook"
-          backgroundColor="#3b5998"
+          name='facebook'
+          backgroundColor='#3b5998'
           onPress={() => this.props.facebookLogin()}
         >
           <Text style={styles.buttonText}>Login with Facebook</Text>
         </Icon.Button>
-      );
+      )
     } else {
       loginButton = (
         <Icon.Button
-          name="sign-out"
-          backgroundColor="black"
+          name='sign-out'
+          backgroundColor='black'
           onPress={() => this.props.facebookLogout()}
         >
           <Text style={styles.buttonText}>Logout</Text>
         </Icon.Button>
-      );
+      )
     }
 
     return (
@@ -40,7 +40,7 @@ export class Avatar extends Component {
         <Text style={styles.name}>{this.props.user.displayName}</Text>
         {loginButton}
       </View>
-    );
+    )
   }
 }
 
@@ -69,20 +69,20 @@ var styles = StyleSheet.create({
     fontSize: 15,
     color: 'white'
   }
-});
+})
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     user: state.userReducer.user,
     isLogged: state.userReducer.isLogged
-  };
+  }
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return {
     facebookLogin: () => dispatch(UserActions.userLogin()),
     facebookLogout: () => dispatch(UserActions.userLogout())
-  };
+  }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Avatar);
+export default connect(mapStateToProps, mapDispatchToProps)(Avatar)

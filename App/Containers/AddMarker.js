@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   Text,
   Image,
@@ -11,18 +11,18 @@ import {
   Dimensions,
   TouchableHighlight,
   TouchableOpacity
-} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import * as firebase from 'firebase';
-import DrawerMenu, { logout } from './DrawerMenu';
-import MapsActions from '../Redux/MapsRedux';
-import { connect } from 'react-redux';
+} from 'react-native'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import * as firebase from 'firebase'
+import DrawerMenu, { logout } from './DrawerMenu'
+import MapsActions from '../Redux/MapsRedux'
+import { connect } from 'react-redux'
 
 // Styles
-import { fromHsv, toHsv, ColorPicker } from 'react-native-color-picker';
+import { fromHsv, toHsv, ColorPicker } from 'react-native-color-picker'
 
-const FBSDK = require('react-native-fbsdk');
-const { LoginButton, LoginManager, AccessToken } = FBSDK;
+const FBSDK = require('react-native-fbsdk')
+const { LoginButton, LoginManager, AccessToken } = FBSDK
 
 export class AddMarker extends Component {
   state = {
@@ -31,19 +31,19 @@ export class AddMarker extends Component {
     color: 'blue'
   };
 
-  constructor(props) {
-    super(props);
-    console.log('AddMarker props -> ', props);
+  constructor (props) {
+    super(props)
+    console.log('AddMarker props -> ', props)
   }
 
-  markerStyle = function(options) {
+  markerStyle = function (options) {
     return {
       color: this.state.color
-    };
+    }
   };
 
-  returnColor = function() {
-    return this.state.color;
+  returnColor = function () {
+    return this.state.color
   };
 
   static navigationOptions = {
@@ -51,14 +51,14 @@ export class AddMarker extends Component {
       right: (
         <TouchableOpacity
           onPress={() => {
-            this.addMarker();
+            this.addMarker()
           }}
         >
           <Icon
-            name="map-marker-plus"
+            name='map-marker-plus'
             style={{ padding: 10 }}
             size={28}
-            color="#fff"
+            color='#fff'
           />
         </TouchableOpacity>
       )
@@ -69,15 +69,15 @@ export class AddMarker extends Component {
     title: 'Adding marker to map ...'
   };
 
-  componentWillMount() {}
+  componentWillMount () {}
 
-  componentDidMount() {
-    console.log('AddMarker | componentDidMount | this -> ', this);
+  componentDidMount () {
+    console.log('AddMarker | componentDidMount | this -> ', this)
   }
 
-  componentWillUnmount() {}
+  componentWillUnmount () {}
 
-  render() {
+  render () {
     return (
       <View style={{ flex: 1, backgroundColor: '#fff' }}>
         <View
@@ -85,16 +85,16 @@ export class AddMarker extends Component {
             flexDirection: 'row',
             flex: 1
           }}
-          behavior="padding"
+          behavior='padding'
         >
-          <View style={{ flex: 1, height: '100%' }} behavior="padding">
+          <View style={{ flex: 1, height: '100%' }} behavior='padding'>
             <ColorPicker
-              defaultColor="blue"
+              defaultColor='blue'
               color={this.state.color}
-              hideSliders={true}
+              hideSliders
               onColorChange={color => {
-                let myColor = fromHsv(color);
-                this.setState({ color: myColor });
+                let myColor = fromHsv(color)
+                this.setState({ color: myColor })
               }}
               onColorSelected={color => this.setState({ color })}
               style={{ flex: 1, width: '100%', alignSelf: 'center' }}
@@ -107,15 +107,15 @@ export class AddMarker extends Component {
             style={{ padding: 10, fontSize: 30 }}
             onChangeText={newMarkerName => this.setState({ newMarkerName })}
             value={this.state.newMarkerName}
-            placeholder="Marker Name"
-            autoFocus={true}
+            placeholder='Marker Name'
+            autoFocus
           />
         </View>
 
         <View style={{ flex: 1, margin: 40 }}>
           <TouchableOpacity
             onPress={() => {
-              this.saveMarker();
+              this.saveMarker()
             }}
             style={{
               alignItems: 'center'
@@ -133,7 +133,7 @@ export class AddMarker extends Component {
               }}
             >
               <Icon
-                name="map-marker-plus"
+                name='map-marker-plus'
                 style={{ padding: 10 }}
                 size={28}
                 color={this.state.color}
@@ -150,7 +150,7 @@ export class AddMarker extends Component {
           </TouchableOpacity>
         </View>
       </View>
-    );
+    )
   }
 }
 
@@ -159,19 +159,19 @@ const styles = StyleSheet.create({
     height: 40,
     width: 40
   }
-});
+})
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     map: state.mapsReducer.map,
     user: state.userReducer.user
-  };
+  }
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return {
     addMarkerToMap: marker => dispatch(MapsActions.addMarkerToMap(marker))
-  };
+  }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddMarker);
+export default connect(mapStateToProps, mapDispatchToProps)(AddMarker)

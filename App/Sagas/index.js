@@ -1,16 +1,16 @@
-import { takeLatest } from 'redux-saga/effects';
+import { takeLatest } from 'redux-saga/effects'
 
 /* ------------- Types ------------- */
 
-import { StartupTypes } from '../Redux/StartupRedux';
-import { UserTypes } from '../Redux/UserRedux';
-import { MapsTypes } from '../Redux/MapsRedux';
+import { StartupTypes } from '../Redux/StartupRedux'
+import { UserTypes } from '../Redux/UserRedux'
+import { MapsTypes } from '../Redux/MapsRedux'
 
 /* ------------- Sagas ------------- */
 
-import { startup } from './StartupSagas';
-import { login, getCurrentUser } from './UserSagas';
-import { addMap, loadMap, addMarkerToMap } from './MapsSagas';
+import { startup } from './StartupSagas'
+import { login, getCurrentUser } from './UserSagas'
+import { addMap, loadMap, addMarkerToMap } from './MapsSagas'
 
 /* ------------- API ------------- */
 
@@ -19,7 +19,7 @@ import { addMap, loadMap, addMarkerToMap } from './MapsSagas';
 
 /* ------------- Connect Types To Sagas ------------- */
 
-export default function* root() {
+export default function * root () {
   yield [
     // some sagas only receive an action
     takeLatest(StartupTypes.STARTUP, startup),
@@ -29,5 +29,5 @@ export default function* root() {
     takeLatest(MapsTypes.ADD_MAP, addMap),
     takeLatest(MapsTypes.LOAD_MAP, loadMap),
     takeLatest(MapsTypes.ADD_MARKER_TO_MAP, addMarkerToMap)
-  ];
+  ]
 }

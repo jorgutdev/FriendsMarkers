@@ -1,5 +1,5 @@
-import { createReducer, createActions } from 'reduxsauce';
-import Immutable from 'seamless-immutable';
+import { createReducer, createActions } from 'reduxsauce'
+import Immutable from 'seamless-immutable'
 
 /* ------------- Types and Action Creators ------------- */
 
@@ -10,10 +10,10 @@ const { Types, Creators } = createActions({
   mapLoaded: ['map'],
   addMarkerToMap: ['marker'],
   markerAddedSuccessfully: ['marker']
-});
+})
 
-export const MapsTypes = Types;
-export default Creators;
+export const MapsTypes = Types
+export default Creators
 
 /* ------------- Initial State ------------- */
 
@@ -28,7 +28,7 @@ export const INITIAL_STATE = {
   loadingMap: false,
   addingMap: false,
   error: null
-};
+}
 
 /* ------------- Reducers ------------- */
 
@@ -36,19 +36,19 @@ export const loadMap = state => {
   myState = {
     ...state,
     loadingMap: true
-  };
-  return myState;
-};
+  }
+  return myState
+}
 
 export const mapLoaded = (state, action) => {
-  const { map } = action;
+  const { map } = action
   myState = {
     ...state,
     map,
     loadingMap: false
-  };
-  return myState;
-};
+  }
+  return myState
+}
 
 export const addMap = (state, parameters) => {
   myState = {
@@ -58,31 +58,31 @@ export const addMap = (state, parameters) => {
       name: parameters.name
     },
     addingMap: true
-  };
-  return myState;
-};
+  }
+  return myState
+}
 
 export const returnToMap = (state, action) => {
-  const { map } = action;
+  const { map } = action
   myState = {
     ...state,
     map,
     addingMap: false
-  };
-  return myState;
-};
+  }
+  return myState
+}
 
 export const addMarkerToMap = (state, parameters) => {
-  const { marker } = parameters;
+  const { marker } = parameters
   myState = {
     ...state,
     addingMarker: true
-  };
-  return myState;
-};
+  }
+  return myState
+}
 
 export const markerAddedSuccessfully = (state, parameters) => {
-  const { marker } = parameters;
+  const { marker } = parameters
   myState = {
     ...state,
     addingMarker: false,
@@ -90,9 +90,9 @@ export const markerAddedSuccessfully = (state, parameters) => {
       ...state.map,
       markers: [...state.map.markers, marker]
     }
-  };
-  return myState;
-};
+  }
+  return myState
+}
 
 /* ------------- Hookup Reducers To Types ------------- */
 
@@ -103,4 +103,4 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.MAP_LOADED]: mapLoaded,
   [Types.ADD_MARKER_TO_MAP]: addMarkerToMap,
   [Types.MARKER_ADDED_SUCCESSFULLY]: markerAddedSuccessfully
-});
+})

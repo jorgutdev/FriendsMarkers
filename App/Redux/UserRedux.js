@@ -1,5 +1,5 @@
-import { createReducer, createActions } from 'reduxsauce';
-import Immutable from 'seamless-immutable';
+import { createReducer, createActions } from 'reduxsauce'
+import Immutable from 'seamless-immutable'
 
 /* ------------- Types and Action Creators ------------- */
 
@@ -10,10 +10,10 @@ const { Types, Creators } = createActions({
   getCurrentUser: null,
   userLoginSuccess: ['user'],
   userLoginFailure: null
-});
+})
 
-export const UserTypes = Types;
-export default Creators;
+export const UserTypes = Types
+export default Creators
 
 /* ------------- Initial State ------------- */
 
@@ -26,20 +26,20 @@ export const INITIAL_STATE = {
   isLogged: false,
   logging: null,
   error: null
-};
+}
 
 /* ------------- Reducers ------------- */
 
-let myState;
+let myState
 
 export const login = state => {
   myState = {
     ...state,
     logging: true,
     isLogged: false
-  };
-  return myState;
-};
+  }
+  return myState
+}
 
 export const logout = state => {
   myState = {
@@ -51,13 +51,13 @@ export const logout = state => {
       email: ''
     },
     isLogged: false
-  };
-  return myState;
-};
+  }
+  return myState
+}
 
 export const success = (state, action) => {
-  const { user } = action;
-  const { displayName, photoURL, email } = user;
+  const { user } = action
+  const { displayName, photoURL, email } = user
   myState = {
     ...state,
     logging: false,
@@ -67,27 +67,27 @@ export const success = (state, action) => {
       photoURL,
       email
     }
-  };
-  return myState;
-};
+  }
+  return myState
+}
 
 export const failure = (state, error) => {
   myState = {
     ...state,
     logging: false,
     error
-  };
-  return state;
-};
+  }
+  return state
+}
 
 export const getCurrentUser = state => {
   let myState = {
     ...state,
     isLogged: false,
     logging: true
-  };
-  return myState;
-};
+  }
+  return myState
+}
 
 /* ------------- Hookup Reducers To Types ------------- */
 
@@ -99,4 +99,4 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.USER_LOGOUT_SUCCESS]: success,
   [Types.USER_LOGIN_FAILURE]: failure,
   [Types.USER_LOGOUT_FAILURE]: failure
-});
+})

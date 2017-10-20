@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import MapView from 'react-native-maps';
-import { connect } from 'react-redux';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import ActionButtonBar from './ActionButtonBar';
-import Header from './Header';
-import AddMapModal from '../Components/AddMapModal';
-import AddMarkerModal from '../Components/AddMarkerModal';
-import TempButtons from '../Components/TempButtons';
-import MarkerCallout from '../Components/MarkerCallout';
+import React, { Component } from 'react'
+import MapView from 'react-native-maps'
+import { connect } from 'react-redux'
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
+import ActionButtonBar from './ActionButtonBar'
+import Header from './Header'
+import AddMapModal from '../Components/AddMapModal'
+import AddMarkerModal from '../Components/AddMarkerModal'
+import TempButtons from '../Components/TempButtons'
+import MarkerCallout from '../Components/MarkerCallout'
 
 export class CustomMap extends Component {
   state = {
@@ -17,35 +17,35 @@ export class CustomMap extends Component {
     isMarkerModalVisible: false
   };
 
-  constructor(props) {
-    super(props);
-    let color;
+  constructor (props) {
+    super(props)
+    let color
   }
 
-  componentDidMount() {
+  componentDidMount () {
     navigator.geolocation.getCurrentPosition(
       position => {
-        this.zoomToLocation(position);
+        this.zoomToLocation(position)
       },
       error => alert(error.message),
       { enableHighAccuracy: true, timeout: 2000 }
-    );
+    )
   }
 
   // Events
-  longPress(event) {
-    let { coordinate, position } = event;
+  longPress (event) {
+    let { coordinate, position } = event
     // New temporal marker
     let tmpMkr = {
       coordinate
-    };
-    this.setState({ tmpMkr });
-    this.setState({ tmpCoords: coordinate });
-    this.tmpMkr(coordinate);
+    }
+    this.setState({ tmpMkr })
+    this.setState({ tmpCoords: coordinate })
+    this.tmpMkr(coordinate)
   }
 
   // to change
-  tmpMkr(coordinate) {
+  tmpMkr (coordinate) {
     // var myArray = [
     //   "red",
     //   "tomato",
@@ -67,21 +67,21 @@ export class CustomMap extends Component {
     //   "indigo"
     // ];
 
-    this.setState({ tempCoordinates: coordinate });
+    this.setState({ tempCoordinates: coordinate })
   }
-  removeTempMarker() {
-    this.setState({ tmpBtns: null });
-    this.setState({ tmpMkr: null });
+  removeTempMarker () {
+    this.setState({ tmpBtns: null })
+    this.setState({ tmpMkr: null })
   }
 
-  saveMarker() {
+  saveMarker () {
     this.setState({
       isMarkerModalVisible: true,
       newMarkerCoordinate: this.state.tmpCoords
-    });
+    })
   }
 
-  zoomToLocation(position) {
+  zoomToLocation (position) {
     this.setState({
       region: {
         latitude: position.coords.latitude,
@@ -89,76 +89,76 @@ export class CustomMap extends Component {
         latitudeDelta: 0.1,
         longitudeDelta: 0.1
       }
-    });
+    })
   }
 
-  componentWillUnmount() {
-    navigator.geolocation.clearWatch(this.watchID);
+  componentWillUnmount () {
+    navigator.geolocation.clearWatch(this.watchID)
   }
 
-  showAddMarkerModal() {
+  showAddMarkerModal () {
     this.setState({
       isMarkerModalVisible: true,
       newMarkerCoordinate: this.state.tempCoordinates
-    });
+    })
   }
 
   closeAddMarkerModal = () => {
-    this.setState({ isMarkerModalVisible: false });
+    this.setState({ isMarkerModalVisible: false })
   };
 
-  showAddMapModal() {
-    this.setState({ isMapModalVisible: true });
+  showAddMapModal () {
+    this.setState({ isMapModalVisible: true })
   }
   closeAddMapModal = () => {
-    this.setState({ isMapModalVisible: false });
+    this.setState({ isMapModalVisible: false })
   };
 
   onRegionChange = region => {
-    this.setState({ region: region });
+    this.setState({ region: region })
   };
 
-  render() {
-    let tmpMkr;
-    let tmpBtns;
-    if (!!this.state.tmpMkr) {
+  render () {
+    let tmpMkr
+    let tmpBtns
+    if (this.state.tmpMkr) {
       tmpMkr = (
         <MapView.Marker
           draggable
           coordinate={this.state.tmpCoords}
-          pinColor="aqua"
+          pinColor='aqua'
           onDragStart={event => {}}
           onDrag={event => {}}
           onDragEnd={event => {}}
         />
-      );
+      )
       tmpBtns = (
         <TempButtons
           onCancel={this.removeTempMarker.bind(this)}
           onSave={this.saveMarker.bind(this)}
         />
-      );
+      )
     }
 
     return (
       <View style={styles.map}>
         <MapView
           ref={ref => {
-            this.map = ref;
+            this.map = ref
           }}
           region={this.state.region}
           style={styles.map}
-          //customMapStyle={this.mapStyle}
-          sUserLocation={true}
-          showsMyLocationButton={true}
-          showsBuildings={true}
-          followUserLocation={true}
-          //onLayout={this.onLayout()}
-          //onPress={event => this._shortPress(event.nativeEvent)}
+          // customMapStyle={this.mapStyle}
+          sUserLocation
+          showsMyLocationButton
+          showsBuildings
+          followUserLocation
+          // onLayout={this.onLayout()}
+          // onPress={event => this._shortPress(event.nativeEvent)}
           onLongPress={event => this.longPress(event.nativeEvent)}
           onRegionChange={this.onRegionChange}
-          //onRegionChangeComplete={this.onRegionChangeComplete}
-          //zoomed={false}
+          // onRegionChangeComplete={this.onRegionChangeComplete}
+          // zoomed={false}
         >
           {this.props.map.markers.map((marker, index) => (
             <MapView.Marker
@@ -191,12 +191,12 @@ export class CustomMap extends Component {
           closeModal={this.closeAddMapModal}
         />
       </View>
-    );
+    )
   }
 
-  markerSaved() {
-    alert('marker saved!');
-    this.setState({ isMarkerModalVisible: false });
+  markerSaved () {
+    alert('marker saved!')
+    this.setState({ isMarkerModalVisible: false })
   }
 }
 
@@ -213,16 +213,16 @@ let styles = StyleSheet.create({
     color: 'white',
     alignSelf: 'center'
   }
-});
+})
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     map: state.mapsReducer.map
-  };
+  }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {};
+function mapDispatchToProps (dispatch) {
+  return {}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CustomMap);
+export default connect(mapStateToProps, mapDispatchToProps)(CustomMap)

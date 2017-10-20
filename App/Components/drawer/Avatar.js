@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import { TouchableHighlight, View, Text, StyleSheet } from 'react-native';
-import { call, put } from 'redux-saga/effects';
+import React, { Component } from 'react'
+import { TouchableHighlight, View, Text, StyleSheet } from 'react-native'
+import { call, put } from 'redux-saga/effects'
 
-import { connect } from 'react-redux';
-import UserActions from '../Redux/UserRedux';
+import { connect } from 'react-redux'
+import UserActions from '../Redux/UserRedux'
 
 export class Avatar extends Component {
-  constructor(props) {
-    super(props);
-    console.log('constructor props', props);
+  constructor (props) {
+    super(props)
+    console.log('constructor props', props)
   }
 
-  componentDidMount() {
-    console.log('MapCustom | markers -> ', this);
-    this.props.getMarkers();
+  componentDidMount () {
+    console.log('MapCustom | markers -> ', this)
+    this.props.getMarkers()
   }
 
   /*     <TouchableOpacity onPress={() => { }}>
@@ -24,9 +24,9 @@ export class Avatar extends Component {
 
   {props.currentUser.displayName}
 </Text> */
-  render() {
-    console.log('Avatar - render', this.props);
-    return <View style={styles.avatarContainer} />;
+  render () {
+    console.log('Avatar - render', this.props)
+    return <View style={styles.avatarContainer} />
   }
 }
 
@@ -69,19 +69,19 @@ var styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%'
   }
-});
+})
 
-function mapStateToProps(state) {
-  console.log('Avatar - mapStateToProps', state);
+function mapStateToProps (state) {
+  console.log('Avatar - mapStateToProps', state)
   return {
     user: state.userReducer.user
-  };
+  }
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return {
     getUser: () => dispatch(UserActions.userRequest())
-  };
+  }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Avatar);
+export default connect(mapStateToProps, mapDispatchToProps)(Avatar)
